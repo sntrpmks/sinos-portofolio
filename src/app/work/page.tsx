@@ -1,6 +1,6 @@
 import React from "react";
 import { getProjects } from "@/lib/content";
-import { WorkPageClient } from "@/components/work/WorkPageClient";
+import { WorkPageClient } from "@/features/projects";
 
 export const metadata = {
   title: "Case Studies & Work | SIN.OS",

@@ -6,7 +6,7 @@ import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/navigation/Footer";
 import { CommandPalette } from "@/components/system/CommandPalette";
 import { TerminalModal } from "@/components/system/TerminalModal";
-import { AiRecruiterModal } from "@/components/ai/AiRecruiterModal";
+import { AiRecruiterModal } from "@/features/ai-assistant";
 
 const inter = Inter({
   variable: "--font-inter",

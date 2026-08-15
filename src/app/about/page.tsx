@@ -1,5 +1,5 @@
 import React from "react";
-import { AboutPageClient } from "@/components/about/AboutPageClient";
+import { AboutPageClient } from "@/features/about";
 
 export const metadata = {
   title: "About & Engineering Philosophy | SIN.OS",

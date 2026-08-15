@@ -1,5 +1,5 @@
 import React from "react";
-import { ContactPageClient } from "@/components/contact/ContactPageClient";
+import { ContactPageClient } from "@/features/contact";
 
 export const metadata = {
   title: "Contact & Connect | SIN.OS",

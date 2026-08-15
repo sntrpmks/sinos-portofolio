@@ -1,7 +1,7 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import { getProjectBySlug, getProjects } from "@/lib/content";
-import { CaseFileDetailClient } from "@/components/projects/CaseFileDetailClient";
+import { CaseFileDetailClient } from "@/features/projects";
 
 export async function generateStaticParams() {
   const projects = getProjects();

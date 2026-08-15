@@ -1,10 +1,10 @@
 import React from "react";
 import { getProjects, getExperiences, getTechStack, getCertificates } from "@/lib/content";
-import { HomePageClient } from "@/components/home/HomePageClient";
+import { HomePageClient } from "@/features/home";
 
 export const metadata = {
-  title: "Sinatria Pamungkas — Software Developer | AI Enthusiast",
-  description: "Official digital portfolio system of Sinatria Pamungkas — Software Developer | AI Enthusiast.",
+  title: "Sinatria Pamungkas — Full Stack Developer | AI Enthusiast",
+  description: "Official digital portfolio system of Sinatria Pamungkas — Full Stack Developer | AI Enthusiast.",
 };
 
 export default function HomePage() {

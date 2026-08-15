@@ -1,6 +1,6 @@
 import React from "react";
 import { getExperiences, getCertificates } from "@/lib/content";
-import { JourneyPageClient } from "@/components/journey/JourneyPageClient";
+import { JourneyPageClient } from "@/features/journey";
 
 export const metadata = {
   title: "Journey & Certifications | SIN.OS",
