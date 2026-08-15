@@ -36,6 +36,9 @@ export const metadata: Metadata = {
     "Indonesia",
   ],
   authors: [{ name: "Sinatria Pamungkas" }],
+  verification: {
+    google: "google764722eabc05b935",
+  },
   openGraph: {
     title: "Sinatria Pamungkas — Full Stack Developer | AI Enthusiast",
     description: "I build web applications, explore AI/API integrations, and turn ideas into working digital experiences.",
