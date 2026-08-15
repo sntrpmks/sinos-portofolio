@@ -1,0 +1,51 @@
+{
+  "caseFileId": "CASE FILE #001",
+  "slug": "sintech",
+  "title": "Sintech Computer",
+  "year": "2025",
+  "status": "Completed",
+  "role": "Full-Stack Software Engineer",
+  "summary": "A Point of Sale (POS) and inventory management web application for computer hardware stores, featuring session-based checkout, Chart.js revenue analytics endpoints, and thermal receipt printing.",
+  "description": "Sintech Computer is an inventory management and Point of Sale (POS) web application designed for computer hardware retailers. Engineered with Native PHP 8.x and MySQL (sintech), the platform streamlines hardware component tracking (CPUs, GPUs, RAM, Motherboards), cashier checkout workflows, automated stock deduction, Chart.js interactive sales trend visualization, and thermal printer receipt rendering.",
+  "technologies": ["PHP", "MySQL", "JavaScript", "Chart.js", "CSS3", "HTML5"],
+  "problem": "Retail computer hardware shops struggled with manual inventory tracking across multiple hardware categories, checkout calculation errors during peak hours, and lack of real-time sales revenue visualization.",
+  "solution": "Built a modular web POS system featuring session-based cart management, hardware category filtering, instant stock re-stocking tools, internal REST JSON endpoints for Chart.js sales analytics (daily & categorical revenue trends), role-based access control (Admin & Cashier), and thermal printer-ready receipt formatting.",
+  "architecture": [
+    { "id": "ui", "label": "Client Interface", "subtext": "HTML5 / ES6+ Fetch API / CSS3 (Teal #197278)", "type": "Frontend" },
+    { "id": "app", "label": "POS Server Logic", "subtext": "Native PHP 8.x & Session Cart Engine", "type": "Backend" },
+    { "id": "api", "label": "Internal REST API", "subtext": "JSON Endpoints for Chart.js Analytics", "type": "Service" },
+    { "id": "db", "label": "Relational DB", "subtext": "MySQL sintech Data Store", "type": "Database" },
+    { "id": "print", "label": "Receipt Engine", "subtext": "Print-Ready Thermal Struck (@media print)", "type": "Export" }
+  ],
+  "implementation": [
+    "Designed relational MySQL database schema (user, produk, transaksi, detail_transaksi).",
+    "Engineered server-side session authentication and RBAC authorization for Admin and Cashier roles.",
+    "Developed REST JSON internal endpoints (get_penjualan_per_hari.php and get_penjualan_per_kategori.php) feeding Chart.js line and bar charts.",
+    "Built session-based POS checkout system with real-time change calculation and automated inventory stock deduction.",
+    "Designed printer-ready thermal receipt layout using CSS print media queries (@media print)."
+  ],
+  "challenges": [
+    "Structuring efficient SQL queries for aggregating daily omset revenue and category distributions under MySQL native drivers.",
+    "Managing concurrent session cart updates without race conditions or stock overselling."
+  ],
+  "results": [
+    "Automated 100% of cashier transaction calculations and product inventory deductions.",
+    "Provided real-time visual revenue analytics and Top 5 best-selling hardware component reports for shop management.",
+    "Generated print-ready thermal receipts instantly upon checkout completion."
+  ],
+  "lessons": [
+    "Exposing lightweight JSON endpoints for frontend chart rendering keeps server rendering light and responsive.",
+    "Modular file structures in Native PHP simplify maintenance when separating configuration, routing, and UI views."
+  ],
+  "github": "https://github.com/sntrpmks/sintech",
+  "demo": "",
+  "coverImage": "/media/projects/sintech/sintech-ss1.png",
+  "gallery": [
+    "/media/projects/sintech/sintech-ss1.png",
+    "/media/projects/sintech/sintech-ss2.png",
+    "/media/projects/sintech/sintech-ss3.png",
+    "/media/projects/sintech/sintech-ss4.png",
+    "/media/projects/sintech/sintech-ss5.png"
+  ],
+  "featured": true
+}

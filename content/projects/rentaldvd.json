@@ -1,0 +1,42 @@
+{
+  "caseFileId": "CASE FILE #002",
+  "slug": "rentaldvd",
+  "title": "RentalDVD",
+  "year": "2025",
+  "status": "Completed",
+  "role": "Desktop Application Developer",
+  "summary": "A Java Swing desktop information system for VCD/DVD rental management featuring multi-item loan processing, overdue debt checks, automated late fee calculation, and JasperReports PDF generation.",
+  "description": "RentalDVD is a desktop rental information system engineered with Java (JDK 21), Java Swing (Nimbus L&F), and MySQL (dbfilm). It automates film inventory tracking, member registration, multi-item loan checkouts, return date calculations, late fee penalties, and formal JasperReports 5.0.1 PDF reporting.",
+  "technologies": ["Java", "Java Swing", "MySQL", "JasperReports", "JDBC", "Ant"],
+  "problem": "Traditional VCD/DVD rental shops relied on manual paper logs for catalog tracking and member loans, causing inventory discrepancies, untracked overdue returns, uncollected late fees, and slow manual reporting.",
+  "solution": "Developed a native Java desktop application featuring auto-numbering ID generators (IDxxx, FLxxx, PJ-YYYY-MM-DD-xxx), JCalendar date selection, real-time overdue loan verification, multi-item loan checkout tables, fine calculation engines, role-based dashboards (Admin & Cashier), and integrated JasperReports PDF compilation.",
+  "architecture": [
+    { "id": "ui", "label": "Desktop GUI", "subtext": "Java Swing (Nimbus L&F) & JCalendar", "type": "Frontend" },
+    { "id": "core", "label": "Business & DAO Logic", "subtext": "Native Java Controllers & ConfigDB Helper", "type": "Logic" },
+    { "id": "db", "label": "Relational DB", "subtext": "MySQL dbfilm Data Store via JDBC", "type": "Database" },
+    { "id": "report", "label": "Report Engine", "subtext": "JasperReports 5.0.1 & iText PDF Framework", "type": "Export" }
+  ],
+  "implementation": [
+    "Designed normalized MySQL database schema (user, anggota, film, pinjam, detail_pinjam, view_pinjam).",
+    "Developed central ConfigDB.java utility helper handling JDBC connections, dynamic JTable data binding, and primary key duplication checks.",
+    "Engineered multi-item rental transaction checkout with automated overdue loan checks (btnCari) and late penalty calculations.",
+    "Integrated JasperReports 5.0.1 framework with iText 2.1.7 for compiling dynamic PDF reports from JRXML templates.",
+    "Implemented Auto Numbering Generators for Members (IDxxx), Films (FLxxx), and Loans (PJ-YYYY-MM-DD-xxx)."
+  ],
+  "challenges": [
+    "Managing transactional multi-item loan inserts across parent pinjam and child detail_pinjam tables while maintaining database consistency.",
+    "Configuring JasperReports library dependencies and runtime JDBC parameter passing inside Java Swing desktop frames."
+  ],
+  "results": [
+    "Automated 100% of film loan checkouts, return date tracking, and overdue fine calculations.",
+    "Eliminated manual catalog search delays through instant real-time JTable filtering.",
+    "Enabled one-click PDF report compilation for member databases and loan histories."
+  ],
+  "lessons": [
+    "Decoupling database access logic into a central JDBC helper class (ConfigDB) greatly simplifies Swing GUI form development.",
+    "Pre-formatted report compilation engines like JasperReports deliver far cleaner PDF exports than custom canvas drawing."
+  ],
+  "github": "https://github.com/ahmad-sinatria/rentaldvd-java",
+  "demo": "",
+  "featured": true
+}

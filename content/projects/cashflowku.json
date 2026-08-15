@@ -1,0 +1,42 @@
+{
+  "caseFileId": "CASE FILE #006",
+  "slug": "cashflowku",
+  "title": "CashFlowku (Java Edition)",
+  "year": "2026",
+  "status": "Completed",
+  "role": "Native Android Developer / Software Architect",
+  "summary": "An offline-first Point of Sale (POS) and financial management native Android application for MSMEs (UMKM), featuring Bento Grid analytics, COGS profit calculations, interactive Excel CSV export with formulas, and SQLite WAL backup security.",
+  "description": "CashFlowku (Java Edition) is an offline-first Point of Sale (POS) and financial management native Android application designed for MSMEs (UMKM). Engineered with Java (JDK 17), target SDK 34, and native SQLite (SQLiteOpenHelper), it features a Bento Grid real-time financial dashboard (Net Profit, COGS/HPP, Gross Profit, Expenses), automated stock deduction, categorized expense logging, dynamic PDF/CSV export with active Excel formulas (=SUM, =Qty*Harga), and SQLite WAL checkpoint backup security with 16-byte header verification.",
+  "technologies": ["Java", "Android SDK", "SQLite", "Material Design", "AndroidX"],
+  "problem": "MSME business owners struggle with complex cloud POS apps that require internet access, lack COGS/HPP profit margin calculations, and present security risks during database backups.",
+  "solution": "Developed an offline-first native Android POS & bookkeeping app featuring Bento Grid real-time net profit calculations (Income - HPP - Expenses), automated inventory stock deduction, interactive CSV export with live Excel formulas (=SUM, =Qty*Harga), WAL checkpointing (PRAGMA wal_checkpoint(FULL)), and 16-byte SQLite header signature verification.",
+  "architecture": [
+    { "id": "ui", "label": "Bento Grid Material UI", "subtext": "ConstraintLayout, RecyclerView & White/Zinc Dark Mode", "type": "Frontend" },
+    { "id": "core", "label": "POS & Financial Logic", "subtext": "Java Native Controllers (JDK 17, Target SDK 34)", "type": "Logic" },
+    { "id": "db", "label": "SQLite Local Persistence", "subtext": "SQLiteOpenHelper & WAL Checkpoint Engine", "type": "Database" },
+    { "id": "export", "label": "Export & Backup Engine", "subtext": "FileProvider, PDF Bento Cards & Formula CSV", "type": "Export" }
+  ],
+  "implementation": [
+    "Engineered Bento Grid real-time financial dashboard calculating Net Profit (Omset - HPP - Expenses), Gross Profit, and HPP.",
+    "Built Smart POS inventory management with automated stock deduction, COGS input, camera photo attachments, and instant restock button.",
+    "Developed ExportUtil generating PDF summary cards and interactive CSV files embedded with dynamic Excel formulas (=SUM, =Qty*Harga).",
+    "Implemented SQLite Write-Ahead Logging (WAL) checkpointing (PRAGMA wal_checkpoint(FULL)) and 16-byte SQLite format 3 header signature verification for corruption-proof database backups.",
+    "Integrated bi-directional settings synchronization between SQL key-value tables and SharedPreferences at splash screen boot with flicker-free Dark Mode."
+  ],
+  "challenges": [
+    "Enforcing SQLite WAL log checkpoints into main database files before backup export to guarantee zero data loss.",
+    "Embedding native Excel math formulas inside CSV strings while maintaining multi-locale currency formatting."
+  ],
+  "results": [
+    "100% offline data privacy with zero external cloud dependencies.",
+    "Instant sub-50ms SQLite database query response and flicker-free theme switching.",
+    "Automated financial report generation with live auto-recalculating spreadsheet exports."
+  ],
+  "lessons": [
+    "SQLite WAL checkpointing is vital for offline mobile apps to prevent backup state desynchronization.",
+    "Generating CSV files with native spreadsheet formulas provides immense value for MSME accounting workflows."
+  ],
+  "github": "https://github.com/sntrpmks/CashFlowku",
+  "demo": "",
+  "featured": true
+}

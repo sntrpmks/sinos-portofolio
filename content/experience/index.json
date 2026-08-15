@@ -1,0 +1,66 @@
+[
+  {
+    "id": "exp-unsiq",
+    "year": "2026 - Present",
+    "title": "Informatics Management Student",
+    "organization": "Universitas Sains Al-Qur'an (UNSIQ)",
+    "role": "College Student",
+    "period": "2026 - Present",
+    "location": "Wonosobo, Indonesia",
+    "description": "Pursuing a degree in Informatics Management (Manajemen Informatika), studying information system design, database architecture, software engineering methodologies, and AI integrations.",
+    "highlights": [
+      "Enrolled in Manajemen Informatika program at Universitas Sains Al-Qur'an (UNSIQ).",
+      "Focusing on web & mobile application architecture, information systems, and software engineering.",
+      "Building full-stack digital products and exploring AI API integrations."
+    ],
+    "type": "education"
+  },
+  {
+    "id": "exp-smkn1",
+    "year": "2024 - 2026",
+    "title": "Software Engineering Graduate (RPL)",
+    "organization": "SMK Negeri 1 Wonosobo",
+    "role": "Student Developer",
+    "period": "2024 - 2026 (Graduated)",
+    "location": "Wonosobo, Indonesia",
+    "description": "Graduated in Software Engineering (Rekayasa Perangkat Lunak). Studied web application development, relational database modeling, and native programming.",
+    "highlights": [
+      "Graduated from Software Engineering program in 2026.",
+      "Built Web Event SMKN 1 Wonosobo full-stack platform with PHP, MySQL & Gemini API.",
+      "Earned Junior Coder BNSP certification and Oracle Java Fundamentals credential."
+    ],
+    "type": "education"
+  },
+  {
+    "id": "exp-proactive",
+    "year": "2025",
+    "title": "Robotics & Coding Curriculum Intern",
+    "organization": "Proactive Robotika",
+    "role": "Student Intern",
+    "period": "2025",
+    "location": "Yogyakarta, Indonesia",
+    "description": "Student internship experience assisting in the delivery of robotics and coding curriculum, working with elementary students (including SD Muhammadiyah Sapen, Yogyakarta), and hardware-software logic.",
+    "highlights": [
+      "Supported robotics and coding learning activities for elementary students.",
+      "Assisted in hardware microcontroller programming and sensor feedback logic.",
+      "Gained hands-on experience in technical curriculum delivery and robotics concepts."
+    ],
+    "type": "internship"
+  },
+  {
+    "id": "exp-current",
+    "year": "NOW",
+    "title": "Software Development & AI Integration",
+    "organization": "Independent / Open Projects",
+    "role": "Software Developer",
+    "period": "Present",
+    "location": "Indonesia",
+    "description": "Building full-stack web products, exploring AI API integrations (Gemini, OpenAI), and continuously refining software design principles.",
+    "highlights": [
+      "Engineering SIN.OS content-driven digital portfolio system.",
+      "Exploring multimodal AI API capabilities and REST server architectures.",
+      "Pursuing professional certifications in AI, software engineering, and web development."
+    ],
+    "type": "work"
+  }
+]

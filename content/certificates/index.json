@@ -1,0 +1,72 @@
+[
+  {
+    "id": "cert-openai",
+    "title": "AI Foundations",
+    "issuer": "OpenAI Academy",
+    "issueDate": "June 2026",
+    "credentialUrl": "https://academy.openai.com/public/certificate/hn23qn4u9f",
+    "category": "Artificial Intelligence",
+    "description": "Official Course Completion Certificate awarded by OpenAI Academy to Ahmad Sinatria Pamungkas for completing the AI Foundations curriculum (Certificate ID: hn23qn4u9f).",
+    "image": "/media/certificates/openai.jpg"
+  },
+  {
+    "id": "cert-hacktiv8",
+    "title": "Productivity & AI API Integration for Developers",
+    "issuer": "Hacktiv8 Indonesia",
+    "issueDate": "2026",
+    "credentialUrl": "https://linkedin.com/in/ahmad-sinatria-pamungkas",
+    "category": "AI & Web Integration",
+    "description": "Practical training in building RESTful APIs, integrating Gemini/LLM endpoints into web applications, and developer productivity workflows.",
+    "image": "/media/certificates/hacktiv8.jpg"
+  },
+  {
+    "id": "cert-bnsp",
+    "title": "Junior Coder (Software Development)",
+    "issuer": "BNSP (Badan Nasional Sertifikasi Profesi)",
+    "issueDate": "2025",
+    "credentialUrl": "https://linkedin.com/in/ahmad-sinatria-pamungkas",
+    "category": "Software Engineering",
+    "description": "National competency certification in professional software coding, algorithms, and baseline engineering standards.",
+    "image": "/media/certificates/bnsp.jpg"
+  },
+  {
+    "id": "cert-ibm",
+    "title": "Introduction to Artificial Intelligence",
+    "issuer": "IBM",
+    "issueDate": "2025",
+    "credentialUrl": "https://linkedin.com/in/ahmad-sinatria-pamungkas",
+    "category": "Artificial Intelligence",
+    "description": "Comprehensive course on AI concepts, machine learning terminology, ethics in AI, and practical industry applications.",
+    "image": "/media/certificates/ibm.jpg"
+  },
+  {
+    "id": "cert-proactive",
+    "title": "Internship Certificate in Robotics",
+    "issuer": "Proactive Robotika",
+    "issueDate": "2025",
+    "credentialUrl": "https://linkedin.com/in/ahmad-sinatria-pamungkas",
+    "category": "Robotics & Embedded Systems",
+    "description": "Certificate awarded for completing student internship assisting robotics and coding curriculum delivery.",
+    "image": "/media/certificates/internship.jpg"
+  },
+  {
+    "id": "cert-smkdev",
+    "title": "Certificate of Completion (SSEC2025)",
+    "issuer": "SMKDEV",
+    "issueDate": "2025",
+    "credentialUrl": "https://linkedin.com/in/ahmad-sinatria-pamungkas",
+    "category": "Software Development",
+    "description": "Awarded for successful completion of student software engineering competition and development challenges.",
+    "image": "/media/certificates/smkdev.jpg"
+  },
+  {
+    "id": "cert-oracle",
+    "title": "Java Fundamentals",
+    "issuer": "Oracle Academy",
+    "issueDate": "2024",
+    "credentialUrl": "https://linkedin.com/in/ahmad-sinatria-pamungkas",
+    "category": "Programming Languages",
+    "description": "Formal certification in Java syntax, object-oriented programming concepts, data structures, and control flow.",
+    "image": "/media/certificates/java-fundamentals.jpg"
+  }
+]

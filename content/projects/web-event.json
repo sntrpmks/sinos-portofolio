@@ -1,0 +1,57 @@
+{
+  "caseFileId": "CASE FILE #005",
+  "slug": "web-event",
+  "title": "Web Event SMKN 1 Wonosobo",
+  "year": "2026",
+  "status": "Completed",
+  "role": "Full-Stack Software Engineer",
+  "summary": "Multi-role event management platform managing competition submissions, 3-stage milestone evaluation, automated deadline checks, jury scoring, and Google Gemini API AI assistance.",
+  "description": "Web Event SMKN 1 Wonosobo (Sistem Manajemen & Evaluasi Event SMKN 1 Wonosobo) is a production-grade multi-role web platform built with Native PHP 8.2+ and MySQL (web_event_smk). Designed for school event operations, it features RBAC workflows for Admins, Teachers/Juries, and Students, 3-stage milestone tracking (awal, proses, akhir with automated is_late flags), FPDF progress report exports, Google Maps location integration, and an embedded Google Gemini 1.5 Flash AI chatbot (api/chatbot.php).",
+  "technologies": ["PHP", "MySQL", "Google Gemini API", "AJAX", "FPDF", "JavaScript"],
+  "problem": "School events suffered from manual paper-based registration, untracked submission deadlines, fragmented multi-juror scoring calculations, and lack of real-time participant progress tracking.",
+  "solution": "Engineered a centralized web platform supporting individual & team registration, automated 3-stage milestone tracking (awal, proses, akhir) with is_late flags, multi-criteria jury scorecards with real-time leaderboards, automated FPDF report generation, and an embedded Google Gemini 1.5 Flash AI chatbot for instant event assistance.",
+  "architecture": [
+    { "id": "ui", "label": "Client Interface", "subtext": "HTML5 / ES6+ Fetch API / CSS3", "type": "Frontend" },
+    { "id": "app", "label": "Multi-Role Server", "subtext": "Native PHP 8.2+ Controllers (Admin/Guru/Siswa)", "type": "Backend" },
+    { "id": "ai", "label": "AI Chatbot Service", "subtext": "Google Gemini 1.5 Flash API (api/chatbot.php)", "type": "Service" },
+    { "id": "db", "label": "Relational DB", "subtext": "MySQL web_event_smk Data Store", "type": "Database" },
+    { "id": "print", "label": "Report Engine", "subtext": "FPDF Progress Summaries & Scorecards", "type": "Export" }
+  ],
+  "implementation": [
+    "Designed multi-role RBAC architecture regulating permissions across Admin, Teacher/Jury, and Student dashboards.",
+    "Built 3-stage milestone submission engine (awal, proses, akhir) with automated is_late deadline detection.",
+    "Engineered multi-criteria jury scoring matrices with automated weighted leaderboard calculation.",
+    "Integrated Google Gemini 1.5 Flash API chatbot (api/chatbot.php) providing context-aware answers to student queries.",
+    "Integrated FPDF engine for on-the-fly PDF scorecards, progress summaries, and certificate generation."
+  ],
+  "challenges": [
+    "Managing complex relational data constraints across multi-participant team submissions and 3-stage milestone checks.",
+    "Safeguarding AI API integration endpoints against prompt injection while preserving fast chatbot response times."
+  ],
+  "results": [
+    "Automated 100% of event registrations, milestone submission deadline tracking, and jury scorecard calculations.",
+    "Delivered instantaneous PDF report generation for school administrators and event coordinators."
+  ],
+  "lessons": [
+    "Combining multi-role RBAC with automated milestone checks ensures accountability in complex event workflows.",
+    "Integrating AI chatbots directly into operational software greatly reduces repetitive administrative inquiry load."
+  ],
+  "github": "https://github.com/sntrpmks/Web-Event-SMKN1WSB",
+  "demo": "",
+  "coverImage": "/media/projects/web-event/webevent-ss1.png",
+  "gallery": [
+    "/media/projects/web-event/webevent-ss1.png",
+    "/media/projects/web-event/webevent-ss2.png",
+    "/media/projects/web-event/webevent-ss3.png",
+    "/media/projects/web-event/webevent-ss4.png",
+    "/media/projects/web-event/webevent-ss5.png",
+    "/media/projects/web-event/webevent-ss6.png",
+    "/media/projects/web-event/webevent-ss7.png",
+    "/media/projects/web-event/webevent-ss8.png",
+    "/media/projects/web-event/webevent-ss9.png",
+    "/media/projects/web-event/webevent-ss10.png",
+    "/media/projects/web-event/webevent-ss11.png",
+    "/media/projects/web-event/webevent-ss12.png"
+  ],
+  "featured": true
+}

@@ -1,0 +1,58 @@
+{
+  "headline": "How I Think",
+  "bio": "I am Sinatria Pamungkas, an Informatics Management student at Universitas Sains Al-Qur'an (UNSIQ) and Full Stack Developer focused on building clean systems, robust products, and digital experiences that deliver real value.",
+  "philosophy": [
+    {
+      "step": "01",
+      "title": "Understand the Problem",
+      "description": "Deeply analyze the real bottleneck, constraints, and business domain before touching a single line of code."
+    },
+    {
+      "step": "02",
+      "title": "Break down into Components",
+      "description": "Deconstruct complex tasks into atomic, testable modules with clear input and output boundaries."
+    },
+    {
+      "step": "03",
+      "title": "Design the System Architecture",
+      "description": "Establish clean data schemas, API contracts, security bounds, and UI interaction states early."
+    },
+    {
+      "step": "04",
+      "title": "Build the Smallest Useful Version",
+      "description": "Iterate quickly by shipping production-ready MVP code, avoiding premature optimization while keeping foundation solid."
+    },
+    {
+      "step": "05",
+      "title": "Test & Measure",
+      "description": "Empirically verify performance, error tracebacks, responsiveness, and user experience under realistic conditions."
+    },
+    {
+      "step": "06",
+      "title": "Refine & Scale",
+      "description": "Refactor based on empirical metrics, improve code legibility, document architecture, and automate build workflows."
+    }
+  ],
+  "corePrinciples": [
+    {
+      "number": "01",
+      "title": "Simplicity over unnecessary complexity",
+      "description": "A working, elegant solution with 100 lines of clear code is infinitely better than an over-engineered framework with 1,000 lines of abstractions."
+    },
+    {
+      "number": "02",
+      "title": "Evidence over assumption",
+      "description": "Base architectural decisions, diagnostics, and skill claims on verifiable proof, real runtime logs, and working projects."
+    },
+    {
+      "number": "03",
+      "title": "Understand the system, not just the syntax",
+      "description": "True engineering requires knowing how memory, networks, databases, browsers, and operating systems execute under the surface."
+    },
+    {
+      "number": "04",
+      "title": "Build, test, improve",
+      "description": "Continuous improvement through rapid prototyping, strict type-checking, automated linting, and honest feedback loops."
+    }
+  ]
+}

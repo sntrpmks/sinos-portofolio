@@ -1,0 +1,75 @@
+{
+  "caseFileId": "CASE FILE #003",
+  "slug": "catatan-android",
+  "title": "Catatan Android",
+  "year": "2025",
+  "status": "Completed",
+  "role": "Native Android Developer",
+  "summary": "An offline-first native Android note-taking application built with Java, SQLite database migration, Storage Access Framework media attachments, live search, and a soft-delete Recycle Bin.",
+  "description": "Catatan is an offline-first native Android note-taking application built with Java (JDK 11) and target SDK 35. Engineered using the MVC design pattern and native SQLite (DatabaseHelper v2 migration), it features real-time search, Material ChipGroup category filtering, gallery photo attachments via Storage Access Framework (takePersistableUriPermission), and a soft-delete Recycle Bin for note restoration.",
+  "technologies": [
+    "Java",
+    "Android SDK",
+    "SQLite",
+    "Material Design",
+    "AndroidX"
+  ],
+  "problem": "Mobile note apps often rely on cloud synchronization, causing privacy risks, slow offline loading, and data loss when notes are accidentally deleted.",
+  "solution": "Developed an offline-first native Android app using SQLite persistence, Material Design components, persistent Storage Access Framework permissions for media attachments, and a two-stage soft-delete mechanism (is_deleted = 1) allowing users to restore notes from a dedicated Recycle Bin.",
+  "architecture": [
+    {
+      "id": "ui",
+      "label": "Android Material UI",
+      "subtext": "XML Layouts, RecyclerView & ChipGroup",
+      "type": "Frontend"
+    },
+    {
+      "id": "core",
+      "label": "MVC Controllers",
+      "subtext": "Java Activity & Adapter Classes",
+      "type": "Logic"
+    },
+    {
+      "id": "db",
+      "label": "SQLite Persistence",
+      "subtext": "SQLiteOpenHelper (Database Version 2)",
+      "type": "Database"
+    },
+    {
+      "id": "storage",
+      "label": "Storage Framework",
+      "subtext": "Persistable URI Gallery Media Picker",
+      "type": "Service"
+    }
+  ],
+  "implementation": [
+    "Engineered MVC architecture cleanly separating Note model entity, SQLite DatabaseHelper data access, RecyclerView adapters, and Activity controllers.",
+    "Implemented SQLite database migration from version 1 to 2, dynamically adding is_deleted and deleted_at columns without data loss.",
+    "Built soft-delete Recycle Bin workflow allowing users to restore accidentally deleted notes or permanently purge records.",
+    "Utilized Storage Access Framework with takePersistableUriPermission to ensure attached photos remain viewable across app restarts.",
+    "Applied Android 13+ granular permission checks (READ_MEDIA_IMAGES vs READ_EXTERNAL_STORAGE) based on API level."
+  ],
+  "challenges": [
+    "Handling Android URI permission persistence across device reboots so attached gallery images do not lose read authorization.",
+    "Executing smooth SQLite database migrations between versions without corrupting pre-existing user notes."
+  ],
+  "results": [
+    "Achieved 100% offline note creation, live search filtering, and media attachment capability.",
+    "Prevented accidental note loss through the soft-delete Recycle Bin recovery system.",
+    "Delivered sub-30ms SQLite query lookup speeds for large note collections."
+  ],
+  "lessons": [
+    "Soft delete patterns in mobile apps greatly improve user satisfaction by preventing unrecoverable data loss.",
+    "Requesting persistable URI permissions is critical when integrating gallery media into native Android local databases."
+  ],
+  "github": "https://github.com/sntrpmks/Catatan-Android",
+  "demo": "",
+  "coverImage": "/media/projects/catatan-android/catatan-ss1.jpg",
+  "gallery": [
+    "/media/projects/catatan-android/catatan-ss1.jpg",
+    "/media/projects/catatan-android/catatan-ss2.jpg",
+    "/media/projects/catatan-android/catatan-ss3.jpg",
+    "/media/projects/catatan-android/catatan-ss4.jpg"
+  ],
+  "featured": true
+}
