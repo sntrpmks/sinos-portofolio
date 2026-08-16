@@ -74,6 +74,11 @@ export default function StackBuilderModule({
     isChecked: false,
   };
 
+  const isLastLevel = currentLevelIndex === initialChallenges.length - 1;
+  const nextActionLabel = isLastLevel
+    ? t.lab.game.seeResultsBtn
+    : t.lab.game.nextBtn;
+
   // Read high score from localStorage safely
   useEffect(() => {
     try {
@@ -191,9 +196,9 @@ export default function StackBuilderModule({
     }));
   };
 
-  // Move to next level
+  // Move to next level / finish game
   const handleNextLevel = () => {
-    // If not checked yet, treat current level as skipped
+    // If not checked yet, mark current level as skipped
     if (!activeState.isChecked) {
       setLevelStates((prev) => ({
         ...prev,
@@ -450,7 +455,7 @@ export default function StackBuilderModule({
               })}
             </div>
 
-            {/* Feedback Alert Box */}
+            {/* Feedback Alert Box (Active after check or empty prompt) */}
             {activeState.feedbackMessage && (
               <motion.div
                 initial={{ opacity: 0, y: 4 }}
@@ -467,46 +472,37 @@ export default function StackBuilderModule({
                   {activeState.feedbackMessage}
                 </span>
 
+                {/* THE SINGLE & ONLY NEXT/RESULTS BUTTON AFTER VALIDATION */}
                 {activeState.isChecked && (
                   <button
                     onClick={handleNextLevel}
-                    className="flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#171717] text-white text-xs font-bold hover:bg-[#00695C] transition-colors shrink-0 shadow-xs"
+                    className="flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#171717] text-white text-xs font-bold hover:bg-[#00695C] transition-colors shrink-0 shadow-xs active:scale-98"
                   >
-                    <span>{t.lab.game.nextBtn}</span>
+                    <span>{nextActionLabel}</span>
                   </button>
                 )}
               </motion.div>
             )}
 
-            {/* Action Bar */}
-            <div className="flex items-center justify-between gap-4 pt-2">
-              <button
-                onClick={handleSkip}
-                disabled={activeState.isChecked}
-                className="px-4 py-2.5 rounded-xl text-xs font-semibold text-[#8A8A8A] hover:text-[#171717] hover:bg-[#F0F0ED] transition-all disabled:opacity-30 disabled:pointer-events-none"
-              >
-                <span>{t.lab.game.skipBtn}</span>
-              </button>
+            {/* Action Bar (Active ONLY before validation - ZERO DUPLICATES!) */}
+            {!activeState.isChecked && (
+              <div className="flex items-center justify-between gap-4 pt-2">
+                <button
+                  onClick={handleSkip}
+                  className="px-4 py-2.5 rounded-xl text-xs font-semibold text-[#8A8A8A] hover:text-[#171717] hover:bg-[#F0F0ED] transition-all"
+                >
+                  <span>{t.lab.game.skipBtn}</span>
+                </button>
 
-              <div className="flex items-center gap-3">
-                {!activeState.isChecked ? (
-                  <button
-                    onClick={handleCheck}
-                    disabled={activeState.selectedOptionIds.length === 0}
-                    className="flex items-center gap-2 px-8 py-3 rounded-xl bg-[#171717] text-white font-bold text-xs hover:bg-[#00695C] transition-colors shadow-xs disabled:opacity-40 disabled:cursor-not-allowed"
-                  >
-                    <span>{t.lab.game.checkBtn}</span>
-                  </button>
-                ) : (
-                  <button
-                    onClick={handleNextLevel}
-                    className="flex items-center gap-2 px-8 py-3 rounded-xl bg-[#171717] text-white font-bold text-xs hover:bg-[#00695C] transition-colors shadow-xs"
-                  >
-                    <span>{t.lab.game.nextBtn}</span>
-                  </button>
-                )}
+                <button
+                  onClick={handleCheck}
+                  disabled={activeState.selectedOptionIds.length === 0}
+                  className="flex items-center gap-2 px-8 py-3 rounded-xl bg-[#171717] text-white font-bold text-xs hover:bg-[#00695C] transition-colors shadow-xs disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  <span>{t.lab.game.checkBtn}</span>
+                </button>
               </div>
-            </div>
+            )}
           </motion.div>
         )}
 

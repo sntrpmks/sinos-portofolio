@@ -114,6 +114,7 @@ export interface TranslationSchema {
       letsGo: string;
       checkBtn: string;
       nextBtn: string;
+      seeResultsBtn: string;
       skipBtn: string;
       emptyPrompt: string;
       skippedFeedback: string;
@@ -254,6 +255,7 @@ export const translations: Record<Locale, TranslationSchema> = {
         letsGo: "Let's go",
         checkBtn: "Check it",
         nextBtn: "Next",
+        seeResultsBtn: "See results",
         skipBtn: "Skip",
         emptyPrompt: "Pick something first.",
         skippedFeedback: "Skipped — let's move on.",
@@ -404,6 +406,7 @@ export const translations: Record<Locale, TranslationSchema> = {
         letsGo: "Gas",
         checkBtn: "Cek",
         nextBtn: "Lanjut",
+        seeResultsBtn: "Lihat hasil",
         skipBtn: "Lewati",
         emptyPrompt: "Pilih dulu.",
         skippedFeedback: "Dilewati. Lanjut ke berikutnya.",
