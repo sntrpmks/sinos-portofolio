@@ -54,12 +54,6 @@ export function Footer() {
             <Mail className="w-4 h-4 text-[#171717]" />
             <span>Email</span>
           </a>
-          <a
-            href="/lab"
-            className="flex items-center gap-1 hover:text-[#171717] transition-colors text-[#00695C] font-semibold"
-          >
-            <span>Lab</span>
-          </a>
           <button
             onClick={handleQuickEmail}
             className="flex items-center gap-1 text-[#00695C] font-bold hover:underline transition-colors"

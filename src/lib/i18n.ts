@@ -7,7 +7,6 @@ export interface TranslationSchema {
     journey: string;
     contact: string;
     resume: string;
-    lab: string;
     askAi: string;
     searchShortcut: string;
     searchPlaceholder: string;
@@ -91,86 +90,6 @@ export interface TranslationSchema {
     rights: string;
     terminalTrigger: string;
   };
-  lab: {
-    tag: string;
-    titleMain: string;
-    titleAccent: string;
-    subtitle: string;
-    playableTag: string;
-    comingSoonTag: string;
-    playBtn: string;
-    exploreLab: string;
-    buildAppTitle: string;
-    buildAppDesc: string;
-    debugTitle: string;
-    debugDesc: string;
-    terminalTitle: string;
-    terminalDesc: string;
-    game: {
-      backToLab: string;
-      tagline: string;
-      introTitle: string;
-      introDesc: string;
-      letsGo: string;
-      checkBtn: string;
-      nextBtn: string;
-      seeResultsBtn: string;
-      skipBtn: string;
-      emptyPrompt: string;
-      skippedFeedback: string;
-      playAgain: string;
-      exploreProjects: string;
-      highScore: string;
-      levelTag: string;
-      youBuiltIt: string;
-      fullScoreNote: string;
-      partialScoreNote: string;
-      correctFeedback: readonly string[];
-      incorrectFeedback: readonly string[];
-    };
-    debugGame: {
-      tagline: string;
-      introTitle: string;
-      introDesc: string;
-      letsGo: string;
-      checkBtn: string;
-      nextBtn: string;
-      seeResultsBtn: string;
-      skipBtn: string;
-      emptyPrompt: string;
-      skippedFeedback: string;
-      playAgain: string;
-      exploreProjects: string;
-      highScore: string;
-      levelTag: string;
-      debuggedIt: string;
-      fullScoreNote: string;
-      partialScoreNote: string;
-      systemStatusHeader: string;
-      correctFeedback: readonly string[];
-      incorrectFeedback: readonly string[];
-    };
-    shipItTitle: string;
-    shipItDesc: string;
-    shipItGame: {
-      tagline: string;
-      introTitle: string;
-      introDesc: string;
-      instruction: string;
-      startBtn: string;
-      crashed: string;
-      scoreTag: string;
-      bestTag: string;
-      tryAgain: string;
-      backToLab: string;
-      exploreProjects: string;
-      localStage: string;
-      stagingStage: string;
-      productionStage: string;
-      youreLive: string;
-      almostNote: string;
-    };
-  };
 }
 
 export const translations: Record<Locale, TranslationSchema> = {
@@ -181,7 +100,6 @@ export const translations: Record<Locale, TranslationSchema> = {
       journey: "Journey",
       contact: "Contact",
       resume: "Resume",
-      lab: "Lab",
       askAi: "Ask SIN.OS",
       searchShortcut: "⌘K",
       searchPlaceholder: "Search projects, skills, certificates, or pages...",
@@ -207,7 +125,7 @@ export const translations: Record<Locale, TranslationSchema> = {
       exploreCaseFilesCount: "Explore all case studies",
     },
     about: {
-      tag: "02 // BACKGROUND",
+      tag: "03 // BACKGROUND",
       titleMain: "About ",
       titleAccent: "Me.",
       readFullBio: "Read full bio →",
@@ -220,7 +138,7 @@ export const translations: Record<Locale, TranslationSchema> = {
       btnTimeline: "Full Journey Timeline →",
     },
     capabilities: {
-      tag: "03 // CAPABILITIES",
+      tag: "02 // CAPABILITIES",
       titleMain: "Technologies & ",
       titleAccent: "Tools.",
       subhead: "Tech Stack & Hands-on Tools",
@@ -254,7 +172,7 @@ export const translations: Record<Locale, TranslationSchema> = {
       emptyNote: "Grounded strictly on verified SIN.OS portfolio data.",
     },
     contact: {
-      tag: "05 // CONTACT",
+      tag: "04 // CONTACT",
       titleMain: "Let's ",
       titleAccent: "Connect.",
       description: "Have a project idea, opportunity, or want to discuss technology? Feel free to reach out.",
@@ -274,106 +192,6 @@ export const translations: Record<Locale, TranslationSchema> = {
       rights: "All rights reserved.",
       terminalTrigger: "terminal",
     },
-    lab: {
-      tag: "EXPERIMENTAL LAB",
-      titleMain: "SIN.OS ",
-      titleAccent: "Lab.",
-      subtitle: "Small experiments, interactions, and things I build just because I can.",
-      playableTag: "MINI-GAME",
-      comingSoonTag: "COMING SOON",
-      playBtn: "Play",
-      exploreLab: "Explore SIN.OS Lab",
-      buildAppTitle: "Build the App",
-      buildAppDesc: "Pick the right pieces and build a tiny app. Quick, casual, and easy to play.",
-      debugTitle: "Debug SIN.OS",
-      debugDesc: "Uh oh. Something broke. Diagnose quick bugs under real system constraints.",
-      terminalTitle: "Terminal Mission",
-      terminalDesc: "Something's offline. Command-line objective challenges and script automation tasks.",
-      game: {
-        backToLab: "Back to Lab",
-        tagline: "Pick what you need. Build something cool.",
-        introTitle: "Let's build a tiny app.",
-        introDesc: "Pick the things you think it needs. Quick & easy.",
-        letsGo: "Let's go",
-        checkBtn: "Check it",
-        nextBtn: "Next",
-        seeResultsBtn: "See results",
-        skipBtn: "Skip",
-        emptyPrompt: "Pick something first.",
-        skippedFeedback: "Skipped — let's move on.",
-        playAgain: "Play again",
-        exploreProjects: "Want to see the real stuff? Explore Projects",
-        highScore: "Best Score",
-        levelTag: "LEVEL",
-        youBuiltIt: "YOU BUILT IT.",
-        fullScoreNote: "Clean run. You've got the basics down.",
-        partialScoreNote: "Pretty good. Want another shot?",
-        correctFeedback: [
-          "Nice! You nailed it.",
-          "Yep, that's it.",
-          "Easy. Clean choice.",
-          "You got it!",
-          "Boom. Perfect.",
-        ],
-        incorrectFeedback: [
-          "Not quite. Think about what the app actually needs.",
-          "Almost! Take another look.",
-          "Hmm, close! Try again.",
-          "Dikit lagi! Re-check your picks.",
-        ],
-      },
-      debugGame: {
-        tagline: "Something broke. Can you find it?",
-        introTitle: "Something broke. Let's find out what.",
-        introDesc: "Inspect the clues and pick what's likely broken. Quick & easy.",
-        letsGo: "Let's find out",
-        checkBtn: "Check it",
-        nextBtn: "Next",
-        seeResultsBtn: "See results",
-        skipBtn: "Skip",
-        emptyPrompt: "Pick something first.",
-        skippedFeedback: "Skipped — moving on.",
-        playAgain: "Play again",
-        exploreProjects: "Want to see the real stuff? Explore Projects",
-        highScore: "Best Score",
-        levelTag: "LEVEL",
-        debuggedIt: "DEBUGGED IT.",
-        fullScoreNote: "Clean run. Nice catch!",
-        partialScoreNote: "Pretty good. Want another shot?",
-        systemStatusHeader: "SIN.OS STATUS",
-        correctFeedback: [
-          "Nice catch! You found it.",
-          "Yep, that makes total sense.",
-          "Spot on! Clean diagnosis.",
-          "Boom. Problem solved.",
-        ],
-        incorrectFeedback: [
-          "Not quite. Check the clues again.",
-          "Almost! Take another look.",
-          "Hmm, close! Think about where the issue originates.",
-        ],
-      },
-      shipItTitle: "SHIP IT",
-      shipItDesc: "Can you keep it online?",
-      shipItGame: {
-        tagline: "Can you keep it online?",
-        introTitle: "Keep the deployment alive.",
-        introDesc: "Tap or press Space to boost your packet. Avoid bugs and errors on the way to production.",
-        instruction: "Tap, click, or press Space.",
-        startBtn: "Start Deployment",
-        crashed: "CRASHED.",
-        scoreTag: "Score",
-        bestTag: "Best",
-        tryAgain: "Try again",
-        backToLab: "Back to Lab",
-        exploreProjects: "Want to see real projects? Explore Projects",
-        localStage: "LOCAL",
-        stagingStage: "STAGING",
-        productionStage: "PRODUCTION",
-        youreLive: "YOU'RE LIVE.",
-        almostNote: "Dikit lagi ke-ship.",
-      },
-    },
   },
 
   id: {
@@ -383,7 +201,6 @@ export const translations: Record<Locale, TranslationSchema> = {
       journey: "Perjalanan",
       contact: "Kontak",
       resume: "Resume",
-      lab: "Lab",
       askAi: "Tanya SIN.OS",
       searchShortcut: "⌘K",
       searchPlaceholder: "Cari project, keahlian, sertifikat, atau halaman...",
@@ -409,7 +226,7 @@ export const translations: Record<Locale, TranslationSchema> = {
       exploreCaseFilesCount: "Jelajahi semua studi kasus",
     },
     about: {
-      tag: "02 // LATAR BELAKANG",
+      tag: "03 // LATAR BELAKANG",
       titleMain: "Tentang ",
       titleAccent: "Saya.",
       readFullBio: "Baca profil lengkap →",
@@ -422,7 +239,7 @@ export const translations: Record<Locale, TranslationSchema> = {
       btnTimeline: "Lini Masa Perjalanan →",
     },
     capabilities: {
-      tag: "03 // KEAHLIAN",
+      tag: "02 // KEAHLIAN",
       titleMain: "Teknologi & ",
       titleAccent: "Stack.",
       subhead: "Teknologi yang Biasa Digunakan",
@@ -456,7 +273,7 @@ export const translations: Record<Locale, TranslationSchema> = {
       emptyNote: "Jawaban berdasarkan data resmi portofolio SIN.OS.",
     },
     contact: {
-      tag: "05 // KONTAK",
+      tag: "04 // KONTAK",
       titleMain: "Mari ",
       titleAccent: "Terhubung.",
       description: "Punya ide project, peluang kerja sama, atau ingin berdiskusi? Hubungi saya.",
@@ -475,106 +292,6 @@ export const translations: Record<Locale, TranslationSchema> = {
     footer: {
       rights: "Hak cipta dilindungi.",
       terminalTrigger: "terminal",
-    },
-    lab: {
-      tag: "LAB EKSPERIMEN",
-      titleMain: "SIN.OS ",
-      titleAccent: "Lab.",
-      subtitle: "Eksperimen kecil, interaksi, dan hal-hal yang saya buat karena ingin mencoba.",
-      playableTag: "MINI-GAME",
-      comingSoonTag: "SEGERA HADIR",
-      playBtn: "Main",
-      exploreLab: "Jelajahi SIN.OS Lab",
-      buildAppTitle: "Build the App",
-      buildAppDesc: "Pilih bagian yang pas dan bikin aplikasi kecil. Santai, cepat, dan gampang dimainkan.",
-      debugTitle: "Debug SIN.OS",
-      debugDesc: "Waduh, ada yang rusak. Cari tahu bug tersembunyi secara cepat.",
-      terminalTitle: "Terminal Mission",
-      terminalDesc: "Ada yang offline. Tantangan berbasis perintah command-line dan script.",
-      game: {
-        backToLab: "Kembali ke Lab",
-        tagline: "Pilih yang dibutuhkan. Bikin sesuatu yang keren.",
-        introTitle: "Yuk, bikin aplikasi kecil.",
-        introDesc: "Pilih hal-hal yang menurutmu dibutuhkan. Cepat & gampang.",
-        letsGo: "Gas",
-        checkBtn: "Cek",
-        nextBtn: "Lanjut",
-        seeResultsBtn: "Lihat hasil",
-        skipBtn: "Lewati",
-        emptyPrompt: "Pilih dulu.",
-        skippedFeedback: "Dilewati. Lanjut ke berikutnya.",
-        playAgain: "Main lagi",
-        exploreProjects: "Mau lihat project aslinya? Lihat Project",
-        highScore: "Skor Terbaik",
-        levelTag: "LEVEL",
-        youBuiltIt: "BERHASIL DIBANGUN.",
-        fullScoreNote: "Clean banget! Dasarnya sudah dapet.",
-        partialScoreNote: "Udah lumayan! Mau coba lagi?",
-        correctFeedback: [
-          "Nice! Yap, benar.",
-          "Mantap! Pilihan yang pas.",
-          "Berhasil. Simple kan?",
-          "Yap! Tepat banget.",
-          "Clean! Gas terus.",
-        ],
-        incorrectFeedback: [
-          "Belum tepat. Coba pikir lagi, aplikasinya butuh apa?",
-          "Hampir! Coba lihat lagi jawabannya.",
-          "Dikit lagi. Coba cek lagi pilihanmu.",
-          "Belum pas. Coba lagi yuk!",
-        ],
-      },
-      debugGame: {
-        tagline: "Ada yang rusak. Bisa kamu temukan?",
-        introTitle: "Ada yang rusak. Yuk, kita cari tahu.",
-        introDesc: "Periksa petunjuknya dan pilih bagian yang bermasalah. Cepat & gampang.",
-        letsGo: "Gas cari tahu",
-        checkBtn: "Cek",
-        nextBtn: "Lanjut",
-        seeResultsBtn: "Lihat hasil",
-        skipBtn: "Lewati",
-        emptyPrompt: "Pilih dulu.",
-        skippedFeedback: "Dilewati. Lanjut ke berikutnya.",
-        playAgain: "Main lagi",
-        exploreProjects: "Mau lihat project aslinya? Lihat Project",
-        highScore: "Skor Terbaik",
-        levelTag: "LEVEL",
-        debuggedIt: "BERHASIL DIDEBUG.",
-        fullScoreNote: "Clean banget! Mantap diagnosanya.",
-        partialScoreNote: "Udah lumayan! Mau coba lagi?",
-        systemStatusHeader: "SIN.OS STATUS",
-        correctFeedback: [
-          "Nice, ketemu! Pilihan yang pas.",
-          "Yap, bener banget bagian itu yang bermasalah.",
-          "Mantap! Diagnosanya tepat.",
-          "Berhasil. Masalah teratasi!",
-        ],
-        incorrectFeedback: [
-          "Belum tepat. Coba cek petunjuknya lagi.",
-          "Hampir! Coba lihat lebih teliti.",
-          "Belum pas. Coba pikir dari mana masalahnya berasal.",
-        ],
-      },
-      shipItTitle: "SHIP IT",
-      shipItDesc: "Bisa bikin dia tetap online?",
-      shipItGame: {
-        tagline: "Bisa bikin dia tetap online?",
-        introTitle: "Jaga deployment tetap hidup.",
-        introDesc: "Tap atau tekan Space untuk boost paket. Hindari bug dan error menuju production.",
-        instruction: "Tap, klik, atau tekan Space.",
-        startBtn: "Mulai Deployment",
-        crashed: "CRASH.",
-        scoreTag: "Skor",
-        bestTag: "Terbaik",
-        tryAgain: "Coba lagi",
-        backToLab: "Kembali ke Lab",
-        exploreProjects: "Mau lihat project aslinya? Lihat Project",
-        localStage: "LOCAL",
-        stagingStage: "STAGING",
-        productionStage: "PRODUCTION",
-        youreLive: "SUDAH LIVE.",
-        almostNote: "Dikit lagi ke-ship.",
-      },
     },
   },
 };

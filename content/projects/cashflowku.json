@@ -6,6 +6,15 @@
   "technologies": ["Java", "Android SDK", "SQLite", "Material Design", "AndroidX"],
   "github": "https://github.com/sntrpmks/CashFlowku",
   "demo": "",
+  "coverImage": "/media/projects/cashflowku/cashflowku-ss1.jpg",
+  "gallery": [
+    "/media/projects/cashflowku/cashflowku-ss1.jpg",
+    "/media/projects/cashflowku/cashflowku-ss2.png",
+    "/media/projects/cashflowku/cashflowku-ss3.png",
+    "/media/projects/cashflowku/cashflowku-ss4.png",
+    "/media/projects/cashflowku/cashflowku-ss5.png",
+    "/media/projects/cashflowku/cashflowku-ss6.png"
+  ],
   "featured": true,
   "en": {
     "title": "CashFlowku (Java Edition)",
