@@ -22,7 +22,6 @@
   {
     "id": "cert-hacktiv8",
     "issueDate": "2026",
-    "credentialUrl": "https://linkedin.com/in/ahmad-sinatria-pamungkas",
     "image": "/media/certificates/hacktiv8.jpg",
     "locales": {
       "en": {
@@ -42,7 +41,6 @@
   {
     "id": "cert-bnsp",
     "issueDate": "2025",
-    "credentialUrl": "https://linkedin.com/in/ahmad-sinatria-pamungkas",
     "image": "/media/certificates/bnsp.jpg",
     "locales": {
       "en": {
@@ -62,7 +60,6 @@
   {
     "id": "cert-ibm",
     "issueDate": "2025",
-    "credentialUrl": "https://linkedin.com/in/ahmad-sinatria-pamungkas",
     "image": "/media/certificates/ibm.jpg",
     "locales": {
       "en": {
@@ -82,7 +79,6 @@
   {
     "id": "cert-proactive",
     "issueDate": "2025",
-    "credentialUrl": "https://linkedin.com/in/ahmad-sinatria-pamungkas",
     "image": "/media/certificates/internship.jpg",
     "locales": {
       "en": {
@@ -102,7 +98,6 @@
   {
     "id": "cert-smkdev",
     "issueDate": "2025",
-    "credentialUrl": "https://linkedin.com/in/ahmad-sinatria-pamungkas",
     "image": "/media/certificates/smkdev.jpg",
     "locales": {
       "en": {
@@ -122,7 +117,6 @@
   {
     "id": "cert-oracle",
     "issueDate": "2024",
-    "credentialUrl": "https://linkedin.com/in/ahmad-sinatria-pamungkas",
     "image": "/media/certificates/java-fundamentals.jpg",
     "locales": {
       "en": {
