@@ -72,31 +72,34 @@ export default async function LabPage() {
           </Link>
         </SectionReveal>
 
-        {/* Experiment 02: Debug SIN.OS (Coming Soon) */}
-        <SectionReveal className="card-minimal p-6 flex flex-col justify-between gap-6 opacity-80 bg-[#F9F9F8]">
+        {/* Experiment 02: Debug SIN.OS (Playable) */}
+        <SectionReveal className="card-minimal p-6 flex flex-col justify-between gap-6 border-l-4 border-l-[#00695C] card-minimal-interactive group bg-white shadow-xs">
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between">
-              <div className="p-2.5 rounded-xl bg-[#F0F0ED] border border-[#E6E6E3] text-[#8A8A8A]">
+              <div className="p-2.5 rounded-xl bg-[#E6F9F5] border border-[#B2F3E5] text-[#00695C]">
                 <Bug className="w-6 h-6" />
               </div>
-              <span className="px-2.5 py-1 rounded-full bg-[#F0F0ED] text-[#8A8A8A] text-[10px] font-mono-code font-bold border border-[#E6E6E3]">
-                {t.lab.comingSoonTag}
+              <span className="px-2.5 py-1 rounded-full bg-[#E6F9F5] text-[#00695C] text-[10px] font-mono-code font-bold border border-[#B2F3E5]">
+                {t.lab.playableTag}
               </span>
             </div>
 
             <div className="flex flex-col gap-1">
-              <h2 className="text-xl font-bold text-[#171717]">
+              <h2 className="text-xl font-bold text-[#171717] group-hover:text-[#00695C] transition-colors">
                 {t.lab.debugTitle}
               </h2>
-              <p className="text-xs text-[#8A8A8A] leading-relaxed">
+              <p className="text-xs text-[#666666] leading-relaxed">
                 {t.lab.debugDesc}
               </p>
             </div>
           </div>
 
-          <div className="px-4 py-2.5 rounded-xl bg-[#F0F0ED] border border-[#E6E6E3] text-[#8A8A8A] text-xs font-mono-code text-center">
-            {t.lab.comingSoonTag}
-          </div>
+          <Link
+            href="/lab/debug-sinos"
+            className="flex items-center justify-center px-4 py-2.5 rounded-xl bg-[#171717] text-white font-medium text-xs hover:bg-[#00695C] transition-colors shadow-xs"
+          >
+            <span>{t.lab.playBtn}</span>
+          </Link>
         </SectionReveal>
 
         {/* Experiment 03: Terminal Mission (Coming Soon) */}

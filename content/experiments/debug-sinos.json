@@ -1,0 +1,247 @@
+{
+  "challenges": [
+    {
+      "id": "debug-level-001",
+      "order": 1,
+      "options": [
+        {
+          "id": "comp-storage",
+          "locales": {
+            "en": { "label": "File Storage" },
+            "id": { "label": "File Storage" }
+          }
+        },
+        {
+          "id": "comp-database",
+          "locales": {
+            "en": { "label": "Database" },
+            "id": { "label": "Database" }
+          }
+        },
+        {
+          "id": "comp-darkmode",
+          "locales": {
+            "en": { "label": "Dark Mode" },
+            "id": { "label": "Dark Mode" }
+          }
+        },
+        {
+          "id": "comp-animation",
+          "locales": {
+            "en": { "label": "Animation" },
+            "id": { "label": "Animasi" }
+          }
+        }
+      ],
+      "correctAnswer": "comp-storage",
+      "locales": {
+        "en": {
+          "intro": "Uh oh.",
+          "title": "Profile Picture Upload Issue",
+          "prompt": "Users can't upload their profile picture. What's probably missing?",
+          "hint": "Think about where uploaded image files are stored."
+        },
+        "id": {
+          "intro": "Waduh.",
+          "title": "Kendala Upload Foto Profil",
+          "prompt": "User nggak bisa upload foto profil. Kira-kira apa yang kurang?",
+          "hint": "Coba pikir, file foto yang di-upload harus disimpan di mana?"
+        }
+      }
+    },
+    {
+      "id": "debug-level-002",
+      "order": 2,
+      "options": [
+        {
+          "id": "comp-database",
+          "locales": {
+            "en": { "label": "Database" },
+            "id": { "label": "Database" }
+          }
+        },
+        {
+          "id": "comp-animation",
+          "locales": {
+            "en": { "label": "Animation" },
+            "id": { "label": "Animasi" }
+          }
+        },
+        {
+          "id": "comp-camera",
+          "locales": {
+            "en": { "label": "Camera" },
+            "id": { "label": "Kamera" }
+          }
+        },
+        {
+          "id": "comp-font",
+          "locales": {
+            "en": { "label": "Custom Font" },
+            "id": { "label": "Font Kustom" }
+          }
+        }
+      ],
+      "correctAnswer": "comp-database",
+      "locales": {
+        "en": {
+          "intro": "Let's see...",
+          "title": "Data Loss On Refresh",
+          "prompt": "Users can log in, but their data disappears after refreshing. What should we check?",
+          "hint": "Where is persistent data saved across page refreshes?"
+        },
+        "id": {
+          "intro": "Coba lihat...",
+          "title": "Data Hilang Saat Refresh",
+          "prompt": "User bisa login, tapi datanya hilang setelah halaman di-refresh. Kita cek apa dulu?",
+          "hint": "Di mana data disimpan agar tetap tersimpan saat halaman di-refresh?"
+        }
+      }
+    },
+    {
+      "id": "debug-level-003",
+      "order": 3,
+      "options": [
+        {
+          "id": "comp-api",
+          "locales": {
+            "en": { "label": "API" },
+            "id": { "label": "API" }
+          }
+        },
+        {
+          "id": "comp-wallpaper",
+          "locales": {
+            "en": { "label": "Wallpaper" },
+            "id": { "label": "Wallpaper" }
+          }
+        },
+        {
+          "id": "comp-animation",
+          "locales": {
+            "en": { "label": "Animation" },
+            "id": { "label": "Animasi" }
+          }
+        },
+        {
+          "id": "comp-font",
+          "locales": {
+            "en": { "label": "Custom Font" },
+            "id": { "label": "Font Kustom" }
+          }
+        }
+      ],
+      "correctAnswer": "comp-api",
+      "locales": {
+        "en": {
+          "intro": "Hmm...",
+          "title": "Data Not Reaching Server",
+          "prompt": "The app works, but the data never reaches the server. What's probably wrong?",
+          "hint": "Which layer connects the frontend to the server?"
+        },
+        "id": {
+          "intro": "Hmm...",
+          "title": "Data Tidak Sampai Ke Server",
+          "prompt": "Aplikasinya jalan, tapi data nggak pernah sampai ke server. Kira-kira apa yang bermasalah?",
+          "hint": "Jalur apa yang menghubungkan aplikasi dengan server?"
+        }
+      }
+    },
+    {
+      "id": "debug-level-004",
+      "order": 4,
+      "systemStatus": [
+        { "name": "Frontend", "status": "online" },
+        { "name": "API", "status": "error" },
+        { "name": "Database", "status": "online" }
+      ],
+      "options": [
+        {
+          "id": "comp-frontend",
+          "locales": {
+            "en": { "label": "Frontend" },
+            "id": { "label": "Frontend" }
+          }
+        },
+        {
+          "id": "comp-api",
+          "locales": {
+            "en": { "label": "API" },
+            "id": { "label": "API" }
+          }
+        },
+        {
+          "id": "comp-database",
+          "locales": {
+            "en": { "label": "Database" },
+            "id": { "label": "Database" }
+          }
+        }
+      ],
+      "correctAnswer": "comp-api",
+      "locales": {
+        "en": {
+          "intro": "System Check.",
+          "title": "System Status Diagnostic",
+          "prompt": "Something's broken. Where would you look first?",
+          "hint": "Check the system status indicators above."
+        },
+        "id": {
+          "intro": "Cek Sistem.",
+          "title": "Diagnosa Status Sistem",
+          "prompt": "Ada yang bermasalah. Menurutmu harus cek bagian mana dulu?",
+          "hint": "Lihat indikator status sistem di atas."
+        }
+      }
+    },
+    {
+      "id": "debug-level-005",
+      "order": 5,
+      "options": [
+        {
+          "id": "comp-form-event",
+          "locales": {
+            "en": { "label": "Form Event" },
+            "id": { "label": "Form Event" }
+          }
+        },
+        {
+          "id": "comp-database",
+          "locales": {
+            "en": { "label": "Database" },
+            "id": { "label": "Database" }
+          }
+        },
+        {
+          "id": "comp-wallpaper",
+          "locales": {
+            "en": { "label": "Wallpaper" },
+            "id": { "label": "Wallpaper" }
+          }
+        },
+        {
+          "id": "comp-font",
+          "locales": {
+            "en": { "label": "Custom Font" },
+            "id": { "label": "Font Kustom" }
+          }
+        }
+      ],
+      "correctAnswer": "comp-form-event",
+      "locales": {
+        "en": {
+          "intro": "Last one!",
+          "title": "Unresponsive Submit Button",
+          "prompt": "The user clicks Submit, but nothing happens. The button looks fine. What would you check first?",
+          "hint": "Which event handler catches the click action on a form?"
+        },
+        "id": {
+          "intro": "Terakhir!",
+          "title": "Tombol Submit Tidak Respon",
+          "prompt": "User klik Submit, tapi nggak terjadi apa-apa. Tombolnya kelihatan normal. Kamu bakal cek apa dulu?",
+          "hint": "Event apa yang bertugas menangkap klik pada form?"
+        }
+      }
+    }
+  ]
+}

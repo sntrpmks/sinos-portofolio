@@ -128,6 +128,28 @@ export interface TranslationSchema {
       correctFeedback: readonly string[];
       incorrectFeedback: readonly string[];
     };
+    debugGame: {
+      tagline: string;
+      introTitle: string;
+      introDesc: string;
+      letsGo: string;
+      checkBtn: string;
+      nextBtn: string;
+      seeResultsBtn: string;
+      skipBtn: string;
+      emptyPrompt: string;
+      skippedFeedback: string;
+      playAgain: string;
+      exploreProjects: string;
+      highScore: string;
+      levelTag: string;
+      debuggedIt: string;
+      fullScoreNote: string;
+      partialScoreNote: string;
+      systemStatusHeader: string;
+      correctFeedback: readonly string[];
+      incorrectFeedback: readonly string[];
+    };
   };
 }
 
@@ -280,6 +302,37 @@ export const translations: Record<Locale, TranslationSchema> = {
           "Dikit lagi! Re-check your picks.",
         ],
       },
+      debugGame: {
+        tagline: "Something broke. Can you find it?",
+        introTitle: "Something broke. Let's find out what.",
+        introDesc: "Inspect the clues and pick what's likely broken. Quick & easy.",
+        letsGo: "Let's find out",
+        checkBtn: "Check it",
+        nextBtn: "Next",
+        seeResultsBtn: "See results",
+        skipBtn: "Skip",
+        emptyPrompt: "Pick something first.",
+        skippedFeedback: "Skipped — moving on.",
+        playAgain: "Play again",
+        exploreProjects: "Want to see the real stuff? Explore Projects",
+        highScore: "Best Score",
+        levelTag: "LEVEL",
+        debuggedIt: "DEBUGGED IT.",
+        fullScoreNote: "Clean run. Nice catch!",
+        partialScoreNote: "Pretty good. Want another shot?",
+        systemStatusHeader: "SIN.OS STATUS",
+        correctFeedback: [
+          "Nice catch! You found it.",
+          "Yep, that makes total sense.",
+          "Spot on! Clean diagnosis.",
+          "Boom. Problem solved.",
+        ],
+        incorrectFeedback: [
+          "Not quite. Check the clues again.",
+          "Almost! Take another look.",
+          "Hmm, close! Think about where the issue originates.",
+        ],
+      },
     },
   },
 
@@ -429,6 +482,37 @@ export const translations: Record<Locale, TranslationSchema> = {
           "Hampir! Coba lihat lagi jawabannya.",
           "Dikit lagi. Coba cek lagi pilihanmu.",
           "Belum pas. Coba lagi yuk!",
+        ],
+      },
+      debugGame: {
+        tagline: "Ada yang rusak. Bisa kamu temukan?",
+        introTitle: "Ada yang rusak. Yuk, kita cari tahu.",
+        introDesc: "Periksa petunjuknya dan pilih bagian yang bermasalah. Cepat & gampang.",
+        letsGo: "Gas cari tahu",
+        checkBtn: "Cek",
+        nextBtn: "Lanjut",
+        seeResultsBtn: "Lihat hasil",
+        skipBtn: "Lewati",
+        emptyPrompt: "Pilih dulu.",
+        skippedFeedback: "Dilewati. Lanjut ke berikutnya.",
+        playAgain: "Main lagi",
+        exploreProjects: "Mau lihat project aslinya? Lihat Project",
+        highScore: "Skor Terbaik",
+        levelTag: "LEVEL",
+        debuggedIt: "BERHASIL DIDEBUG.",
+        fullScoreNote: "Clean banget! Mantap diagnosanya.",
+        partialScoreNote: "Udah lumayan! Mau coba lagi?",
+        systemStatusHeader: "SIN.OS STATUS",
+        correctFeedback: [
+          "Nice, ketemu! Pilihan yang pas.",
+          "Yap, bener banget bagian itu yang bermasalah.",
+          "Mantap! Diagnosanya tepat.",
+          "Berhasil. Masalah teratasi!",
+        ],
+        incorrectFeedback: [
+          "Belum tepat. Coba cek petunjuknya lagi.",
+          "Hampir! Coba lihat lebih teliti.",
+          "Belum pas. Coba pikir dari mana masalahnya berasal.",
         ],
       },
     },
