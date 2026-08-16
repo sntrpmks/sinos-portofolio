@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { HowIThink } from "@/components/about/HowIThink";
+import { SectionReveal } from "@/components/ui/SectionReveal";
 import { useViewMode } from "@/components/context/ViewModeContext";
 import { User, MapPin } from "lucide-react";
 
@@ -12,7 +13,7 @@ export function AboutPageClient() {
   return (
     <div className="pt-32 pb-20 px-4 sm:px-8 max-w-5xl mx-auto flex flex-col gap-10">
       {/* Header with Profile Photo */}
-      <div className="flex flex-col-reverse md:flex-row items-start md:items-center justify-between gap-8 border-b border-[#E6E6E3] pb-8">
+      <SectionReveal className="flex flex-col-reverse md:flex-row items-start md:items-center justify-between gap-8 border-b border-[#E6E6E3] pb-8">
         <div className="flex flex-col gap-3 max-w-2xl">
           <div className="flex items-center gap-2">
             <User className="w-5 h-5 text-[#00695C]" />
@@ -22,7 +23,7 @@ export function AboutPageClient() {
           </div>
 
           <h1 className="text-3xl sm:text-4xl font-extrabold text-[#171717]">
-            Sinatria Pamungkas
+            Ahmad Sinatria Pamungkas
           </h1>
 
           <p className="text-base sm:text-lg font-semibold text-[#666666] leading-relaxed">
@@ -64,18 +65,18 @@ export function AboutPageClient() {
             />
           </div>
         </div>
-      </div>
+      </SectionReveal>
 
       {/* Intro Summary Box */}
-      <div className="card-minimal p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border-l-4 border-l-[#00695C]">
+      <SectionReveal className="card-minimal p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border-l-4 border-l-[#00695C]">
         <div className="flex flex-col gap-1 text-xs">
           <span className="text-[#8A8A8A] font-mono-code font-bold">
             {locale === "id" ? "RINGKASAN PROFIL" : "PROFILE SUMMARY"}
           </span>
           <p className="text-[#2A2A2A] leading-relaxed text-sm">
             {locale === "id"
-              ? "Saya membangun aplikasi web dari frontend hingga backend. Selain pengembangan software, saya juga tertarik mengeksplorasi AI dan bagaimana teknologi tersebut bisa diintegrasikan ke dalam produk yang bermanfaat."
-              : "Dedicated Full Stack Developer focused on building web applications and software systems with serious discipline, architectural clarity, and clean execution."}
+              ? "Saya membangun aplikasi web dari frontend sampai backend. Selain pengembangan software, saya juga tertarik mengeksplorasi integrasi AI dan bagaimana teknologi tersebut bisa dipakai untuk menyelesaikan masalah nyata."
+              : "I build web applications across the frontend and backend. Beyond software development, I enjoy exploring AI integrations and how modern technology can solve real-world problems."}
           </p>
         </div>
 
@@ -84,10 +85,12 @@ export function AboutPageClient() {
             Full Stack & AI
           </span>
         </div>
-      </div>
+      </SectionReveal>
 
       {/* How I Think Section */}
       <HowIThink />
     </div>
   );
 }
+
+

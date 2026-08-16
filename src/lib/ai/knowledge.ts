@@ -18,11 +18,11 @@ export interface KnowledgeOptions {
 export function getPortfolioKnowledge(options: KnowledgeOptions = {}): string {
   const { locale = "en", page, projectSlug, query } = options;
 
-  const projects = getProjects();
-  const techStack = getTechStack();
-  const certificates = getCertificates();
-  const experiences = getExperiences();
-  const about = getAboutData();
+  const projects = getProjects(locale);
+  const techStack = getTechStack(locale);
+  const certificates = getCertificates(locale);
+  const experiences = getExperiences(locale);
+  const about = getAboutData(locale);
 
   // Profile Identity
   const profileSection = `
@@ -50,7 +50,7 @@ DEVELOPER PROFILE:
   }
 
   if (targetSlug) {
-    const activeProj = getProjectBySlug(targetSlug);
+    const activeProj = getProjectBySlug(targetSlug, locale);
     if (activeProj) {
       activeProjectSection = `
 ACTIVE CURRENT VISITED PROJECT PAGE context:
@@ -168,3 +168,4 @@ ${experiences
 
   return parts.join("\n\n");
 }
+

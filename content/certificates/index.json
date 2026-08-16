@@ -1,72 +1,142 @@
 [
   {
     "id": "cert-openai",
-    "title": "AI Foundations",
-    "issuer": "OpenAI Academy",
     "issueDate": "June 2026",
     "credentialUrl": "https://academy.openai.com/public/certificate/hn23qn4u9f",
-    "category": "Artificial Intelligence",
-    "description": "Official Course Completion Certificate awarded by OpenAI Academy to Ahmad Sinatria Pamungkas for completing the AI Foundations curriculum (Certificate ID: hn23qn4u9f).",
-    "image": "/media/certificates/openai.jpg"
+    "image": "/media/certificates/openai.jpg",
+    "locales": {
+      "en": {
+        "title": "AI Foundations",
+        "issuer": "OpenAI Academy",
+        "category": "Artificial Intelligence",
+        "description": "Official Course Completion Certificate awarded by OpenAI Academy to Ahmad Sinatria Pamungkas for completing the AI Foundations curriculum (Certificate ID: hn23qn4u9f)."
+      },
+      "id": {
+        "title": "AI Foundations",
+        "issuer": "OpenAI Academy",
+        "category": "Kecerdasan Buatan (AI)",
+        "description": "Sertifikat penyelesaian kursus AI Foundations dari OpenAI Academy atas nama Ahmad Sinatria Pamungkas (ID Sertifikat: hn23qn4u9f)."
+      }
+    }
   },
   {
     "id": "cert-hacktiv8",
-    "title": "Productivity & AI API Integration for Developers",
-    "issuer": "Hacktiv8 Indonesia",
     "issueDate": "2026",
     "credentialUrl": "https://linkedin.com/in/ahmad-sinatria-pamungkas",
-    "category": "AI & Web Integration",
-    "description": "Practical training in building RESTful APIs, integrating Gemini/LLM endpoints into web applications, and developer productivity workflows.",
-    "image": "/media/certificates/hacktiv8.jpg"
+    "image": "/media/certificates/hacktiv8.jpg",
+    "locales": {
+      "en": {
+        "title": "Productivity & AI API Integration for Developers",
+        "issuer": "Hacktiv8 Indonesia",
+        "category": "AI & Web Integration",
+        "description": "Practical training in building RESTful APIs, integrating Gemini/LLM endpoints into web applications, and developer productivity workflows."
+      },
+      "id": {
+        "title": "Productivity & AI API Integration for Developers",
+        "issuer": "Hacktiv8 Indonesia",
+        "category": "Integrasi AI & Web",
+        "description": "Pelatihan praktis dalam membuat REST API, mengintegrasikan LLM/Gemini API ke aplikasi web, dan alur kerja produktivitas developer."
+      }
+    }
   },
   {
     "id": "cert-bnsp",
-    "title": "Junior Coder (Software Development)",
-    "issuer": "BNSP (Badan Nasional Sertifikasi Profesi)",
     "issueDate": "2025",
     "credentialUrl": "https://linkedin.com/in/ahmad-sinatria-pamungkas",
-    "category": "Software Engineering",
-    "description": "National competency certification in professional software coding, algorithms, and baseline engineering standards.",
-    "image": "/media/certificates/bnsp.jpg"
+    "image": "/media/certificates/bnsp.jpg",
+    "locales": {
+      "en": {
+        "title": "Junior Coder (Software Development)",
+        "issuer": "BNSP (Badan Nasional Sertifikasi Profesi)",
+        "category": "Software Engineering",
+        "description": "National competency certification in professional software coding, algorithms, and baseline engineering standards."
+      },
+      "id": {
+        "title": "Junior Coder (Pengembangan Perangkat Lunak)",
+        "issuer": "BNSP (Badan Nasional Sertifikasi Profesi)",
+        "category": "Software Engineering",
+        "description": "Sertifikasi kompetensi nasional untuk pemrogram perangkat lunak profesional, logika algoritma, dan standar dasar rekayasa software."
+      }
+    }
   },
   {
     "id": "cert-ibm",
-    "title": "Introduction to Artificial Intelligence",
-    "issuer": "IBM",
     "issueDate": "2025",
     "credentialUrl": "https://linkedin.com/in/ahmad-sinatria-pamungkas",
-    "category": "Artificial Intelligence",
-    "description": "Comprehensive course on AI concepts, machine learning terminology, ethics in AI, and practical industry applications.",
-    "image": "/media/certificates/ibm.jpg"
+    "image": "/media/certificates/ibm.jpg",
+    "locales": {
+      "en": {
+        "title": "Introduction to Artificial Intelligence",
+        "issuer": "IBM",
+        "category": "Artificial Intelligence",
+        "description": "Comprehensive course on AI concepts, machine learning terminology, ethics in AI, and practical industry applications."
+      },
+      "id": {
+        "title": "Introduction to Artificial Intelligence",
+        "issuer": "IBM",
+        "category": "Kecerdasan Buatan (AI)",
+        "description": "Pembelajaran dasar tentang konsep AI, machine learning, etika dalam AI, dan penerapannya di industri."
+      }
+    }
   },
   {
     "id": "cert-proactive",
-    "title": "Internship Certificate in Robotics",
-    "issuer": "Proactive Robotika",
     "issueDate": "2025",
     "credentialUrl": "https://linkedin.com/in/ahmad-sinatria-pamungkas",
-    "category": "Robotics & Embedded Systems",
-    "description": "Certificate awarded for completing student internship assisting robotics and coding curriculum delivery.",
-    "image": "/media/certificates/internship.jpg"
+    "image": "/media/certificates/internship.jpg",
+    "locales": {
+      "en": {
+        "title": "Internship Certificate in Robotics",
+        "issuer": "Proactive Robotika",
+        "category": "Robotics & Embedded Systems",
+        "description": "Certificate awarded for completing student internship assisting robotics and coding curriculum delivery."
+      },
+      "id": {
+        "title": "Sertifikat Magang Robotika",
+        "issuer": "Proactive Robotika",
+        "category": "Robotika & Sistem Tertanam",
+        "description": "Sertifikat atas penyelesaian kegiatan magang siswa dalam mendampingi pembelajaran robotika dan coding."
+      }
+    }
   },
   {
     "id": "cert-smkdev",
-    "title": "Certificate of Completion (SSEC2025)",
-    "issuer": "SMKDEV",
     "issueDate": "2025",
     "credentialUrl": "https://linkedin.com/in/ahmad-sinatria-pamungkas",
-    "category": "Software Development",
-    "description": "Awarded for successful completion of student software engineering competition and development challenges.",
-    "image": "/media/certificates/smkdev.jpg"
+    "image": "/media/certificates/smkdev.jpg",
+    "locales": {
+      "en": {
+        "title": "Certificate of Completion (SSEC2025)",
+        "issuer": "SMKDEV",
+        "category": "Software Development",
+        "description": "Awarded for successful completion of student software engineering competition and development challenges."
+      },
+      "id": {
+        "title": "Sertifikat Kelulusan (SSEC2025)",
+        "issuer": "SMKDEV",
+        "category": "Software Development",
+        "description": "Diberikan atas kelulusan dalam kompetisi pengembangan software siswa dan tantangan pemrograman."
+      }
+    }
   },
   {
     "id": "cert-oracle",
-    "title": "Java Fundamentals",
-    "issuer": "Oracle Academy",
     "issueDate": "2024",
     "credentialUrl": "https://linkedin.com/in/ahmad-sinatria-pamungkas",
-    "category": "Programming Languages",
-    "description": "Formal certification in Java syntax, object-oriented programming concepts, data structures, and control flow.",
-    "image": "/media/certificates/java-fundamentals.jpg"
+    "image": "/media/certificates/java-fundamentals.jpg",
+    "locales": {
+      "en": {
+        "title": "Java Fundamentals",
+        "issuer": "Oracle Academy",
+        "category": "Programming Languages",
+        "description": "Formal certification in Java syntax, object-oriented programming concepts, data structures, and control flow."
+      },
+      "id": {
+        "title": "Java Fundamentals",
+        "issuer": "Oracle Academy",
+        "category": "Bahasa Pemrograman",
+        "description": "Sertifikasi dalam sintaks Java, konsep Pemrograman Berbasis Objek (OOP), struktur data, dan kontrol alur."
+      }
+    }
   }
 ]

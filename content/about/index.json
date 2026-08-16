@@ -1,58 +1,174 @@
 {
-  "headline": "How I Think",
-  "bio": "I am Sinatria Pamungkas, an Informatics Management student at Universitas Sains Al-Qur'an (UNSIQ) and Full Stack Developer focused on building clean systems, robust products, and digital experiences that deliver real value.",
+  "headline": "How I Think & Principles",
+  "bio": "I am Sinatria Pamungkas, an Informatics Management student at Universitas Sains Al-Qur'an (UNSIQ) and a Full Stack Developer. I build web applications across the frontend and backend, explore practical AI integrations, and enjoy learning how systems work under the hood.",
   "philosophy": [
     {
       "step": "01",
       "title": "Understand the Problem",
-      "description": "Deeply analyze the real bottleneck, constraints, and business domain before touching a single line of code."
+      "description": "Analyze the bottleneck and user needs before writing code."
     },
     {
       "step": "02",
-      "title": "Break down into Components",
-      "description": "Deconstruct complex tasks into atomic, testable modules with clear input and output boundaries."
+      "title": "Break Down into Components",
+      "description": "Deconstruct tasks into clear, testable modules with defined inputs and outputs."
     },
     {
       "step": "03",
-      "title": "Design the System Architecture",
-      "description": "Establish clean data schemas, API contracts, security bounds, and UI interaction states early."
+      "title": "Design Architecture",
+      "description": "Establish clean data schemas, API boundaries, and UI states early."
     },
     {
       "step": "04",
-      "title": "Build the Smallest Useful Version",
-      "description": "Iterate quickly by shipping production-ready MVP code, avoiding premature optimization while keeping foundation solid."
+      "title": "Build the Smallest Working Version",
+      "description": "Ship functional code early and iterate quickly without over-engineering."
     },
     {
       "step": "05",
       "title": "Test & Measure",
-      "description": "Empirically verify performance, error tracebacks, responsiveness, and user experience under realistic conditions."
+      "description": "Verify performance, responsiveness, and edge cases under real conditions."
     },
     {
       "step": "06",
-      "title": "Refine & Scale",
-      "description": "Refactor based on empirical metrics, improve code legibility, document architecture, and automate build workflows."
+      "title": "Refine & Improve",
+      "description": "Clean up code, optimize performance based on real usage, and document findings."
     }
   ],
   "corePrinciples": [
     {
       "number": "01",
-      "title": "Simplicity over unnecessary complexity",
-      "description": "A working, elegant solution with 100 lines of clear code is infinitely better than an over-engineered framework with 1,000 lines of abstractions."
+      "title": "Simplicity Over Over-Engineering",
+      "description": "Clear, maintainable code is better than unnecessary abstraction."
     },
     {
       "number": "02",
-      "title": "Evidence over assumption",
-      "description": "Base architectural decisions, diagnostics, and skill claims on verifiable proof, real runtime logs, and working projects."
+      "title": "Verifiable Proof Over Assumptions",
+      "description": "Base decisions and claims on working code, tests, and actual logs."
     },
     {
       "number": "03",
-      "title": "Understand the system, not just the syntax",
-      "description": "True engineering requires knowing how memory, networks, databases, browsers, and operating systems execute under the surface."
+      "title": "Understand the System, Not Just the Syntax",
+      "description": "Know how browsers, databases, and servers interact under the surface."
     },
     {
       "number": "04",
-      "title": "Build, test, improve",
-      "description": "Continuous improvement through rapid prototyping, strict type-checking, automated linting, and honest feedback loops."
+      "title": "Continuous Learning & Iteration",
+      "description": "Improve through practice, feedback, and exploring new techniques."
     }
-  ]
+  ],
+  "en": {
+    "headline": "How I Think & Principles",
+    "bio": "I am Sinatria Pamungkas, an Informatics Management student at Universitas Sains Al-Qur'an (UNSIQ) and a Full Stack Developer. I build web applications across the frontend and backend, explore practical AI integrations, and enjoy learning how systems work under the hood.",
+    "philosophy": [
+      {
+        "step": "01",
+        "title": "Understand the Problem",
+        "description": "Analyze the bottleneck and user needs before writing code."
+      },
+      {
+        "step": "02",
+        "title": "Break Down into Components",
+        "description": "Deconstruct tasks into clear, testable modules with defined inputs and outputs."
+      },
+      {
+        "step": "03",
+        "title": "Design Architecture",
+        "description": "Establish clean data schemas, API boundaries, and UI states early."
+      },
+      {
+        "step": "04",
+        "title": "Build the Smallest Working Version",
+        "description": "Ship functional code early and iterate quickly without over-engineering."
+      },
+      {
+        "step": "05",
+        "title": "Test & Measure",
+        "description": "Verify performance, responsiveness, and edge cases under real conditions."
+      },
+      {
+        "step": "06",
+        "title": "Refine & Improve",
+        "description": "Clean up code, optimize performance based on real usage, and document findings."
+      }
+    ],
+    "corePrinciples": [
+      {
+        "number": "01",
+        "title": "Simplicity Over Over-Engineering",
+        "description": "Clear, maintainable code is better than unnecessary abstraction."
+      },
+      {
+        "number": "02",
+        "title": "Verifiable Proof Over Assumptions",
+        "description": "Base decisions and claims on working code, tests, and actual logs."
+      },
+      {
+        "number": "03",
+        "title": "Understand the System, Not Just the Syntax",
+        "description": "Know how browsers, databases, and servers interact under the surface."
+      },
+      {
+        "number": "04",
+        "title": "Continuous Learning & Iteration",
+        "description": "Improve through practice, feedback, and exploring new techniques."
+      }
+    ]
+  },
+  "id": {
+    "headline": "Cara Berpikir & Prinsip",
+    "bio": "Saya Sinatria Pamungkas, mahasiswa Manajemen Informatika di Universitas Sains Al-Qur'an (UNSIQ) dan seorang Full Stack Developer. Saya senang membangun aplikasi web dari frontend sampai backend, mengeksplorasi integrasi AI, dan memahami bagaimana tiap bagian sistem bekerja bersama.",
+    "philosophy": [
+      {
+        "step": "01",
+        "title": "Pahami Masalahnya",
+        "description": "Analisis kebutuhan dan masalah utama sebelum mulai menulis kode."
+      },
+      {
+        "step": "02",
+        "title": "Bagi Menjadi Komponen Kecil",
+        "description": "Uraikan tugas kompleks menjadi modul-modul kecil yang jelas alurnya."
+      },
+      {
+        "step": "03",
+        "title": "Rancang Arsitektur Sistem",
+        "description": "Tentukan struktur data, skema API, dan alur tampilan antarmuka dari awal."
+      },
+      {
+        "step": "04",
+        "title": "Buat Versi Sederhana yang Berfungsi",
+        "description": "Kembangkan versi awal yang berfungsi dengan baik tanpa over-engineering."
+      },
+      {
+        "step": "05",
+        "title": "Uji & Evaluasi",
+        "description": "Uji performa, kemudahan penggunaan, dan respon sistem di berbagai situasi."
+      },
+      {
+        "step": "06",
+        "title": "Rapikan & Kembangkan",
+        "description": "Tingkatkan kualitas kode, optimalkan performa, dan rapikan dokumentasi."
+      }
+    ],
+    "corePrinciples": [
+      {
+        "number": "01",
+        "title": "Kesederhanaan Lebih Utama",
+        "description": "Kode yang jelas dan mudah dirawat jauh lebih baik daripada struktur yang terlalu rumit."
+      },
+      {
+        "number": "02",
+        "title": "Bukti Nyata, Bukan Asumsi",
+        "description": "Ambil keputusan teknis berdasarkan kode yang berjalan, pengujian, dan data nyata."
+      },
+      {
+        "number": "03",
+        "title": "Pahami Sistem, Bukan Sekadar Sintaks",
+        "description": "Pahami cara kerja browser, database, dan server secara mendalam."
+      },
+      {
+        "number": "04",
+        "title": "Terus Belajar & Berkembang",
+        "description": "Tingkatkan kemampuan lewat project nyata, evaluasi jujur, dan mencoba hal baru."
+      }
+    ]
+  }
 }

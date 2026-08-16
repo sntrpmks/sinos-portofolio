@@ -1,75 +1,78 @@
 "use client";
 
 import React from "react";
+import { motion, useReducedMotion, Variants } from "framer-motion";
 import { useViewMode } from "@/components/context/ViewModeContext";
+import { SectionReveal } from "@/components/ui/SectionReveal";
 import { Lightbulb, CheckCircle2, Cpu } from "lucide-react";
 
 export function HowIThink() {
   const { locale } = useViewMode();
+  const shouldReduceMotion = useReducedMotion();
 
   const stepsEn = [
     {
       step: "01",
       title: "Understand the problem",
-      description: "Deeply analyze constraints, user bottlenecks, and root domain requirements before writing code.",
+      description: "Analyze user bottlenecks and domain requirements clearly before writing code.",
     },
     {
       step: "02",
-      title: "Break down the problem",
-      description: "Deconstruct complex requests into simple, decoupled, testable components with explicit input/output boundaries.",
+      title: "Break down into components",
+      description: "Deconstruct complex tasks into clean, testable modules with clear inputs and outputs.",
     },
     {
       step: "03",
-      title: "Design the system architecture",
-      description: "Establish clear data schemas, type contracts, security parameters, and UI interaction flows.",
+      title: "Design system architecture",
+      description: "Establish clear data schemas, type definitions, and UI interaction flows early.",
     },
     {
       step: "04",
-      title: "Build the smallest useful version",
-      description: "Deliver production-ready core functionality rapidly without premature over-engineering.",
+      title: "Build a working MVP",
+      description: "Deliver functional core features quickly without premature over-engineering.",
     },
     {
       step: "05",
       title: "Test & measure",
-      description: "Empirically verify performance metrics, responsiveness, and edge-case handling using real runtime logs.",
+      description: "Verify performance, responsiveness, and edge-case handling under real usage conditions.",
     },
     {
       step: "06",
-      title: "Refine & improve",
-      description: "Refactor based on empirical feedback, enhance legibility, maintain security, and optimize build output.",
+      title: "Refine & scale",
+      description: "Optimize code readability, clean up bottlenecks, and document key architecture decisions.",
     },
   ];
 
   const stepsId = [
     {
       step: "01",
-      title: "Pahami akar masalah",
-      description: "Memahami batasan, kendala pengguna, dan kebutuhan utama sebelum mulai menulis kode.",
+      title: "Pahami masalahnya",
+      description: "Analisis kebutuhan dan masalah utama pengguna sebelum mulai menulis kode.",
     },
     {
       step: "02",
-      title: "Pecah masalah jadi bagian kecil",
-      description: "Membagi alur yang rumit menjadi bagian-bagian sederhana yang lebih mudah dikerjakan dan diuji secara terpisah.",
+      title: "Pecah jadi komponen kecil",
+      description: "Bagi tugas yang kompleks menjadi bagian-bagian kecil yang jelas alur masukan dan keluarannya.",
     },
     {
       step: "03",
       title: "Rancang arsitektur sistem",
-      description: "Menyusun struktur data, keamanan, dan alur aplikasi agar rapi dan jelas.",
+      description: "Tentukan struktur data, tipe variabel, dan alur antarmuka dari awal.",
     },
     {
       step: "04",
       title: "Bangun versi awal yang berfungsi",
-      description: "Membuat fungsi utama yang siap pakai terlebih dahulu tanpa rumit berlebihan.",
+      description: "Buat fungsi utama yang siap pakai tanpa merumitkan hal yang belum diperlukan.",
     },
     {
       step: "05",
       title: "Uji & ukur performa",
-      description: "Memastikan kecepatan, kerapian interaksi, dan menangani kemungkinan error menggunakan data pengujian.",
+      description: "Uji kecepatan, respon antarmuka, dan tangani kemungkinan error saat aplikasi dijalankan.",
     },
     {
       step: "06",
-      title: "Sempurnakan & rapikan",
-      description: "Memperbaiki kode berdasarkan hasil pengujian, meningkatkan keterbacaan, dan mengoptimalkan performa.",
+      title: "Rapikan & tingkatkan",
+      description: "Tingkatkan keterbacaan kode, perbaiki bagian yang lambat, dan rapikan dokumentasi.",
     },
   ];
 
@@ -77,66 +80,93 @@ export function HowIThink() {
     {
       number: "01",
       title: "Simplicity over unnecessary complexity.",
-      detail: "Clean architecture with straightforward code is vastly superior to complex, nested abstractions.",
+      detail: "Clean, readable code with straightforward logic is always better than over-engineered patterns.",
     },
     {
       number: "02",
-      title: "Evidence over assumption.",
-      detail: "Base engineering claims, skill proficiency, and diagnostic fixes on verifiable runtime evidence.",
+      title: "Verifiable proof over assumptions.",
+      detail: "Base architectural decisions and diagnostic fixes on working code, tests, and actual logs.",
     },
     {
       number: "03",
       title: "Understand the system, not just the syntax.",
-      detail: "True mastery comes from understanding how browsers, operating systems, and network protocols execute under the hood.",
+      detail: "True understanding comes from knowing how browsers, operating systems, networks, and databases work together.",
     },
     {
       number: "04",
       title: "Build, test, improve.",
-      detail: "Relentlessly refine products through hands-on building, strict type checking, and continuous learning.",
+      detail: "Continuous growth comes from shipping real projects, receiving feedback, and learning consistently.",
     },
   ];
 
   const principlesId = [
     {
       number: "01",
-      title: "Kesederhanaan di atas kompleksitas yang tak perlu.",
-      detail: "Arsitektur bersih dengan kode yang jelas jauh lebih unggul dibandingkan abstraksi rumit bersarang.",
+      title: "Kesederhanaan di atas kompleksitas berlebihan.",
+      detail: "Kode yang rapi dan logis jauh lebih mudah dirawat daripada struktur yang sengaja dibuat rumit.",
     },
     {
       number: "02",
-      title: "Bukti empiris di atas asumsi.",
-      detail: "Mendasarkan klaim rekayasa, keahlian, dan perbaikan diagnostik pada bukti yang dapat diverifikasi.",
+      title: "Bukti nyata di atas asumsi.",
+      detail: "Ambil keputusan teknis dan perbaikan bug berdasarkan data pengujian dan log yang valid.",
     },
     {
       number: "03",
-      title: "Pahami sistem, bukan sekadar sintaksis.",
-      detail: "Penguasaan sejati berasal dari pemahaman bagaimana peramban, sistem operasi, dan jaringan bekerja.",
+      title: "Pahami sistem, bukan sekadar sintaks.",
+      detail: "Pemahaman sejati lahir dari mengerti bagaimana browser, sistem operasi, jaringan, dan database bekerja.",
     },
     {
       number: "04",
       title: "Bangun, uji, dan tingkatkan.",
-      detail: "Secara berkelanjutan menyempurnakan produk melalui praktik nyata, tipe data ketat, dan pembelajaran terus-menerus.",
+      detail: "Kemampuan berkembang pesat lewat praktik membuat project nyata, evaluasi jujur, dan belajar konsisten.",
     },
   ];
 
   const steps = locale === "id" ? stepsId : stepsEn;
   const principles = locale === "id" ? principlesId : principlesEn;
 
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.06,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 12 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.3, ease: "easeOut" },
+    },
+  };
+
   return (
     <div className="flex flex-col gap-10">
       {/* 6 Steps */}
-      <div className="flex flex-col gap-4">
+      <SectionReveal className="flex flex-col gap-4">
         <div className="flex items-center gap-2 border-b border-[#E6E6E3] pb-3">
           <Lightbulb className="w-5 h-5 text-[#00695C]" />
           <h2 className="text-xl font-bold text-[#171717]">
-            {locale === "id" ? "Metodologi Pemecahan Masalah" : "Problem-Solving Methodology"}
+            {locale === "id" ? "Pendekatan Pemecahan Masalah" : "Problem-Solving Approach"}
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <motion.div
+          variants={shouldReduceMotion ? undefined : containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-40px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+        >
           {steps.map((item) => (
-            <div
+            <motion.div
               key={item.step}
+              variants={shouldReduceMotion ? undefined : itemVariants}
+              whileHover={shouldReduceMotion ? undefined : { y: -2 }}
               className="card-minimal p-5 flex flex-col gap-2.5 card-minimal-interactive"
             >
               <div className="flex items-center justify-between">
@@ -144,17 +174,17 @@ export function HowIThink() {
               </div>
               <h3 className="text-base font-bold text-[#171717]">{item.title}</h3>
               <p className="text-xs text-[#2A2A2A] leading-relaxed">{item.description}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </SectionReveal>
 
       {/* Core Principles */}
-      <div className="card-minimal p-8 flex flex-col gap-6">
+      <SectionReveal className="card-minimal p-8 flex flex-col gap-6">
         <div className="flex items-center gap-2 border-b border-[#E6E6E3] pb-3">
           <Cpu className="w-5 h-5 text-[#171717]" />
           <h2 className="text-xl font-bold text-[#171717]">
-            {locale === "id" ? "Prinsip Utama Rekayasa" : "Core Engineering Principles"}
+            {locale === "id" ? "Prinsip Utama Pengembangan" : "Core Development Principles"}
           </h2>
         </div>
 
@@ -170,7 +200,9 @@ export function HowIThink() {
             </div>
           ))}
         </div>
-      </div>
+      </SectionReveal>
     </div>
   );
 }
+
+

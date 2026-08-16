@@ -1,42 +1,9 @@
 {
   "caseFileId": "CASE FILE #004",
   "slug": "rakitin-aja",
-  "title": "RakitinAja",
   "year": "2025",
   "status": "Completed",
-  "role": "Full-Stack Software Engineer",
-  "summary": "A Point of Sale (POS) and PC Builder Bundle system managing computer component inventory, preset PC bundles, cashier checkouts, soft-delete financial records, and Chart.js sales analytics.",
-  "description": "RakitinAja is a specialized Point of Sale (POS) & PC Builder management web application. Built with Native PHP and MySQL (rakitinaja), it handles computer component inventory (CPUs, GPUs, RAM, Motherboards), preset PC bundle assembly, cashier checkout with automatic stock deduction, Chart.js 7-day sales analytics, and thermal printer-friendly receipt generation.",
   "technologies": ["PHP", "MySQL", "JavaScript", "Chart.js", "CSS3", "HTML5"],
-  "problem": "Computer hardware shops faced complexity when selling custom PC bundles alongside individual components, leading to inaccurate stock counts, transaction errors, and loss of historical records when products were deleted.",
-  "solution": "Developed a modular web POS system featuring component inventory management, custom PC bundle configuration with dynamic form rows, automatic multi-item stock verification, Chart.js revenue analytics, printer-friendly receipt printing (@media print), and a soft-delete pattern (is_active = 0) to preserve financial data integrity.",
-  "architecture": [
-    { "id": "ui", "label": "Client Interface", "subtext": "HTML5 / Vanilla JS / CSS3 (Poppins)", "type": "Frontend" },
-    { "id": "app", "label": "POS Server Logic", "subtext": "Native PHP & Session Cart Engine", "type": "Backend" },
-    { "id": "analytics", "label": "Analytics Engine", "subtext": "Chart.js Sales Visualization", "type": "Service" },
-    { "id": "db", "label": "Relational DB", "subtext": "MySQL rakitinaja Data Store", "type": "Database" },
-    { "id": "print", "label": "Receipt Engine", "subtext": "Print-Friendly Thermal Receipt (@media print)", "type": "Export" }
-  ],
-  "implementation": [
-    "Designed normalized relational database schema (users, produk, bundle, bundle_items, transaksi, detail_transaksi).",
-    "Engineered multi-role RBAC security for Admin and Cashier accounts with URL-level server-side checks.",
-    "Implemented custom PC bundle builder engine with dynamic form rows and automated component stock availability checks.",
-    "Integrated Chart.js line charts for 7-day sales trends, top-selling component reports, and low-stock alerts.",
-    "Applied soft-delete pattern (is_active = 0) to safeguard historical transaction records and foreign key integrity."
-  ],
-  "challenges": [
-    "Ensuring transactional stock consistency when processing multi-component PC bundles in a single checkout.",
-    "Preserving historical financial reporting accuracy when components or cashier user accounts are deactivated."
-  ],
-  "results": [
-    "Automated 100% of PC bundle assembly and individual component stock deductions.",
-    "Eliminated database foreign key constraint errors during product removal via soft-delete architecture.",
-    "Streamlined checkout time for cashiers with instant thermal receipt generation."
-  ],
-  "lessons": [
-    "Soft delete patterns are essential in POS systems to maintain long-term financial auditability.",
-    "Server-side RBAC checks must always validate session roles independently of UI button visibility."
-  ],
   "github": "https://github.com/sntrpmks/RakitinAja",
   "demo": "",
   "coverImage": "/media/projects/rakitin-aja/rakitin-ss1.png",
@@ -48,5 +15,75 @@
     "/media/projects/rakitin-aja/rakitin-ss5.png",
     "/media/projects/rakitin-aja/rakitin-ss6.png"
   ],
-  "featured": true
+  "featured": true,
+  "en": {
+    "title": "RakitinAja",
+    "role": "Full Stack Developer",
+    "summary": "A Point of Sale (POS) and custom PC builder system managing component inventory, preset PC bundles, cashier checkouts, financial audit protection, and Chart.js analytics.",
+    "description": "I built RakitinAja to handle computer component inventory and custom PC builder bundles for PC hardware shops. Built with PHP and MySQL, it manages individual components (CPUs, GPUs, RAM, Motherboards), handles custom PC bundle assembly, calculates cashier checkouts with automatic stock deductions, displays 7-day sales analytics with Chart.js, and prints thermal receipts.",
+    "problem": "Computer hardware retailers struggled when selling custom PC bundles alongside separate components, leading to inaccurate stock counts, transaction errors, and deleted product history.",
+    "solution": "I developed a web POS system featuring component inventory management, custom PC bundle configuration, multi-item stock checking, Chart.js analytics, thermal receipt printing, and soft-delete record protection.",
+    "architecture": [
+      { "id": "ui", "label": "Client Interface", "subtext": "HTML5 / Vanilla JS / CSS3", "type": "Frontend" },
+      { "id": "app", "label": "POS Server Logic", "subtext": "Native PHP & Session Cart Engine", "type": "Backend" },
+      { "id": "analytics", "label": "Analytics Engine", "subtext": "Chart.js Sales Visualization", "type": "Service" },
+      { "id": "db", "label": "Relational DB", "subtext": "MySQL Data Store", "type": "Database" },
+      { "id": "print", "label": "Receipt Engine", "subtext": "Thermal Receipt Layout (@media print)", "type": "Export" }
+    ],
+    "implementation": [
+      "Designed database schema supporting components, custom PC bundles, and transactions.",
+      "Engineered multi-role authentication for Admin and Cashier accounts.",
+      "Built custom PC bundle builder with dynamic form rows and automated stock checking.",
+      "Integrated Chart.js line charts for 7-day sales trends and low-stock alerts.",
+      "Applied soft-delete pattern (is_active = 0) to preserve transaction audit trails."
+    ],
+    "challenges": [
+      "Ensuring accurate stock deduction when selling multi-component PC bundles in one checkout.",
+      "Preserving historical sales reporting accuracy when components are deactivated."
+    ],
+    "results": [
+      "Automated stock deductions for both bundle items and individual component sales.",
+      "Eliminated foreign key database errors during product removal via soft-delete architecture.",
+      "Accelerated checkout workflows with print-ready thermal receipts."
+    ],
+    "lessons": [
+      "Soft delete mechanisms are vital in POS systems to maintain financial audit trails.",
+      "Role authorization checks must always run on the server side regardless of UI button states."
+    ]
+  },
+  "id": {
+    "title": "RakitinAja",
+    "role": "Full Stack Developer",
+    "summary": "Aplikasi POS dan perakitan PC yang mengelola stok komponen, paket PC rakitan, kasir transaksi, laporan penjualan Chart.js, dan perlindungan data keuangan.",
+    "description": "RakitinAja saya buat untuk membantu toko komputer mengelola stok komponen hardware dan paket PC rakitan. Dibuat dengan PHP dan MySQL, aplikasi ini mengelola stok komponen (Processor, VGA, RAM, Motherboard), perakitan paket PC, transaksi kasir dengan pemotongan stok otomatis, grafik tren penjualan 7 hari berbasis Chart.js, serta cetak struk thermal.",
+    "problem": "Toko komputer sering mengalami selisih stok saat menjual paket PC rakitan bersamaan dengan komponen eceran, serta kehilangan riwayat transaksi saat ada produk yang dihapus.",
+    "solution": "Saya membuat sistem kasir web modular dengan manajemen stok komponen, konfigurasi paket PC rakitan, pemotongan stok otomatis, analitik Chart.js, cetak struk kasir, dan fitur soft-delete untuk menjaga keutuhan riwayat transaksi.",
+    "architecture": [
+      { "id": "ui", "label": "Client Interface", "subtext": "HTML5 / Vanilla JS / CSS3", "type": "Frontend" },
+      { "id": "app", "label": "POS Server Logic", "subtext": "PHP & Cart Engine Berbasis Session", "type": "Backend" },
+      { "id": "analytics", "label": "Analytics Engine", "subtext": "Visualisasi Penjualan Chart.js", "type": "Service" },
+      { "id": "db", "label": "Relational DB", "subtext": "Database MySQL", "type": "Database" },
+      { "id": "print", "label": "Receipt Engine", "subtext": "Cetak Struk Thermal (@media print)", "type": "Export" }
+    ],
+    "implementation": [
+      "Merancang skema database relasional untuk produk komponen, paket rakitan, dan transaksi.",
+      "Mengembangkan keamanan login multi-role untuk akun Admin dan Kasir.",
+      "Membuat form rakit PC interaktif yang secara otomatis mengecek ketersediaan stok komponen.",
+      "Mengintegrasikan grafik Chart.js untuk memantau tren penjualan harian dan peringatan stok menipis.",
+      "Menerapkan fitur soft-delete (is_active = 0) agar riwayat laporan keuangan tetap lengkap."
+    ],
+    "challenges": [
+      "Memastikan pemotongan stok tepat saat beberapa komponen dijual sekaligus dalam satu paket PC.",
+      "Menjaga akurasi laporan penjualan lama meskipun komponen tersebut sudah tidak dijual lagi."
+    ],
+    "results": [
+      "Mengotomatiskan pemotongan stok untuk penjualan komponen eceran maupun paket PC rakitan.",
+      "Menghindari error database saat penghapusan produk berkat metode soft-delete.",
+      "Mempercepat proses transaksi kasir dengan cetak struk thermal langsung."
+    ],
+    "lessons": [
+      "Pola soft-delete sangat penting pada sistem kasir agar audit laporan keuangan tidak rusak.",
+      "Pengecekan hak akses harus selalu dilakukan di sisi server, bukan hanya menyembunyikan tombol di tampilan."
+    ]
+  }
 }

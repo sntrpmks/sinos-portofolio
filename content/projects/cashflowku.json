@@ -1,42 +1,78 @@
 {
   "caseFileId": "CASE FILE #006",
   "slug": "cashflowku",
-  "title": "CashFlowku (Java Edition)",
   "year": "2026",
   "status": "Completed",
-  "role": "Native Android Developer / Software Architect",
-  "summary": "An offline-first Point of Sale (POS) and financial management native Android application for MSMEs (UMKM), featuring Bento Grid analytics, COGS profit calculations, interactive Excel CSV export with formulas, and SQLite WAL backup security.",
-  "description": "CashFlowku (Java Edition) is an offline-first Point of Sale (POS) and financial management native Android application designed for MSMEs (UMKM). Engineered with Java (JDK 17), target SDK 34, and native SQLite (SQLiteOpenHelper), it features a Bento Grid real-time financial dashboard (Net Profit, COGS/HPP, Gross Profit, Expenses), automated stock deduction, categorized expense logging, dynamic PDF/CSV export with active Excel formulas (=SUM, =Qty*Harga), and SQLite WAL checkpoint backup security with 16-byte header verification.",
   "technologies": ["Java", "Android SDK", "SQLite", "Material Design", "AndroidX"],
-  "problem": "MSME business owners struggle with complex cloud POS apps that require internet access, lack COGS/HPP profit margin calculations, and present security risks during database backups.",
-  "solution": "Developed an offline-first native Android POS & bookkeeping app featuring Bento Grid real-time net profit calculations (Income - HPP - Expenses), automated inventory stock deduction, interactive CSV export with live Excel formulas (=SUM, =Qty*Harga), WAL checkpointing (PRAGMA wal_checkpoint(FULL)), and 16-byte SQLite header signature verification.",
-  "architecture": [
-    { "id": "ui", "label": "Bento Grid Material UI", "subtext": "ConstraintLayout, RecyclerView & White/Zinc Dark Mode", "type": "Frontend" },
-    { "id": "core", "label": "POS & Financial Logic", "subtext": "Java Native Controllers (JDK 17, Target SDK 34)", "type": "Logic" },
-    { "id": "db", "label": "SQLite Local Persistence", "subtext": "SQLiteOpenHelper & WAL Checkpoint Engine", "type": "Database" },
-    { "id": "export", "label": "Export & Backup Engine", "subtext": "FileProvider, PDF Bento Cards & Formula CSV", "type": "Export" }
-  ],
-  "implementation": [
-    "Engineered Bento Grid real-time financial dashboard calculating Net Profit (Omset - HPP - Expenses), Gross Profit, and HPP.",
-    "Built Smart POS inventory management with automated stock deduction, COGS input, camera photo attachments, and instant restock button.",
-    "Developed ExportUtil generating PDF summary cards and interactive CSV files embedded with dynamic Excel formulas (=SUM, =Qty*Harga).",
-    "Implemented SQLite Write-Ahead Logging (WAL) checkpointing (PRAGMA wal_checkpoint(FULL)) and 16-byte SQLite format 3 header signature verification for corruption-proof database backups.",
-    "Integrated bi-directional settings synchronization between SQL key-value tables and SharedPreferences at splash screen boot with flicker-free Dark Mode."
-  ],
-  "challenges": [
-    "Enforcing SQLite WAL log checkpoints into main database files before backup export to guarantee zero data loss.",
-    "Embedding native Excel math formulas inside CSV strings while maintaining multi-locale currency formatting."
-  ],
-  "results": [
-    "100% offline data privacy with zero external cloud dependencies.",
-    "Instant sub-50ms SQLite database query response and flicker-free theme switching.",
-    "Automated financial report generation with live auto-recalculating spreadsheet exports."
-  ],
-  "lessons": [
-    "SQLite WAL checkpointing is vital for offline mobile apps to prevent backup state desynchronization.",
-    "Generating CSV files with native spreadsheet formulas provides immense value for MSME accounting workflows."
-  ],
   "github": "https://github.com/sntrpmks/CashFlowku",
   "demo": "",
-  "featured": true
+  "featured": true,
+  "en": {
+    "title": "CashFlowku (Java Edition)",
+    "role": "Native Android Developer",
+    "summary": "An offline-first POS and financial management Android app for MSMEs, featuring Bento Grid analytics, COGS profit calculations, interactive formula CSV export, and SQLite WAL backups.",
+    "description": "I built CashFlowku to help MSME (UMKM) owners manage sales transactions, inventory, and net profit offline without cloud dependency. Built with Java and native SQLite on Android, it features a Bento Grid financial dashboard (Net Profit, COGS, Gross Profit, Expenses), automated stock deductions, PDF summary generation, interactive CSV exports with live Excel formulas, and SQLite WAL backup verification.",
+    "problem": "Small business owners often struggle with cloud POS apps that require stable internet, lack net profit margin calculations (COGS/HPP), and risk data corruption during backups.",
+    "solution": "I developed an offline-first native Android POS & bookkeeping app with real-time net profit calculations, inventory stock tracking, interactive CSV export with live Excel math formulas (=SUM, =Qty*Price), and SQLite WAL backup verification.",
+    "architecture": [
+      { "id": "ui", "label": "Bento Grid Material UI", "subtext": "ConstraintLayout, RecyclerView & Dark Mode", "type": "Frontend" },
+      { "id": "core", "label": "POS & Financial Logic", "subtext": "Java Native Controllers (JDK 17, Target SDK 34)", "type": "Logic" },
+      { "id": "db", "label": "SQLite Local Persistence", "subtext": "SQLiteOpenHelper & WAL Checkpoint Engine", "type": "Database" },
+      { "id": "export", "label": "Export & Backup Engine", "subtext": "PDF Bento Cards & Formula CSV Generator", "type": "Export" }
+    ],
+    "implementation": [
+      "Engineered Bento Grid real-time financial dashboard calculating Net Profit (Omset - HPP - Expenses), Gross Profit, and HPP.",
+      "Built POS inventory management with automated stock deduction, COGS input, and photo attachments.",
+      "Developed ExportUtil generating PDF summary cards and interactive CSV files embedded with dynamic Excel formulas.",
+      "Implemented SQLite Write-Ahead Logging (WAL) checkpointing and SQLite header verification for safe backups.",
+      "Integrated bi-directional settings synchronization between SQL key-value tables and SharedPreferences with Dark Mode."
+    ],
+    "challenges": [
+      "Enforcing SQLite WAL log checkpoints into main database files before backup export to guarantee zero data loss.",
+      "Embedding native Excel math formulas inside CSV strings while maintaining currency formatting."
+    ],
+    "results": [
+      "100% offline data privacy with zero cloud dependencies.",
+      "Instant sub-50ms SQLite database query response and smooth theme switching.",
+      "Automated financial report generation with auto-recalculating spreadsheet exports."
+    ],
+    "lessons": [
+      "SQLite WAL checkpointing is vital for offline mobile apps to prevent backup state desynchronization.",
+      "Generating CSV files with native spreadsheet formulas provides great value for business accounting workflows."
+    ]
+  },
+  "id": {
+    "title": "CashFlowku (Java Edition)",
+    "role": "Native Android Developer",
+    "summary": "Aplikasi POS dan pencatatan keuangan Android offline-first untuk UMKM, dilengkapi Bento Grid analytics, kalkulasi HPP/laba bersih, ekspor CSV berformula, dan backup SQLite WAL.",
+    "description": "CashFlowku saya buat untuk membantu pelaku UMKM mencatat transaksi penjualan, stok barang, dan laba bersih secara offline tanpa ketergantungan internet. Dibuat menggunakan Java dan SQLite native di Android, aplikasi ini memiliki dashboard Bento Grid (Laba Bersih, HPP, Laba Kotor, Pengeluaran), pemotongan stok otomatis, cetak PDF ringkasan, ekspor CSV dengan formula Excel aktif, serta verifikasi backup SQLite WAL.",
+    "problem": "Banyak pemilik UMKM kesulitan menggunakan aplikasi kasir online yang membutuhkan internet stabil, tidak menghitung HPP/laba bersih secara akurat, dan berisiko kehilangan data saat backup.",
+    "solution": "Saya membuat aplikasi Android kasir & pembukuan offline-first dengan kalkulasi laba bersih real-time, pemantauan stok barang, ekspor CSV berformula Excel (=SUM, =Qty*Harga), dan backup SQLite WAL yang aman.",
+    "architecture": [
+      { "id": "ui", "label": "Bento Grid Material UI", "subtext": "ConstraintLayout, RecyclerView & Dark Mode", "type": "Frontend" },
+      { "id": "core", "label": "POS & Logika Keuangan", "subtext": "Java Native Controllers (JDK 17, Target SDK 34)", "type": "Logic" },
+      { "id": "db", "label": "SQLite Local Storage", "subtext": "SQLiteOpenHelper & Engine WAL Checkpoint", "type": "Database" },
+      { "id": "export", "label": "Export & Backup Engine", "subtext": "Cetak PDF Card & Generator CSV Formula", "type": "Export" }
+    ],
+    "implementation": [
+      "Membuat dashboard keuangan Bento Grid untuk menghitung Laba Bersih (Omset - HPP - Pengeluaran), Laba Kotor, dan HPP secara langsung.",
+      "Pengelolaan stok barang POS dengan pemotongan stok otomatis, masukan HPP, dan lampiran foto produk.",
+      "Mengembangkan utilitas ekspor berkas PDF ringkasan dan file CSV interaktif yang berisi formula Excel aktif.",
+      "Menerapkan SQLite Write-Ahead Logging (WAL) checkpointing dan verifikasi header file SQLite untuk backup yang aman.",
+      "Sinkronisasi pengaturan aplikasi antara tabel SQL dan SharedPreferences dengan dukungan Dark Mode."
+    ],
+    "challenges": [
+      "Memastikan log SQLite WAL sudah di-checkpoint ke file utama sebelum backup agar tidak ada data transaksi yang hilang.",
+      "Memasukkan formula Excel di dalam file CSV dengan tetap menjaga format penulisan mata uang."
+    ],
+    "results": [
+      "Data tersimpan 100% offline tanpa perlu koneksi internet.",
+      "Performa pencarian dan kueri SQLite sangat cepat (di bawah 50ms).",
+      "Pembuatan laporan keuangan otomatis dengan spreadsheet yang dapat menghitung nilai secara dinamis."
+    ],
+    "lessons": [
+      "Teknik SQLite WAL checkpointing penting pada aplikasi mobile offline untuk menjaga konsistensi data backup.",
+      "Ekspor file CSV dengan formula spreadsheet sangat bermanfaat bagi alur kerja pencatatan keuangan UMKM."
+    ]
+  }
 }

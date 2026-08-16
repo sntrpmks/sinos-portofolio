@@ -2,65 +2,129 @@
   {
     "id": "exp-unsiq",
     "year": "2026 - Present",
-    "title": "Informatics Management Student",
-    "organization": "Universitas Sains Al-Qur'an (UNSIQ)",
-    "role": "College Student",
     "period": "2026 - Present",
-    "location": "Wonosobo, Indonesia",
-    "description": "Pursuing a degree in Informatics Management (Manajemen Informatika), studying information system design, database architecture, software engineering methodologies, and AI integrations.",
-    "highlights": [
-      "Enrolled in Manajemen Informatika program at Universitas Sains Al-Qur'an (UNSIQ).",
-      "Focusing on web & mobile application architecture, information systems, and software engineering.",
-      "Building full-stack digital products and exploring AI API integrations."
-    ],
-    "type": "education"
+    "type": "education",
+    "locales": {
+      "en": {
+        "title": "Informatics Management Student",
+        "organization": "Universitas Sains Al-Qur'an (UNSIQ)",
+        "role": "College Student",
+        "location": "Wonosobo, Indonesia",
+        "description": "Studying Informatics Management (Manajemen Informatika), focusing on information system design, database architecture, software engineering, and AI integrations.",
+        "highlights": [
+          "Studying Informatics Management at Universitas Sains Al-Qur'an (UNSIQ).",
+          "Focusing on web and mobile application architecture.",
+          "Building full-stack digital products and exploring AI integrations."
+        ]
+      },
+      "id": {
+        "title": "Mahasiswa Manajemen Informatika",
+        "organization": "Universitas Sains Al-Qur'an (UNSIQ)",
+        "role": "Mahasiswa",
+        "location": "Wonosobo, Indonesia",
+        "description": "Kuliah di jurusan Manajemen Informatika, mempelajari perancangan sistem informasi, arsitektur database, pengembangan software, dan integrasi AI.",
+        "highlights": [
+          "Menempuh pendidikan di program studi Manajemen Informatika UNSIQ.",
+          "Berfokus pada arsitektur aplikasi web dan mobile.",
+          "Membangun produk digital full-stack dan mengeksplorasi integrasi AI."
+        ]
+      }
+    }
   },
   {
     "id": "exp-smkn1",
     "year": "2024 - 2026",
-    "title": "Software Engineering Graduate (RPL)",
-    "organization": "SMK Negeri 1 Wonosobo",
-    "role": "Student Developer",
     "period": "2024 - 2026 (Graduated)",
-    "location": "Wonosobo, Indonesia",
-    "description": "Graduated in Software Engineering (Rekayasa Perangkat Lunak). Studied web application development, relational database modeling, and native programming.",
-    "highlights": [
-      "Graduated from Software Engineering program in 2026.",
-      "Built Web Event SMKN 1 Wonosobo full-stack platform with PHP, MySQL & Gemini API.",
-      "Earned Junior Coder BNSP certification and Oracle Java Fundamentals credential."
-    ],
-    "type": "education"
+    "type": "education",
+    "locales": {
+      "en": {
+        "title": "Software Engineering Graduate (RPL)",
+        "organization": "SMK Negeri 1 Wonosobo",
+        "role": "Student Developer",
+        "location": "Wonosobo, Indonesia",
+        "description": "Graduated from the Software Engineering (Rekayasa Perangkat Lunak) program. Studied web application development, database modeling, and native programming.",
+        "highlights": [
+          "Graduated from Software Engineering (RPL) major in 2026.",
+          "Built Web Event SMKN 1 Wonosobo full-stack platform with PHP, MySQL, and Gemini API.",
+          "Earned Junior Coder BNSP certification and Oracle Java Fundamentals credential."
+        ]
+      },
+      "id": {
+        "title": "Lulusan Rekayasa Perangkat Lunak (RPL)",
+        "organization": "SMK Negeri 1 Wonosobo",
+        "role": "Siswa Developer",
+        "location": "Wonosobo, Indonesia",
+        "description": "Lulus dari jurusan Rekayasa Perangkat Lunak (RPL). Mempelajari pengembangan aplikasi web, pemodelan database relasional, dan pemrograman native.",
+        "highlights": [
+          "Lulus dari jurusan Rekayasa Perangkat Lunak pada tahun 2026.",
+          "Membangun platform full-stack Web Event SMKN 1 Wonosobo dengan PHP, MySQL, dan Gemini API.",
+          "Meraih sertifikasi BNSP Junior Coder dan sertifikat Oracle Java Fundamentals."
+        ]
+      }
+    }
   },
   {
     "id": "exp-proactive",
     "year": "2025",
-    "title": "Robotics & Coding Curriculum Intern",
-    "organization": "Proactive Robotika",
-    "role": "Student Intern",
     "period": "2025",
-    "location": "Yogyakarta, Indonesia",
-    "description": "Student internship experience assisting in the delivery of robotics and coding curriculum, working with elementary students (including SD Muhammadiyah Sapen, Yogyakarta), and hardware-software logic.",
-    "highlights": [
-      "Supported robotics and coding learning activities for elementary students.",
-      "Assisted in hardware microcontroller programming and sensor feedback logic.",
-      "Gained hands-on experience in technical curriculum delivery and robotics concepts."
-    ],
-    "type": "internship"
+    "type": "internship",
+    "locales": {
+      "en": {
+        "title": "Robotics & Coding Student Intern",
+        "organization": "Proactive Robotika",
+        "role": "Student Intern",
+        "location": "Yogyakarta, Indonesia",
+        "description": "Completed a student internship assisting in robotics and coding lessons for elementary students (including SD Muhammadiyah Sapen, Yogyakarta), working with microcontroller hardware and software logic.",
+        "highlights": [
+          "Assisted robotics and basic coding learning activities for elementary school students.",
+          "Helped with microcontroller hardware assembly and sensor logic.",
+          "Gained hands-on experience in teaching tech concepts and robotics fundamentals."
+        ]
+      },
+      "id": {
+        "title": "Magang Siswa Robotika & Coding",
+        "organization": "Proactive Robotika",
+        "role": "Siswa Magang",
+        "location": "Yogyakarta, Indonesia",
+        "description": "Pengalaman magang siswa dalam mengajar dasar robotika dan coding untuk siswa SD (termasuk di SD Muhammadiyah Sapen, Yogyakarta) serta merakit logika hardware mikrokontroler.",
+        "highlights": [
+          "Mendampingi kegiatan belajar robotika dan dasar coding untuk siswa sekolah dasar.",
+          "Membantu perakitan hardware mikrokontroler dan logika pembacaan sensor.",
+          "Mendapatkan pengalaman langsung dalam mengajar konsep teknis dan robotika dasar."
+        ]
+      }
+    }
   },
   {
     "id": "exp-current",
     "year": "NOW",
-    "title": "Software Development & AI Integration",
-    "organization": "Independent / Open Projects",
-    "role": "Software Developer",
     "period": "Present",
-    "location": "Indonesia",
-    "description": "Building full-stack web products, exploring AI API integrations (Gemini, OpenAI), and continuously refining software design principles.",
-    "highlights": [
-      "Engineering SIN.OS content-driven digital portfolio system.",
-      "Exploring multimodal AI API capabilities and REST server architectures.",
-      "Pursuing professional certifications in AI, software engineering, and web development."
-    ],
-    "type": "work"
+    "type": "work",
+    "locales": {
+      "en": {
+        "title": "Software Development & AI Integration",
+        "organization": "Independent Projects",
+        "role": "Full Stack Developer",
+        "location": "Indonesia",
+        "description": "Building web applications, exploring AI integrations (Gemini, OpenAI APIs), and refining software engineering practices through practical projects.",
+        "highlights": [
+          "Engineered the SIN.OS content-driven digital portfolio system.",
+          "Exploring AI API capabilities and REST server architectures.",
+          "Pursuing certifications in software engineering and web development."
+        ]
+      },
+      "id": {
+        "title": "Pengembangan Software & Integrasi AI",
+        "organization": "Project Mandiri",
+        "role": "Full Stack Developer",
+        "location": "Indonesia",
+        "description": "Membangun aplikasi web, mengeksplorasi integrasi AI (Gemini, OpenAI API), dan terus memperdalam praktik pengembangan software lewat project nyata.",
+        "highlights": [
+          "Membangun sistem portofolio digital SIN.OS.",
+          "Mengeksplorasi integrasi AI API dan arsitektur REST server.",
+          "Mengikuti sertifikasi di bidang software engineering dan web development."
+        ]
+      }
+    }
   }
 ]

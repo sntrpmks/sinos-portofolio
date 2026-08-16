@@ -2,8 +2,10 @@
 
 import React from "react";
 import Image from "next/image";
+import { motion, useReducedMotion, Variants } from "framer-motion";
 import { Experience } from "@/types/content";
 import { useViewMode } from "@/components/context/ViewModeContext";
+import { getLocalizedExperience } from "@/lib/content-helpers";
 import { Briefcase, GraduationCap, Award } from "lucide-react";
 
 interface TimelineSectionProps {
@@ -12,6 +14,26 @@ interface TimelineSectionProps {
 
 export function TimelineSection({ experiences }: TimelineSectionProps) {
   const { locale } = useViewMode();
+  const shouldReduceMotion = useReducedMotion();
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 14 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.35, ease: "easeOut" },
+    },
+  };
 
   const getBadgeIcon = (type: Experience["type"]) => {
     switch (type) {
@@ -61,11 +83,23 @@ export function TimelineSection({ experiences }: TimelineSectionProps) {
   };
 
   return (
-    <div className="flex flex-col gap-6">
-      {experiences.map((exp) => {
+    <motion.div
+      variants={shouldReduceMotion ? undefined : containerVariants}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-40px" }}
+      className="flex flex-col gap-6"
+    >
+      {experiences.map((rawExp) => {
+        const exp = getLocalizedExperience(rawExp, locale);
         const logoUrl = getOrgLogo(exp.organization);
         return (
-          <div key={exp.id} className="card-minimal p-6 flex flex-col gap-3 card-minimal-interactive">
+          <motion.div
+            key={exp.id}
+            variants={shouldReduceMotion ? undefined : itemVariants}
+            whileHover={shouldReduceMotion ? undefined : { y: -2 }}
+            className="card-minimal p-6 flex flex-col gap-3 card-minimal-interactive"
+          >
             <div className="flex items-center justify-between border-b border-[#E6E6E3] pb-3">
               <div className="flex items-center gap-2">
                 {getBadgeIcon(exp.type)}
@@ -109,9 +143,11 @@ export function TimelineSection({ experiences }: TimelineSectionProps) {
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
         );
       })}
-    </div>
+    </motion.div>
   );
 }
+
+

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ViewModeProvider } from "@/components/context/ViewModeContext";
+import { SmoothScroll } from "@/components/system/SmoothScroll";
 import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/navigation/Footer";
 import { CommandPalette } from "@/components/system/CommandPalette";
@@ -87,6 +88,9 @@ export default function RootLayout({
         <div className="ambient-subtle" />
 
         <ViewModeProvider>
+          {/* Global Smooth Scrolling */}
+          <SmoothScroll />
+
           {/* Navigation Bar */}
           <Navbar />
 

@@ -1,41 +1,9 @@
 {
   "caseFileId": "CASE FILE #005",
   "slug": "web-event",
-  "title": "Web Event SMKN 1 Wonosobo",
   "year": "2026",
   "status": "Completed",
-  "role": "Full-Stack Software Engineer",
-  "summary": "Multi-role event management platform managing competition submissions, 3-stage milestone evaluation, automated deadline checks, jury scoring, and Google Gemini API AI assistance.",
-  "description": "Web Event SMKN 1 Wonosobo (Sistem Manajemen & Evaluasi Event SMKN 1 Wonosobo) is a production-grade multi-role web platform built with Native PHP 8.2+ and MySQL (web_event_smk). Designed for school event operations, it features RBAC workflows for Admins, Teachers/Juries, and Students, 3-stage milestone tracking (awal, proses, akhir with automated is_late flags), FPDF progress report exports, Google Maps location integration, and an embedded Google Gemini 1.5 Flash AI chatbot (api/chatbot.php).",
   "technologies": ["PHP", "MySQL", "Google Gemini API", "AJAX", "FPDF", "JavaScript"],
-  "problem": "School events suffered from manual paper-based registration, untracked submission deadlines, fragmented multi-juror scoring calculations, and lack of real-time participant progress tracking.",
-  "solution": "Engineered a centralized web platform supporting individual & team registration, automated 3-stage milestone tracking (awal, proses, akhir) with is_late flags, multi-criteria jury scorecards with real-time leaderboards, automated FPDF report generation, and an embedded Google Gemini 1.5 Flash AI chatbot for instant event assistance.",
-  "architecture": [
-    { "id": "ui", "label": "Client Interface", "subtext": "HTML5 / ES6+ Fetch API / CSS3", "type": "Frontend" },
-    { "id": "app", "label": "Multi-Role Server", "subtext": "Native PHP 8.2+ Controllers (Admin/Guru/Siswa)", "type": "Backend" },
-    { "id": "ai", "label": "AI Chatbot Service", "subtext": "Google Gemini 1.5 Flash API (api/chatbot.php)", "type": "Service" },
-    { "id": "db", "label": "Relational DB", "subtext": "MySQL web_event_smk Data Store", "type": "Database" },
-    { "id": "print", "label": "Report Engine", "subtext": "FPDF Progress Summaries & Scorecards", "type": "Export" }
-  ],
-  "implementation": [
-    "Designed multi-role RBAC architecture regulating permissions across Admin, Teacher/Jury, and Student dashboards.",
-    "Built 3-stage milestone submission engine (awal, proses, akhir) with automated is_late deadline detection.",
-    "Engineered multi-criteria jury scoring matrices with automated weighted leaderboard calculation.",
-    "Integrated Google Gemini 1.5 Flash API chatbot (api/chatbot.php) providing context-aware answers to student queries.",
-    "Integrated FPDF engine for on-the-fly PDF scorecards, progress summaries, and certificate generation."
-  ],
-  "challenges": [
-    "Managing complex relational data constraints across multi-participant team submissions and 3-stage milestone checks.",
-    "Safeguarding AI API integration endpoints against prompt injection while preserving fast chatbot response times."
-  ],
-  "results": [
-    "Automated 100% of event registrations, milestone submission deadline tracking, and jury scorecard calculations.",
-    "Delivered instantaneous PDF report generation for school administrators and event coordinators."
-  ],
-  "lessons": [
-    "Combining multi-role RBAC with automated milestone checks ensures accountability in complex event workflows.",
-    "Integrating AI chatbots directly into operational software greatly reduces repetitive administrative inquiry load."
-  ],
   "github": "https://github.com/sntrpmks/Web-Event-SMKN1WSB",
   "demo": "",
   "coverImage": "/media/projects/web-event/webevent-ss1.png",
@@ -53,5 +21,73 @@
     "/media/projects/web-event/webevent-ss11.png",
     "/media/projects/web-event/webevent-ss12.png"
   ],
-  "featured": true
+  "featured": true,
+  "en": {
+    "title": "Web Event SMKN 1 Wonosobo",
+    "role": "Full Stack Developer",
+    "summary": "A school event management platform featuring competition submissions, a 3-stage milestone evaluation system, automated deadline checks, jury scoring, and Google Gemini AI chatbot assistance.",
+    "description": "I built Web Event SMKN 1 Wonosobo to help manage school events and competitions efficiently in one place. Built with PHP and MySQL, the platform supports multi-role accounts for Admins, Teachers/Juries, and Students. It features 3-stage milestone tracking (awal, proses, akhir) with automated late flags, FPDF progress report generation, and an embedded Google Gemini AI chatbot for participant inquiry support.",
+    "problem": "School competition management was handled manually with paper forms, unmonitored deadline submissions, fragmented juror score calculations, and no centralized progress tracking.",
+    "solution": "I developed a centralized web application featuring role-based dashboards, automated 3-stage milestone submission tracking, real-time jury scorecards with automated leaderboards, instant FPDF report generation, and an AI chatbot helper.",
+    "architecture": [
+      { "id": "ui", "label": "Client Interface", "subtext": "HTML5 / ES6+ Fetch API / CSS3", "type": "Frontend" },
+      { "id": "app", "label": "Multi-Role Server", "subtext": "Native PHP Controllers (Admin/Teacher/Student)", "type": "Backend" },
+      { "id": "ai", "label": "AI Chatbot Service", "subtext": "Google Gemini 1.5 Flash API", "type": "Service" },
+      { "id": "db", "label": "Relational DB", "subtext": "MySQL Data Store", "type": "Database" },
+      { "id": "print", "label": "Report Engine", "subtext": "FPDF Summaries & Scorecards", "type": "Export" }
+    ],
+    "implementation": [
+      "Designed a multi-role RBAC architecture for Admin, Teacher/Jury, and Student access.",
+      "Built a 3-stage milestone submission engine (awal, proses, akhir) with automated deadline checks.",
+      "Created multi-criteria jury scorecards with automated leaderboard aggregation.",
+      "Integrated Google Gemini 1.5 Flash API for context-aware participant support.",
+      "Implemented FPDF generation for on-the-fly PDF scorecards and certificates."
+    ],
+    "challenges": [
+      "Managing relational data constraints across team submissions and multi-stage evaluation checks.",
+      "Securing the AI chatbot endpoint while ensuring quick response times."
+    ],
+    "results": [
+      "Automated registration workflows, submission tracking, and score calculations.",
+      "Generated instant PDF summary reports for event coordinators."
+    ],
+    "lessons": [
+      "Combining role permissions with automated milestone checks ensures clear accountability in event workflows.",
+      "Integrating AI assistance directly into operational tools reduces repetitive inquiry workload."
+    ]
+  },
+  "id": {
+    "title": "Web Event SMKN 1 Wonosobo",
+    "role": "Full Stack Developer",
+    "summary": "Platform pengelolaan event dan lomba sekolah dengan sistem evaluasi 3 tahap, pelacakan tenggat otomatis, rekap nilai juri, dan AI chatbot.",
+    "description": "Web Event SMKN 1 Wonosobo saya buat untuk membantu sekolah mengelola kegiatan lomba dari satu tempat. Di dalamnya terdapat akses multi-role untuk Admin, Guru/Juri, dan Siswa. Sistem ini memiliki pelacakan progres 3 tahap (awal, proses, akhir) dengan penanda keterlambatan otomatis, cetak laporan PDF lewat FPDF, serta AI chatbot berbasis Gemini untuk menjawab pertanyaan peserta secara otomatis.",
+    "problem": "Sebelumnya, pengelolaan kegiatan sekolah masih manual menggunakan formulir kertas, tenggat waktu pengumpulan sulit dipantau, dan perhitungan nilai juri harus direkap secara terpisah.",
+    "solution": "Saya membuat aplikasi web terpusat yang menyediakan dashboard sesuai role, pelacakan tenggat progres 3 tahap, rekap nilai juri otomatis, cetak laporan PDF langsung, serta asisten AI chatbot.",
+    "architecture": [
+      { "id": "ui", "label": "Client Interface", "subtext": "HTML5 / ES6+ Fetch API / CSS3", "type": "Frontend" },
+      { "id": "app", "label": "Multi-Role Server", "subtext": "Controller PHP (Admin/Guru/Siswa)", "type": "Backend" },
+      { "id": "ai", "label": "AI Chatbot Service", "subtext": "Google Gemini 1.5 Flash API", "type": "Service" },
+      { "id": "db", "label": "Relational DB", "subtext": "Database MySQL", "type": "Database" },
+      { "id": "print", "label": "Report Engine", "subtext": "FPDF Rekap & Nilai", "type": "Export" }
+    ],
+    "implementation": [
+      "Merancang arsitektur hak akses (RBAC) untuk Admin, Guru/Juri, dan Siswa.",
+      "Membuat sistem pengumpulan progres 3 tahap (awal, proses, akhir) dengan deteksi tenggat otomatis.",
+      "Mengembangkan form penilaian juri dengan perhitungan papan peringkat otomatis.",
+      "Mengintegrasikan Google Gemini 1.5 Flash API untuk menjawab pertanyaan peserta.",
+      "Menambahkan fitur cetak rekap nilai dan sertifikat dalam format PDF menggunakan FPDF."
+    ],
+    "challenges": [
+      "Mengatur relasi database untuk pendaftaran tim dan penyesuaian tenggat tiap tahap.",
+      "Menjaga keamanan integrasi AI chatbot agar responsif dan aman dari prompt injection."
+    ],
+    "results": [
+      "Mengotomatiskan pendaftaran, pelacakan progres, dan rekap penilaian juri secara terpusat.",
+      "Mempermudah panitia membuat laporan kegiatan dalam bentuk berkas PDF instan."
+    ],
+    "lessons": [
+      "Pembagian role yang jelas dan pelacakan progres otomatis sangat membantu kelancaran operasional event.",
+      "Menambahkan AI chatbot pada aplikasi operasional dapat mengurangi pertanyaan berulang dari peserta."
+    ]
+  }
 }

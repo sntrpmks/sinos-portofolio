@@ -3,10 +3,12 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { HeroSection } from "@/components/hero/HeroSection";
 import { MarqueeTicker } from "@/components/ui/MarqueeTicker";
+import { SectionReveal } from "@/components/ui/SectionReveal";
 import { useViewMode } from "@/components/context/ViewModeContext";
+import { getLocalizedProject, getLocalizedTechItem, getLocalizedCertificate } from "@/lib/content-helpers";
 import { Project, Experience, TechItem, Certificate } from "@/types/content";
 import { ArrowRight, Mail, Sparkles, UserCheck } from "lucide-react";
 
@@ -18,7 +20,8 @@ interface HomePageClientProps {
 }
 
 export function HomePageClient({ projects, skills, certificates }: HomePageClientProps) {
-  const { setAiModalOpen, t } = useViewMode();
+  const { locale, setAiModalOpen, t } = useViewMode();
+  const shouldReduceMotion = useReducedMotion();
 
   // Selected featured projects (Web Event & CashFlowKu)
   const selectedProjects = projects.slice(0, 2);
@@ -35,13 +38,7 @@ export function HomePageClient({ projects, skills, certificates }: HomePageClien
       <div className="px-4 sm:px-8 max-w-5xl mx-auto w-full flex flex-col gap-20">
         
         {/* 02. SELECTED WORK */}
-        <motion.section
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className="flex flex-col gap-10"
-        >
+        <SectionReveal className="flex flex-col gap-10">
           <div className="flex items-end justify-between border-b border-[#E6E6E3] pb-4">
             <div>
               <span className="text-xs font-mono-code font-bold uppercase tracking-widest text-[#00695C]">
@@ -61,70 +58,75 @@ export function HomePageClient({ projects, skills, certificates }: HomePageClien
           </div>
 
           <div className="flex flex-col gap-12">
-            {selectedProjects.map((project, index) => (
-              <div
-                key={project.slug}
-                className={`flex flex-col ${
-                  index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                } items-stretch gap-8 card-minimal p-6 sm:p-8 card-minimal-interactive group`}
-              >
-                {/* Project Image Box */}
-                <div className="w-full lg:w-1/2 h-64 sm:h-72 relative rounded-xl bg-[#F0F0ED] border border-[#E6E6E3] overflow-hidden shrink-0">
-                  {project.coverImage ? (
-                    <Image
-                      src={project.coverImage}
-                      alt={project.title}
-                      fill
-                      className="object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-[#8A8A8A] p-4 text-center">
-                      <span className="text-xs font-mono-code font-bold text-[#171717]">{project.caseFileId}</span>
-                      <span className="text-base font-bold text-[#171717]">{project.title}</span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Project Details */}
-                <div className="w-full lg:w-1/2 flex flex-col justify-between gap-6">
-                  <div className="flex flex-col gap-3">
-                    <div className="flex items-center justify-between text-xs font-mono-code text-[#666666]">
-                      <span className="font-bold text-[#00695C] uppercase">{project.caseFileId}</span>
-                      <span>{project.year} • {project.role}</span>
-                    </div>
-
-                    <h3 className="text-2xl sm:text-3xl font-extrabold text-[#171717] group-hover:text-[#00695C] transition-colors leading-tight">
-                      {project.title}
-                    </h3>
-
-                    <p className="text-xs sm:text-sm text-[#666666] leading-relaxed">
-                      {project.summary}
-                    </p>
-
-                    <div className="flex flex-wrap items-center gap-1.5 pt-2">
-                      {project.technologies.slice(0, 5).map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2.5 py-1 rounded-lg bg-[#F0F0ED] border border-[#E6E6E3] text-[11px] font-mono-code text-[#171717]"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+            {selectedProjects.map((rawProj, index) => {
+              const project = getLocalizedProject(rawProj, locale);
+              return (
+                <motion.div
+                  key={project.slug}
+                  whileHover={shouldReduceMotion ? undefined : { y: -2 }}
+                  className={`flex flex-col ${
+                    index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+                  } items-stretch gap-8 card-minimal p-6 sm:p-8 card-minimal-interactive group`}
+                >
+                  {/* Project Image Box */}
+                  <div className="w-full lg:w-1/2 h-64 sm:h-72 relative rounded-xl bg-[#F0F0ED] border border-[#E6E6E3] overflow-hidden shrink-0">
+                    {project.coverImage ? (
+                      <Image
+                        src={project.coverImage}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-[#8A8A8A] p-4 text-center">
+                        <span className="text-xs font-mono-code font-bold text-[#171717]">{project.caseFileId}</span>
+                        <span className="text-base font-bold text-[#171717]">{project.title}</span>
+                      </div>
+                    )}
                   </div>
 
-                  <Link
-                    href={`/work/${project.slug}`}
-                    className="flex items-center justify-between px-5 py-3 rounded-xl bg-[#171717] text-white font-medium text-xs hover:bg-[#00695C] transition-colors shadow-xs group-hover:shadow-md"
-                  >
-                    <span>{t.selectedWork.viewCaseStudy}</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
-            ))}
+                  {/* Project Details */}
+                  <div className="w-full lg:w-1/2 flex flex-col justify-between gap-6">
+                    <div className="flex flex-col gap-3">
+                      <div className="flex items-center justify-between text-xs font-mono-code text-[#666666]">
+                        <span className="font-bold text-[#00695C] uppercase">{project.caseFileId}</span>
+                        <span>{project.year} • {project.role}</span>
+                      </div>
+
+                      <h3 className="text-2xl sm:text-3xl font-extrabold text-[#171717] group-hover:text-[#00695C] transition-colors leading-tight">
+                        {project.title}
+                      </h3>
+
+                      <p className="text-xs sm:text-sm text-[#666666] leading-relaxed">
+                        {project.summary}
+                      </p>
+
+                      <div className="flex flex-wrap items-center gap-1.5 pt-2">
+                        {project.technologies.slice(0, 5).map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-2.5 py-1 rounded-lg bg-[#F0F0ED] border border-[#E6E6E3] text-[11px] font-mono-code text-[#171717]"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <Link
+                      href={`/work/${project.slug}`}
+                      className="flex items-center justify-between px-5 py-3 rounded-xl bg-[#171717] text-white font-medium text-xs hover:bg-[#00695C] transition-colors shadow-xs group-hover:shadow-md"
+                    >
+                      <span>{t.selectedWork.viewCaseStudy}</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
-        </motion.section>
+        </SectionReveal>
 
       </div>
 
@@ -135,13 +137,7 @@ export function HomePageClient({ projects, skills, certificates }: HomePageClien
       <div className="px-4 sm:px-8 max-w-5xl mx-auto w-full flex flex-col gap-20">
 
         {/* 03. ABOUT & EXPERIENCE */}
-        <motion.section
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className="flex flex-col gap-8"
-        >
+        <SectionReveal className="flex flex-col gap-8">
           <div className="flex items-end justify-between border-b border-[#E6E6E3] pb-4">
             <div>
               <span className="text-xs font-mono-code font-bold uppercase tracking-widest text-[#00695C]">
@@ -190,16 +186,10 @@ export function HomePageClient({ projects, skills, certificates }: HomePageClien
               </Link>
             </div>
           </div>
-        </motion.section>
+        </SectionReveal>
 
         {/* 04. CAPABILITIES */}
-        <motion.section
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className="flex flex-col gap-8"
-        >
+        <SectionReveal className="flex flex-col gap-8">
           <div className="flex items-end justify-between border-b border-[#E6E6E3] pb-4">
             <div>
               <span className="text-xs font-mono-code font-bold uppercase tracking-widest text-[#00695C]">
@@ -213,35 +203,33 @@ export function HomePageClient({ projects, skills, certificates }: HomePageClien
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {skills.map((skill) => (
-              <div
-                key={skill.id}
-                className="card-minimal p-5 flex flex-col justify-between gap-3 card-minimal-interactive"
-              >
-                <div className="flex flex-col gap-1.5">
-                  <span className="text-[11px] font-mono-code font-bold text-[#00695C] uppercase">
-                    {skill.category}
-                  </span>
-                  <h3 className="text-base font-bold text-[#171717]">{skill.name}</h3>
-                  <p className="text-xs text-[#666666] leading-relaxed">{skill.description}</p>
-                </div>
+            {skills.map((rawSkill) => {
+              const skill = getLocalizedTechItem(rawSkill, locale);
+              return (
+                <motion.div
+                  key={skill.id}
+                  whileHover={shouldReduceMotion ? undefined : { y: -2 }}
+                  className="card-minimal p-5 flex flex-col justify-between gap-3 card-minimal-interactive"
+                >
+                  <div className="flex flex-col gap-1.5">
+                    <span className="text-[11px] font-mono-code font-bold text-[#00695C] uppercase">
+                      {skill.category === "AI & Integration" && locale === "id" ? "Integrasi AI" : skill.category}
+                    </span>
+                    <h3 className="text-base font-bold text-[#171717]">{skill.name}</h3>
+                    <p className="text-xs text-[#666666] leading-relaxed">{skill.description}</p>
+                  </div>
 
-                <div className="pt-2 border-t border-[#E6E6E3] text-[11px] font-mono-code text-[#8A8A8A]">
-                  {t.capabilities.verifiedIn} {skill.projectCount} {t.capabilities.projectsCount}
-                </div>
-              </div>
-            ))}
+                  <div className="pt-2 border-t border-[#E6E6E3] text-[11px] font-mono-code text-[#8A8A8A]">
+                    {t.capabilities.verifiedIn} {skill.projectCount} {t.capabilities.projectsCount}
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
-        </motion.section>
+        </SectionReveal>
 
         {/* 05. SELECTED MILESTONES */}
-        <motion.section
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className="flex flex-col gap-8"
-        >
+        <SectionReveal className="flex flex-col gap-8">
           <div className="flex items-end justify-between border-b border-[#E6E6E3] pb-4">
             <div>
               <span className="text-xs font-mono-code font-bold uppercase tracking-widest text-[#00695C]">
@@ -257,30 +245,34 @@ export function HomePageClient({ projects, skills, certificates }: HomePageClien
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-            {selectedCredentials.map((cert) => (
-              <div
-                key={cert.id}
-                className="card-minimal p-5 flex flex-col justify-between gap-3 card-minimal-interactive"
-              >
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center justify-between text-xs font-mono-code text-[#666666]">
-                    <span className="font-bold text-[#00695C] uppercase">{cert.issuer}</span>
-                    <span>{cert.issueDate}</span>
+            {selectedCredentials.map((rawCert) => {
+              const cert = getLocalizedCertificate(rawCert, locale);
+              return (
+                <motion.div
+                  key={cert.id}
+                  whileHover={shouldReduceMotion ? undefined : { y: -2 }}
+                  className="card-minimal p-5 flex flex-col justify-between gap-3 card-minimal-interactive"
+                >
+                  <div className="flex flex-col gap-2">
+                    <div className="flex items-center justify-between text-xs font-mono-code text-[#666666]">
+                      <span className="font-bold text-[#00695C] uppercase">{cert.issuer}</span>
+                      <span>{cert.issueDate}</span>
+                    </div>
+                    <h3 className="text-sm font-bold text-[#171717]">{cert.title}</h3>
+                    <p className="text-xs text-[#2A2A2A] leading-relaxed line-clamp-2">
+                      {cert.description}
+                    </p>
                   </div>
-                  <h3 className="text-sm font-bold text-[#171717]">{cert.title}</h3>
-                  <p className="text-xs text-[#2A2A2A] leading-relaxed line-clamp-2">
-                    {cert.description}
-                  </p>
-                </div>
-              </div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
-        </motion.section>
+        </SectionReveal>
 
       </div>
 
       {/* AI ASSISTANT UTILITY CARD */}
-      <section className="px-4 sm:px-8 max-w-5xl mx-auto w-full mt-6">
+      <SectionReveal className="px-4 sm:px-8 max-w-5xl mx-auto w-full mt-6">
         <div className="card-minimal p-7 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border-l-4 border-l-[#00695C]">
           <div className="flex flex-col gap-1.5">
             <div className="flex items-center gap-2 text-[#00695C] font-mono-code text-xs font-bold">
@@ -300,10 +292,10 @@ export function HomePageClient({ projects, skills, certificates }: HomePageClien
             {t.aiUtility.cta}
           </button>
         </div>
-      </section>
+      </SectionReveal>
 
       {/* 06. CONTACT SECTION */}
-      <section className="px-4 sm:px-8 max-w-5xl mx-auto w-full">
+      <SectionReveal className="px-4 sm:px-8 max-w-5xl mx-auto w-full">
         <div className="card-minimal p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
           <div className="flex flex-col gap-3">
             <span className="text-xs font-mono-code font-bold uppercase tracking-widest text-[#00695C]">
@@ -327,7 +319,9 @@ export function HomePageClient({ projects, skills, certificates }: HomePageClien
             </Link>
           </div>
         </div>
-      </section>
+      </SectionReveal>
     </div>
   );
 }
+
+

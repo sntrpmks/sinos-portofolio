@@ -1,18 +1,40 @@
 "use client";
 
 import React from "react";
+import { motion, useReducedMotion, Variants } from "framer-motion";
 import { Mail, FileText, Send, ArrowUpRight, MessageSquare } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/SocialIcons";
+import { SectionReveal } from "@/components/ui/SectionReveal";
 import { useViewMode } from "@/components/context/ViewModeContext";
 import { contactInfo, handleQuickEmail } from "@/lib/contact";
 
 export function ContactPageClient() {
   const { locale, t } = useViewMode();
+  const shouldReduceMotion = useReducedMotion();
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.06,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 12 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.3, ease: "easeOut" },
+    },
+  };
 
   return (
     <div className="pt-32 pb-20 px-4 sm:px-8 max-w-4xl mx-auto flex flex-col gap-10">
       {/* Header */}
-      <div className="flex flex-col gap-3 border-b border-[#E6E6E3] pb-6">
+      <SectionReveal className="flex flex-col gap-3 border-b border-[#E6E6E3] pb-6">
         <div className="flex items-center gap-2">
           <Mail className="w-5 h-5 text-[#00695C]" />
           <span className="text-xs font-mono-code text-[#00695C] font-bold uppercase tracking-widest">
@@ -27,12 +49,21 @@ export function ContactPageClient() {
             ? "Punya ide project, peluang kerja sama, atau ingin berdiskusi teknis? Silakan hubungi saya melalui kanal di bawah."
             : "Whether you have an idea, software opportunity, or technical discussion, feel free to reach out directly through any channel below."}
         </p>
-      </div>
+      </SectionReveal>
 
       {/* Direct Communication Channels Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <motion.div
+        variants={shouldReduceMotion ? undefined : containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-40px" }}
+        className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+      >
         {/* Email */}
-        <a
+        <motion.a
+          variants={shouldReduceMotion ? undefined : itemVariants}
+          whileHover={shouldReduceMotion ? undefined : { y: -2 }}
+          whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
           href={contactInfo.mailtoUrl}
           className="card-minimal p-6 flex items-center justify-between group card-minimal-interactive"
         >
@@ -50,10 +81,13 @@ export function ContactPageClient() {
             </div>
           </div>
           <ArrowUpRight className="w-5 h-5 text-[#8A8A8A] group-hover:text-[#00695C] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-        </a>
+        </motion.a>
 
         {/* GitHub */}
-        <a
+        <motion.a
+          variants={shouldReduceMotion ? undefined : itemVariants}
+          whileHover={shouldReduceMotion ? undefined : { y: -2 }}
+          whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
           href={contactInfo.github}
           target="_blank"
           rel="noopener noreferrer"
@@ -73,10 +107,13 @@ export function ContactPageClient() {
             </div>
           </div>
           <ArrowUpRight className="w-5 h-5 text-[#8A8A8A] group-hover:text-[#00695C] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-        </a>
+        </motion.a>
 
         {/* LinkedIn */}
-        <a
+        <motion.a
+          variants={shouldReduceMotion ? undefined : itemVariants}
+          whileHover={shouldReduceMotion ? undefined : { y: -2 }}
+          whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
           href={contactInfo.linkedin}
           target="_blank"
           rel="noopener noreferrer"
@@ -96,10 +133,13 @@ export function ContactPageClient() {
             </div>
           </div>
           <ArrowUpRight className="w-5 h-5 text-[#8A8A8A] group-hover:text-[#00695C] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-        </a>
+        </motion.a>
 
         {/* Resume */}
-        <a
+        <motion.a
+          variants={shouldReduceMotion ? undefined : itemVariants}
+          whileHover={shouldReduceMotion ? undefined : { y: -2 }}
+          whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
           href="/resume.pdf"
           target="_blank"
           className="card-minimal p-6 flex items-center justify-between group card-minimal-interactive"
@@ -116,11 +156,11 @@ export function ContactPageClient() {
             </div>
           </div>
           <ArrowUpRight className="w-5 h-5 text-[#8A8A8A] group-hover:text-[#00695C] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-        </a>
-      </div>
+        </motion.a>
+      </motion.div>
 
       {/* Quick Email Launcher Box */}
-      <div className="card-minimal p-8 flex flex-col gap-4 border-l-4 border-l-[#00695C]">
+      <SectionReveal className="card-minimal p-8 flex flex-col gap-4 border-l-4 border-l-[#00695C]">
         <div className="flex items-center gap-2 text-[#171717]">
           <MessageSquare className="w-5 h-5 text-[#00695C]" />
           <h2 className="text-lg font-bold text-[#171717]">
@@ -149,7 +189,8 @@ export function ContactPageClient() {
             <span>mailto: {contactInfo.email}</span>
           </a>
         </div>
-      </div>
+      </SectionReveal>
     </div>
   );
 }
+

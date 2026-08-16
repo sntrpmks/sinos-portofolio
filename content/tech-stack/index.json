@@ -1,56 +1,104 @@
 [
   {
     "id": "tech-ts",
-    "name": "JavaScript & TypeScript",
     "category": "Frontend",
     "evidenceProjects": ["Web Event SMKN 1 Wonosobo", "RakitinAja", "Sintech Computer", "SIN.OS"],
     "evidenceLevel": "High",
     "projectCount": 4,
-    "description": "Primary language used across web interfaces, REST API integration, Node.js scripts, and modern frontend frameworks."
+    "locales": {
+      "en": {
+        "name": "JavaScript & TypeScript",
+        "description": "Primary language used across web interfaces, REST API integration, Node.js scripts, and modern frontend frameworks."
+      },
+      "id": {
+        "name": "JavaScript & TypeScript",
+        "description": "Bahasa utama yang digunakan untuk membuat tampilan web, integrasi REST API, skrip Node.js, dan framework frontend modern."
+      }
+    }
   },
   {
     "id": "tech-next",
-    "name": "Next.js & React",
     "category": "Frontend",
     "evidenceProjects": ["SIN.OS"],
     "evidenceLevel": "High",
     "projectCount": 1,
-    "description": "Used for building clean, server-rendered web platforms with modern App Router and component architecture."
+    "locales": {
+      "en": {
+        "name": "Next.js & React",
+        "description": "Used for building clean, server-rendered web platforms with modern App Router and component architecture."
+      },
+      "id": {
+        "name": "Next.js & React",
+        "description": "Digunakan untuk membangun aplikasi web yang cepat dengan Next.js App Router dan arsitektur komponen React."
+      }
+    }
   },
   {
     "id": "tech-tailwind",
-    "name": "Tailwind CSS",
     "category": "Frontend",
     "evidenceProjects": ["SIN.OS", "Web Prototypes"],
     "evidenceLevel": "High",
     "projectCount": 2,
-    "description": "Utility-first CSS styling engine used for responsive editorial layouts, typography systems, and minimal UI design."
+    "locales": {
+      "en": {
+        "name": "Tailwind CSS",
+        "description": "Utility-first CSS styling engine used for responsive editorial layouts, typography systems, and minimal UI design."
+      },
+      "id": {
+        "name": "Tailwind CSS",
+        "description": "Engine CSS utility-first untuk menyusun tata letak responsif, sistem tipografi, dan tampilan antarmuka yang bersih."
+      }
+    }
   },
   {
     "id": "tech-php",
-    "name": "PHP & MySQL",
     "category": "Backend",
     "evidenceProjects": ["Web Event SMKN 1 Wonosobo", "RakitinAja", "Sintech Computer"],
     "evidenceLevel": "Proven",
     "projectCount": 3,
-    "description": "Used for backend MVC logic, relational database modeling, soft-delete financial transactions, and POS platforms."
+    "locales": {
+      "en": {
+        "name": "PHP & MySQL",
+        "description": "Used for backend MVC logic, relational database modeling, soft-delete financial transactions, and POS platforms."
+      },
+      "id": {
+        "name": "PHP & MySQL",
+        "description": "Digunakan untuk logika backend MVC, pemodelan database relasional, aplikasi kasir (POS), dan sistem manajemen web."
+      }
+    }
   },
   {
     "id": "tech-java",
-    "name": "Java (Desktop & Mobile)",
     "category": "Backend",
     "evidenceProjects": ["Catatan Android", "CashFlowKu", "RentalDVD"],
     "evidenceLevel": "Proven",
     "projectCount": 3,
-    "description": "Utilized for native Android SDK apps, SQLite database engines, Storage Access Framework, Java Swing desktop GUI, and JasperReports."
+    "locales": {
+      "en": {
+        "name": "Java (Desktop & Mobile)",
+        "description": "Utilized for native Android SDK apps, SQLite database engines, Storage Access Framework, Java Swing desktop GUI, and JasperReports."
+      },
+      "id": {
+        "name": "Java (Desktop & Mobile)",
+        "description": "Digunakan untuk pengembangan aplikasi native Android (SQLite, Storage Access Framework) serta aplikasi desktop Java Swing."
+      }
+    }
   },
   {
     "id": "tech-ai",
-    "name": "AI & API Integration",
     "category": "AI & Integration",
     "evidenceProjects": ["Web Event SMKN 1 Wonosobo", "SIN.OS AI Assistant"],
     "evidenceLevel": "High",
     "projectCount": 2,
-    "description": "Integrating Google Gemini API and Express.js REST endpoints for intelligent query assistance and multimodal processing."
+    "locales": {
+      "en": {
+        "name": "AI & API Integration",
+        "description": "Integrating Google Gemini API and REST endpoints for intelligent query assistance and multimodal processing."
+      },
+      "id": {
+        "name": "Integrasi AI & API",
+        "description": "Mengintegrasikan Google Gemini API dan endpoint REST API untuk fitur kecerdasan buatan dan pemrosesan data."
+      }
+    }
   }
 ]

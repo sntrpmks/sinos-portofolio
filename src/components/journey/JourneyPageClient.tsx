@@ -4,6 +4,7 @@ import React from "react";
 import { Experience, Certificate } from "@/types/content";
 import { TimelineSection } from "@/components/journey/TimelineSection";
 import { CertificationsGrid } from "@/components/certifications/CertificationsGrid";
+import { SectionReveal } from "@/components/ui/SectionReveal";
 import { useViewMode } from "@/components/context/ViewModeContext";
 import { Compass } from "lucide-react";
 
@@ -18,7 +19,7 @@ export function JourneyPageClient({ experiences, certificates }: JourneyPageClie
   return (
     <div className="pt-32 pb-20 px-4 sm:px-8 max-w-5xl mx-auto flex flex-col gap-12">
       {/* Header */}
-      <div className="flex flex-col gap-3 border-b border-[#E6E6E3] pb-6">
+      <SectionReveal className="flex flex-col gap-3 border-b border-[#E6E6E3] pb-6">
         <div className="flex items-center gap-2">
           <Compass className="w-5 h-5 text-[#171717]" />
           <span className="text-xs font-mono-code text-[#00695C] font-bold uppercase tracking-widest">
@@ -31,18 +32,19 @@ export function JourneyPageClient({ experiences, certificates }: JourneyPageClie
         <p className="text-sm text-[#666666] max-w-2xl">
           {t.journeyPage.subtitle}
         </p>
-      </div>
+      </SectionReveal>
 
       {/* Verified Certifications Section */}
       <CertificationsGrid certificates={certificates} />
 
       {/* Experience Timeline Section */}
-      <div className="flex flex-col gap-6">
+      <SectionReveal className="flex flex-col gap-6">
         <h2 className="text-xl font-bold text-[#171717] border-b border-[#E6E6E3] pb-3">
           {t.journeyPage.timelineTitle}
         </h2>
         <TimelineSection experiences={experiences} />
-      </div>
+      </SectionReveal>
     </div>
   );
 }
+
