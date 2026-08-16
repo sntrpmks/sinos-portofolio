@@ -6,9 +6,9 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useViewMode } from "@/components/context/ViewModeContext";
 import { LanguageSwitcher } from "@/components/language/LanguageSwitcher";
-import { contactInfo, handleQuickEmail } from "@/lib/contact";
+import { contactInfo } from "@/lib/contact";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/SocialIcons";
-import { Command, Sparkles, Menu, X, FileText, Search, Send, ArrowUpRight } from "lucide-react";
+import { Command, Sparkles, Menu, X, FileText, Search, ArrowUpRight } from "lucide-react";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -132,16 +132,6 @@ export function Navbar() {
           >
             <Sparkles className="w-3.5 h-3.5" />
             <span>{t.nav.askAi}</span>
-          </button>
-
-          <button
-            onClick={handleQuickEmail}
-            tabIndex={lightboxOpen ? -1 : 0}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#171717] text-white text-xs font-semibold hover:bg-[#00695C] transition-colors shadow-xs"
-            title="Send Quick Email via Gmail / Mail App"
-          >
-            <Send className="w-3.5 h-3.5 text-[#A9F1DF]" />
-            <span>{locale === "id" ? "Email Cepat" : "Quick Email"}</span>
           </button>
 
           <a
@@ -272,27 +262,16 @@ export function Navbar() {
                   </kbd>
                 </button>
 
-                <div className="grid grid-cols-2 gap-2">
+                <div className="flex flex-col gap-2">
                   <button
                     onClick={() => {
                       setAiModalOpen(true);
                       setMobileMenuOpen(false);
                     }}
-                    className="flex items-center justify-center gap-2 px-3 py-3 rounded-2xl bg-[#E6F9F5] text-[#00695C] border border-[#B2F3E5] text-xs font-bold hover:bg-[#A9F1DF] hover:text-[#171717] transition-all"
+                    className="w-full flex items-center justify-center gap-2 px-3 py-3 rounded-2xl bg-[#E6F9F5] text-[#00695C] border border-[#B2F3E5] text-xs font-bold hover:bg-[#A9F1DF] hover:text-[#171717] transition-all"
                   >
                     <Sparkles className="w-4 h-4 shrink-0" />
                     <span>{t.nav.askAi}</span>
-                  </button>
-
-                  <button
-                    onClick={(e) => {
-                      handleQuickEmail(e);
-                      setMobileMenuOpen(false);
-                    }}
-                    className="flex items-center justify-center gap-2 px-3 py-3 rounded-2xl bg-[#171717] text-white text-xs font-bold hover:bg-[#00695C] transition-all shadow-xs"
-                  >
-                    <Send className="w-4 h-4 text-[#A9F1DF] shrink-0" />
-                    <span>{locale === "id" ? "Email Cepat" : "Quick Email"}</span>
                   </button>
                 </div>
               </div>

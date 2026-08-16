@@ -115,6 +115,7 @@ export default function StackBuilderModule({
   // Add component to user stack
   const handleAddComponent = (comp: StackComponent) => {
     if (validationResult?.correct) return;
+    if (userStack.includes(comp.id)) return;
     setUserStack((prev) => [...prev, comp.id]);
     setValidationResult(null);
   };
@@ -225,7 +226,7 @@ export default function StackBuilderModule({
     activeChallenge.locales?.[locale]?.hint || "";
 
   return (
-    <div className="flex flex-col gap-8 w-full max-w-4xl mx-auto">
+    <div className="flex flex-col gap-8 w-full max-w-4xl mx-auto min-h-[60vh] mb-12">
       {/* Header Bar */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#E6E6E3] pb-4">
         <Link
@@ -589,12 +590,13 @@ export default function StackBuilderModule({
                   return (
                     <motion.button
                       key={comp.id}
-                      whileHover={shouldReduceMotion ? undefined : { y: -2 }}
-                      whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
+                      disabled={isAdded || validationResult?.correct}
+                      whileHover={shouldReduceMotion || isAdded ? undefined : { y: -2 }}
+                      whileTap={shouldReduceMotion || isAdded ? undefined : { scale: 0.98 }}
                       onClick={() => handleAddComponent(comp)}
                       className={`card-minimal p-4 flex flex-col justify-between gap-3 text-left transition-all group ${
                         isAdded
-                          ? "bg-[#F7F7F5] border-[#E6E6E3] opacity-75"
+                          ? "bg-[#F7F7F5] border-[#E6E6E3] opacity-60 cursor-not-allowed pointer-events-none"
                           : "hover:border-[#00695C]"
                       }`}
                     >

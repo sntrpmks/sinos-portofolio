@@ -38,7 +38,7 @@ export default async function StackBuilderPage() {
   const { challenges, components } = getStackBuilderData(locale);
 
   return (
-    <div className="pt-28 pb-20 px-4 sm:px-8 max-w-5xl mx-auto w-full">
+    <div className="pt-28 pb-16 px-4 sm:px-8 max-w-5xl mx-auto w-full min-h-[calc(100vh-14rem)] flex flex-col justify-between">
       <StackBuilderModule
         initialChallenges={challenges}
         initialComponents={components}
