@@ -7,6 +7,7 @@ export interface TranslationSchema {
     journey: string;
     contact: string;
     resume: string;
+    lab: string;
     askAi: string;
     searchShortcut: string;
     searchPlaceholder: string;
@@ -90,6 +91,44 @@ export interface TranslationSchema {
     rights: string;
     terminalTrigger: string;
   };
+  lab: {
+    tag: string;
+    titleMain: string;
+    titleAccent: string;
+    subtitle: string;
+    playableTag: string;
+    comingSoonTag: string;
+    playBtn: string;
+    exploreLab: string;
+    stackBuilderTitle: string;
+    stackBuilderDesc: string;
+    debugTitle: string;
+    debugDesc: string;
+    terminalTitle: string;
+    terminalDesc: string;
+    game: {
+      backToLab: string;
+      challengeTag: string;
+      availableComponents: string;
+      yourArchitecture: string;
+      checkArchitecture: string;
+      reset: string;
+      timer: string;
+      score: string;
+      systemReady: string;
+      systemFailed: string;
+      nextChallenge: string;
+      playAgain: string;
+      exploreProjects: string;
+      highScore: string;
+      emptyArchitecture: string;
+      selectPrompt: string;
+      correctFeedback: string;
+      missingFeedback: string;
+      orderFeedback: string;
+      unnecessaryFeedback: string;
+    };
+  };
 }
 
 export const translations: Record<Locale, TranslationSchema> = {
@@ -100,6 +139,7 @@ export const translations: Record<Locale, TranslationSchema> = {
       journey: "Journey",
       contact: "Contact",
       resume: "Resume",
+      lab: "Lab",
       askAi: "Ask SIN.OS",
       searchShortcut: "⌘K",
       searchPlaceholder: "Search projects, skills, certificates, or pages...",
@@ -192,6 +232,44 @@ export const translations: Record<Locale, TranslationSchema> = {
       rights: "All rights reserved.",
       terminalTrigger: "terminal",
     },
+    lab: {
+      tag: "EXPERIMENTAL LAB",
+      titleMain: "SIN.OS ",
+      titleAccent: "Lab.",
+      subtitle: "Small interactive experiments and architecture puzzles built around how I think about systems.",
+      playableTag: "PLAYABLE MVP",
+      comingSoonTag: "COMING SOON",
+      playBtn: "Launch Experiment →",
+      exploreLab: "Explore SIN.OS Lab",
+      stackBuilderTitle: "Stack Builder",
+      stackBuilderDesc: "An architecture-building puzzle. Select and order components to construct valid system topologies.",
+      debugTitle: "Debug SIN.OS",
+      debugDesc: "Diagnose silent bugs, race conditions, and memory bottlenecks under real system constraints.",
+      terminalTitle: "Terminal Mission",
+      terminalDesc: "Command-line objective challenges and script automation tasks.",
+      game: {
+        backToLab: "← Back to Lab",
+        challengeTag: "CHALLENGE",
+        availableComponents: "AVAILABLE COMPONENTS",
+        yourArchitecture: "YOUR ARCHITECTURE TOPOLOGY",
+        checkArchitecture: "Validate Architecture →",
+        reset: "Reset Board",
+        timer: "Time",
+        score: "Score",
+        systemReady: "System ready.",
+        systemFailed: "Architecture check failed.",
+        nextChallenge: "Next Challenge →",
+        playAgain: "Play Again",
+        exploreProjects: "Want to see how I build real projects? Explore Projects →",
+        highScore: "Best Score",
+        emptyArchitecture: "Tap components below to place them into your system topology.",
+        selectPrompt: "Tap or click components to add them in order.",
+        correctFeedback: "Nice. The architecture checks out perfectly.",
+        missingFeedback: "Some key architectural layer is missing from the pipeline.",
+        orderFeedback: "Components are placed out of logical flow order.",
+        unnecessaryFeedback: "Contains unnecessary components for this specific challenge.",
+      },
+    },
   },
 
   id: {
@@ -201,6 +279,7 @@ export const translations: Record<Locale, TranslationSchema> = {
       journey: "Perjalanan",
       contact: "Kontak",
       resume: "Resume",
+      lab: "Lab",
       askAi: "Tanya SIN.OS",
       searchShortcut: "⌘K",
       searchPlaceholder: "Cari project, keahlian, sertifikat, atau halaman...",
@@ -292,6 +371,44 @@ export const translations: Record<Locale, TranslationSchema> = {
     footer: {
       rights: "Hak cipta dilindungi.",
       terminalTrigger: "terminal",
+    },
+    lab: {
+      tag: "LAB EKSPERIMEN",
+      titleMain: "SIN.OS ",
+      titleAccent: "Lab.",
+      subtitle: "Eksperimen interaktif dan teka-teki arsitektur yang dirancang berdasarkan logika pemrograman sistem.",
+      playableTag: "SIAP DIMAINKAN",
+      comingSoonTag: "SEGERA HADIR",
+      playBtn: "Mulai Eksperimen →",
+      exploreLab: "Jelajahi SIN.OS Lab",
+      stackBuilderTitle: "Stack Builder",
+      stackBuilderDesc: "Teka-teki penyusunan arsitektur web. Pilih dan urutkan komponen untuk membangun alur sistem yang valid.",
+      debugTitle: "Debug SIN.OS",
+      debugDesc: "Diagnosa bug tersembunyi, kondisi race, dan kendala memori dalam batasan sistem nyata.",
+      terminalTitle: "Terminal Mission",
+      terminalDesc: "Tantangan berbasis perintah command-line dan otomatisasi script.",
+      game: {
+        backToLab: "← Kembali ke Lab",
+        challengeTag: "TANTANGAN",
+        availableComponents: "KOMPONEN TERSEDIA",
+        yourArchitecture: "TOPOLOGI ARSITEKTUR ANDA",
+        checkArchitecture: "Uji Arsitektur →",
+        reset: "Reset Board",
+        timer: "Waktu",
+        score: "Skor",
+        systemReady: "Sistem siap.",
+        systemFailed: "Uji arsitektur belum sesuai.",
+        nextChallenge: "Tantangan Berikutnya →",
+        playAgain: "Main Lagi",
+        exploreProjects: "Ingin melihat bagaimana saya membangun project nyata? Lihat Project →",
+        highScore: "Skor Tertinggi",
+        emptyArchitecture: "Tekan komponen di bawah untuk memasukkannya ke dalam alur topologi sistem.",
+        selectPrompt: "Tekan atau klik komponen untuk menyusun urutan alur sistem.",
+        correctFeedback: "Nice. Arsitekturnya sudah benar dan berfungsi presisi.",
+        missingFeedback: "Ada lapisan komponen penting yang belum dimasukkan ke alur.",
+        orderFeedback: "Urutan posisi komponen belum sesuai alur logika yang tepat.",
+        unnecessaryFeedback: "Terdapat komponen berlebih yang tidak diperlukan untuk tantangan ini.",
+      },
     },
   },
 };

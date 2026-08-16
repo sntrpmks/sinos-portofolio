@@ -1,0 +1,226 @@
+{
+  "components": [
+    {
+      "id": "comp-frontend",
+      "type": "frontend",
+      "locales": {
+        "en": {
+          "label": "Web Frontend",
+          "description": "User interface layer (React / Next.js) rendered in the client browser."
+        },
+        "id": {
+          "label": "Web Frontend",
+          "description": "Lapisan antarmuka pengguna (React / Next.js) yang dirender di browser client."
+        }
+      }
+    },
+    {
+      "id": "comp-api",
+      "type": "api",
+      "locales": {
+        "en": {
+          "label": "API Gateway / Route",
+          "description": "HTTP entrypoint routing requests and validating contract parameters."
+        },
+        "id": {
+          "label": "API Gateway / Route",
+          "description": "Pintu masuk HTTP untuk mengarahkan request dan memvalidasi parameter."
+        }
+      }
+    },
+    {
+      "id": "comp-auth",
+      "type": "auth",
+      "locales": {
+        "en": {
+          "label": "Auth Service",
+          "description": "Authentication middleware verifying JWT tokens and user session permissions."
+        },
+        "id": {
+          "label": "Auth Service",
+          "description": "Middleware autentikasi yang memverifikasi token JWT dan hak akses sesi pengguna."
+        }
+      }
+    },
+    {
+      "id": "comp-backend",
+      "type": "backend",
+      "locales": {
+        "en": {
+          "label": "Application Backend",
+          "description": "Core business logic service processing calculations and data validation."
+        },
+        "id": {
+          "label": "Application Backend",
+          "description": "Layanan logika bisnis utama yang memproses kalkulasi dan validasi data."
+        }
+      }
+    },
+    {
+      "id": "comp-cache",
+      "type": "cache",
+      "locales": {
+        "en": {
+          "label": "In-Memory Cache",
+          "description": "Ultra-fast key-value store reducing repeated database queries under high traffic."
+        },
+        "id": {
+          "label": "In-Memory Cache",
+          "description": "Penyimpanan key-value cepat untuk mengurangi kueri database berulang saat trafik tinggi."
+        }
+      }
+    },
+    {
+      "id": "comp-queue",
+      "type": "queue",
+      "locales": {
+        "en": {
+          "label": "Job Queue",
+          "description": "Asynchronous message queue offloading long-running tasks from the main thread."
+        },
+        "id": {
+          "label": "Job Queue",
+          "description": "Antrean pesan asinkron untuk memindahkan tugas berat dari thread utama."
+        }
+      }
+    },
+    {
+      "id": "comp-database",
+      "type": "database",
+      "locales": {
+        "en": {
+          "label": "Relational Database",
+          "description": "Persistent SQL storage saving structured records and transactional data."
+        },
+        "id": {
+          "label": "Relational Database",
+          "description": "Penyimpanan SQL persisten untuk menyimpan data terstruktur dan transaksi."
+        }
+      }
+    }
+  ],
+  "challenges": [
+    {
+      "id": "stack-basic-001",
+      "order": 1,
+      "maxTimeSeconds": 45,
+      "availableComponents": [
+        "comp-frontend",
+        "comp-api",
+        "comp-backend",
+        "comp-database"
+      ],
+      "expectedArchitecture": [
+        "comp-frontend",
+        "comp-api",
+        "comp-backend",
+        "comp-database"
+      ],
+      "locales": {
+        "en": {
+          "title": "Build the Basic Web Stack",
+          "description": "Construct a standard web system topology that receives user input in the browser, routes the request through an API endpoint, executes business logic, and saves the record into persistent storage.",
+          "hint": "Flow should move from client interface -> API route -> business logic -> database storage."
+        },
+        "id": {
+          "title": "Bangun Web Stack Dasar",
+          "description": "Susun topologi sistem web standar yang menerima input di browser, mengarahkan request lewat API, memproses logika bisnis, dan menyimpan data ke penyimpanan persisten.",
+          "hint": "Alur bergerak dari antarmuka client -> rute API -> logika bisnis -> penyimpanan database."
+        }
+      }
+    },
+    {
+      "id": "stack-auth-002",
+      "order": 2,
+      "maxTimeSeconds": 50,
+      "availableComponents": [
+        "comp-frontend",
+        "comp-api",
+        "comp-auth",
+        "comp-backend",
+        "comp-database"
+      ],
+      "expectedArchitecture": [
+        "comp-frontend",
+        "comp-auth",
+        "comp-api",
+        "comp-backend",
+        "comp-database"
+      ],
+      "locales": {
+        "en": {
+          "title": "Authenticated Application System",
+          "description": "Build a secure architecture where incoming client requests must verify user authentication and session permissions before accessing private API endpoints and business backend services.",
+          "hint": "Authentication verification must occur before API processing reaches backend database services."
+        },
+        "id": {
+          "title": "Sistem Aplikasi Terautentikasi",
+          "description": "Susun arsitektur aman di mana request client harus memverifikasi autentikasi pengguna dan hak akses sesi sebelum mengakses rute API privat dan layanan backend.",
+          "hint": "Verifikasi autentikasi harus terjadi sebelum pemrosesan API mencapai database backend."
+        }
+      }
+    },
+    {
+      "id": "stack-perf-003",
+      "order": 3,
+      "maxTimeSeconds": 55,
+      "availableComponents": [
+        "comp-frontend",
+        "comp-api",
+        "comp-backend",
+        "comp-cache",
+        "comp-database"
+      ],
+      "expectedArchitecture": [
+        "comp-frontend",
+        "comp-api",
+        "comp-backend",
+        "comp-cache",
+        "comp-database"
+      ],
+      "locales": {
+        "en": {
+          "title": "High-Performance Caching Layer",
+          "description": "Design an optimized architecture for high-traffic web applications that checks fast in-memory cache before hitting the primary relational database.",
+          "hint": "Backend logic checks fast memory cache ahead of heavy relational database queries."
+        },
+        "id": {
+          "title": "Lapisan Cache Performa Tinggi",
+          "description": "Rancang arsitektur optimal untuk aplikasi web ber-trafik tinggi yang mengecek memori cache cepat sebelum mengakses database relasional utama.",
+          "hint": "Logika backend mengecek memori cache cepat sebelum kueri database relasional yang berat."
+        }
+      }
+    },
+    {
+      "id": "stack-async-004",
+      "order": 4,
+      "maxTimeSeconds": 60,
+      "availableComponents": [
+        "comp-frontend",
+        "comp-api",
+        "comp-backend",
+        "comp-queue",
+        "comp-database"
+      ],
+      "expectedArchitecture": [
+        "comp-frontend",
+        "comp-api",
+        "comp-backend",
+        "comp-queue",
+        "comp-database"
+      ],
+      "locales": {
+        "en": {
+          "title": "Asynchronous Background Processing",
+          "description": "Build an architecture that offloads heavy background processing (such as email dispatch or report generation) into a job queue to keep HTTP response times fast.",
+          "hint": "Heavy long-running jobs are dispatched to a queue before persistent storage processing."
+        },
+        "id": {
+          "title": "Pemrosesan Latar Belakang Asinkron",
+          "description": "Susun arsitektur yang memindahkan proses berat (seperti pengiriman email atau pembentukan laporan) ke antrean pesan agar waktu respon HTTP tetap cepat.",
+          "hint": "Tugas berat asinkron dikirim ke antrean queue sebelum proses penyimpanan persisten."
+        }
+      }
+    }
+  ]
+}

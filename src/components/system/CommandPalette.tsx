@@ -10,6 +10,7 @@ import {
   FolderGit2,
   User,
   Compass,
+  FlaskConical,
   Terminal,
   Mail,
   FileText,
@@ -68,6 +69,13 @@ export function CommandPalette() {
       category: navCategory,
       icon: <Compass className="w-4 h-4 text-[#171717]" />,
       action: () => router.push("/journey"),
+    },
+    {
+      id: "lab",
+      title: locale === "id" ? "SIN.OS Lab & Eksperimen Stack Builder" : "SIN.OS Lab & Stack Builder Experiments",
+      category: navCategory,
+      icon: <FlaskConical className="w-4 h-4 text-[#00695C]" />,
+      action: () => router.push("/lab"),
     },
     {
       id: "contact",
