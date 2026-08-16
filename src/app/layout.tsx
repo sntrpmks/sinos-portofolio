@@ -22,36 +22,70 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sinatria Pamungkas — Full Stack Developer | AI Enthusiast",
+  metadataBase: new URL("https://sinos.dev"),
+  title: {
+    default: "Ahmad Sinatria Pamungkas — Full Stack Developer | Portofolio Web & System OS",
+    template: "%s | Ahmad Sinatria Pamungkas",
+  },
   description:
-    "Official digital portfolio system of Sinatria Pamungkas — Full Stack Developer | AI Enthusiast. I build web applications, explore AI/API integrations, and turn ideas into working digital experiences.",
+    "Portofolio web resmi Ahmad Sinatria Pamungkas — Full Stack Developer & Mahasiswa Manajemen Informatika UNSIQ Wonosobo. Menampilkan karya aplikasi web full-stack, aplikasi Android native Java/SQLite, integrasi AI Gemini, dan studi kasus sistem terverifikasi.",
   keywords: [
+    "portofolio web",
+    "portfolio web",
+    "portofolio developer indonesia",
+    "Ahmad Sinatria Pamungkas",
     "Sinatria Pamungkas",
-    "Full Stack Developer",
-    "AI Enthusiast",
+    "Full Stack Developer Indonesia",
+    "Web Developer Wonosobo",
+    "Manajemen Informatika UNSIQ",
+    "Portofolio Programmer Indonesia",
     "SIN.OS",
-    "Web Development",
-    "PHP",
-    "Java",
-    "Next.js",
-    "Indonesia",
+    "sinos portfolio",
+    "Web Event SMKN 1 Wonosobo",
+    "CashFlowku Android Java",
+    "Rakitin Aja PC Builder",
+    "Next.js Developer Indonesia",
+    "PHP MySQL Developer",
+    "Java Android Native Developer",
+    "Integrasi AI Gemini API",
+    "SMK Negeri 1 Wonosobo RPL",
   ],
-  authors: [{ name: "Sinatria Pamungkas" }],
+  authors: [{ name: "Ahmad Sinatria Pamungkas", url: "https://github.com/sntrpmks" }],
+  creator: "Ahmad Sinatria Pamungkas",
+  publisher: "Ahmad Sinatria Pamungkas",
+  alternates: {
+    canonical: "/",
+  },
   verification: {
     google: "google764722eabc05b935",
   },
   openGraph: {
-    title: "Sinatria Pamungkas — Full Stack Developer | AI Enthusiast",
-    description: "I build web applications, explore AI/API integrations, and turn ideas into working digital experiences.",
+    title: "Ahmad Sinatria Pamungkas — Full Stack Developer | Portofolio Web",
+    description:
+      "Portofolio web resmi Ahmad Sinatria Pamungkas. Menampilkan studi kasus pengembangan aplikasi web full-stack, aplikasi Android, dan integrasi AI.",
     url: "https://sinos.dev",
-    siteName: "SIN.OS",
-    locale: "en_US",
+    siteName: "SIN.OS — Ahmad Sinatria Pamungkas Portfolio",
+    locale: "id_ID",
+    alternateLocale: ["en_US"],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sinatria Pamungkas — Full Stack Developer | AI Enthusiast",
-    description: "Explore the digital portfolio system of Sinatria Pamungkas.",
+    title: "Ahmad Sinatria Pamungkas — Full Stack Developer | Portofolio Web",
+    description:
+      "Portofolio web resmi Ahmad Sinatria Pamungkas. Menampilkan studi kasus pengembangan aplikasi web full-stack, aplikasi Android, dan integrasi AI.",
+    creator: "@sntrpmks",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -63,18 +97,39 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Sinatria Pamungkas",
-    "jobTitle": "Full Stack Developer",
-    "url": "https://sinos.dev",
-    "sameAs": [
+    name: "Ahmad Sinatria Pamungkas",
+    alternateName: ["Sinatria Pamungkas", "sntrpmks", "SIN.OS"],
+    jobTitle: "Full Stack Developer",
+    worksFor: {
+      "@type": "EducationalOrganization",
+      name: "Universitas Sains Al-Qur'an (UNSIQ)",
+    },
+    alumniOf: [
+      {
+        "@type": "EducationalOrganization",
+        name: "SMK Negeri 1 Wonosobo",
+      },
+    ],
+    url: "https://sinos.dev",
+    sameAs: [
       "https://github.com/sntrpmks",
       "https://www.linkedin.com/in/sntrpmks",
+    ],
+    knowsAbout: [
+      "Portofolio Web",
+      "Full Stack Development",
+      "PHP & MySQL",
+      "Java Native Android",
+      "Next.js & React",
+      "TypeScript",
+      "Artificial Intelligence Integration",
+      "Software Architecture",
     ],
   };
 
   return (
     <html
-      lang="en"
+      lang="id"
       className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
