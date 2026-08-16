@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useViewMode } from "@/components/context/ViewModeContext";
-import { contactInfo, handleQuickEmail } from "@/lib/contact";
 import {
   Search,
   FolderGit2,
@@ -17,7 +16,6 @@ import {
   Sparkles,
   ArrowRight,
   X,
-  Send,
 } from "lucide-react";
 
 interface CommandItem {
@@ -35,6 +33,7 @@ export function CommandPalette() {
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const selectedItemRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     if (commandPaletteOpen) {
@@ -44,6 +43,16 @@ export function CommandPalette() {
       setSelectedIndex(0);
     }
   }, [commandPaletteOpen]);
+
+  // Auto-scroll selected item into view when navigating with arrow keys
+  useEffect(() => {
+    if (selectedItemRef.current) {
+      selectedItemRef.current.scrollIntoView({
+        block: "nearest",
+        behavior: "smooth",
+      });
+    }
+  }, [selectedIndex]);
 
   const navCategory = locale === "id" ? "Navigasi" : "Navigation";
   const actionCategory = locale === "id" ? "Aksi" : "Action";
@@ -83,13 +92,6 @@ export function CommandPalette() {
       category: navCategory,
       icon: <Mail className="w-4 h-4 text-[#171717]" />,
       action: () => router.push("/contact"),
-    },
-    {
-      id: "quick-email",
-      title: locale === "id" ? "Email Cepat (Buka Gmail / Mail)" : "Quick Email (Launch Gmail / Mail)",
-      category: actionCategory,
-      icon: <Send className="w-4 h-4 text-[#00695C]" />,
-      action: () => handleQuickEmail(),
     },
     {
       id: "resume",
@@ -139,7 +141,7 @@ export function CommandPalette() {
   return (
     <AnimatePresence>
       {commandPaletteOpen && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 px-4 bg-[#171717]/40 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4 bg-[#171717]/40 backdrop-blur-sm">
           <div
             className="absolute inset-0"
             onClick={() => setCommandPaletteOpen(false)}
@@ -150,10 +152,10 @@ export function CommandPalette() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.97, y: -8 }}
             transition={{ duration: 0.15 }}
-            className="relative w-full max-w-xl glass-modal rounded-2xl border border-[#E6E6E3] shadow-2xl overflow-hidden z-10"
+            className="relative w-full max-w-xl glass-modal rounded-2xl border border-[#E6E6E3] shadow-2xl overflow-hidden z-10 max-h-[calc(100dvh-4rem)] flex flex-col"
           >
             {/* Input Bar */}
-            <div className="flex items-center px-4 py-3.5 border-b border-[#E6E6E3] bg-white">
+            <div className="flex items-center px-4 py-3.5 border-b border-[#E6E6E3] bg-white shrink-0">
               <Search className="w-4 h-4 text-[#8A8A8A] mr-3" />
               <input
                 ref={inputRef}
@@ -176,7 +178,12 @@ export function CommandPalette() {
             </div>
 
             {/* Results List */}
-            <div className="max-h-[320px] overflow-y-auto p-2 bg-white">
+            <div
+              data-lenis-prevent
+              data-lenis-prevent-wheel
+              data-lenis-prevent-touch
+              className="max-h-[min(55vh,380px)] overflow-y-auto p-2 bg-white overscroll-contain flex-1"
+            >
               {filteredCommands.length === 0 ? (
                 <div className="py-8 text-center text-xs font-mono-code text-[#8A8A8A]">
                   {locale === "id" ? "Tidak ada item yang cocok." : "No matching items found."}
@@ -187,6 +194,7 @@ export function CommandPalette() {
                   return (
                     <button
                       key={cmd.id}
+                      ref={isSelected ? selectedItemRef : null}
                       onClick={() => {
                         cmd.action();
                         setCommandPaletteOpen(false);
@@ -224,7 +232,7 @@ export function CommandPalette() {
             </div>
 
             {/* Footer */}
-            <div className="px-4 py-2 border-t border-[#E6E6E3] bg-[#F7F7F5] flex items-center justify-between text-[11px] font-mono-code text-[#8A8A8A]">
+            <div className="px-4 py-2 border-t border-[#E6E6E3] bg-[#F7F7F5] flex items-center justify-between text-[11px] font-mono-code text-[#8A8A8A] shrink-0">
               <div className="flex items-center gap-3">
                 <span>↑↓ {locale === "id" ? "Navigasi" : "Navigate"}</span>
                 <span>↵ {locale === "id" ? "Pilih" : "Select"}</span>

@@ -416,7 +416,13 @@ export function AiRecruiterModal() {
             </div>
 
             {/* Chat Body */}
-            <div ref={scrollRef} className="flex-1 p-4 sm:p-5 overflow-y-auto space-y-4 font-sans text-xs sm:text-sm bg-[#F7F7F5]">
+            <div
+              ref={scrollRef}
+              data-lenis-prevent
+              data-lenis-prevent-wheel
+              data-lenis-prevent-touch
+              className="flex-1 p-4 sm:p-5 overflow-y-auto overscroll-contain space-y-4 font-sans text-xs sm:text-sm bg-[#F7F7F5]"
+            >
               {messages.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-full text-center p-6 gap-3 text-[#666666]">
                   <div className="p-3.5 rounded-full bg-[#E6F9F5] text-[#00695C] border border-[#B2F3E5]">

@@ -305,7 +305,12 @@ export function TerminalModal() {
           </div>
 
           {/* Terminal Output Body */}
-          <div className="flex-1 p-4 overflow-y-auto flex flex-col gap-2 text-xs sm:text-sm selection:bg-[#A9F1DF] selection:text-[#171717]">
+          <div
+            data-lenis-prevent
+            data-lenis-prevent-wheel
+            data-lenis-prevent-touch
+            className="flex-1 p-4 overflow-y-auto overscroll-contain flex flex-col gap-2 text-xs sm:text-sm selection:bg-[#A9F1DF] selection:text-[#171717]"
+          >
             {lines.map((line) => (
               <div key={line.id} className="flex flex-col gap-1">
                 {Array.isArray(line.text) ? (
