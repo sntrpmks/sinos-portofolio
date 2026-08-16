@@ -391,7 +391,7 @@ export const translations: Record<Locale, TranslationSchema> = {
       terminalTitle: "Terminal Mission",
       terminalDesc: "Ada yang offline. Tantangan berbasis perintah command-line dan script.",
       game: {
-        backToLab: "← Kembali ke Lab",
+        backToLab: "Kembali ke Lab",
         tagline: "Pilih yang dibutuhkan. Bikin sesuatu yang keren.",
         introTitle: "Yuk, bikin aplikasi kecil.",
         introDesc: "Pilih hal-hal yang menurutmu dibutuhkan. Cepat & gampang.",

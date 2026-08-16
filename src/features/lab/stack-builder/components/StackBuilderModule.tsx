@@ -7,7 +7,6 @@ import { useViewMode } from "@/components/context/ViewModeContext";
 import { AppChallenge, AppValidationResult } from "@/types/lab";
 import { checkAppAnswer } from "@/features/lab/stack-builder/domain/architecture-validator";
 import {
-  ArrowLeft,
   RotateCcw,
   CheckCircle2,
   Trophy,
@@ -174,7 +173,6 @@ export default function StackBuilderModule({
           href="/lab"
           className="flex items-center gap-2 text-xs font-semibold text-[#666666] hover:text-[#171717] transition-colors"
         >
-          <ArrowLeft className="w-4 h-4" />
           <span>{t.lab.game.backToLab}</span>
         </Link>
 
