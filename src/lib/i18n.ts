@@ -114,6 +114,9 @@ export interface TranslationSchema {
       letsGo: string;
       checkBtn: string;
       nextBtn: string;
+      skipBtn: string;
+      emptyPrompt: string;
+      skippedFeedback: string;
       playAgain: string;
       exploreProjects: string;
       highScore: string;
@@ -251,6 +254,9 @@ export const translations: Record<Locale, TranslationSchema> = {
         letsGo: "Let's go",
         checkBtn: "Check it",
         nextBtn: "Next",
+        skipBtn: "Skip",
+        emptyPrompt: "Pick something first.",
+        skippedFeedback: "Skipped — let's move on.",
         playAgain: "Play again",
         exploreProjects: "Want to see the real stuff? Explore Projects",
         highScore: "Best Score",
@@ -398,6 +404,9 @@ export const translations: Record<Locale, TranslationSchema> = {
         letsGo: "Gas",
         checkBtn: "Cek",
         nextBtn: "Lanjut",
+        skipBtn: "Lewati",
+        emptyPrompt: "Pilih dulu.",
+        skippedFeedback: "Dilewati. Lanjut ke berikutnya.",
         playAgain: "Main lagi",
         exploreProjects: "Mau lihat project aslinya? Lihat Project",
         highScore: "Skor Terbaik",

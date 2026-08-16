@@ -1,14 +1,16 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useViewMode } from "@/components/context/ViewModeContext";
-import { AppChallenge, AppValidationResult } from "@/types/lab";
+import { AppChallenge } from "@/types/lab";
 import { checkAppAnswer } from "@/features/lab/stack-builder/domain/architecture-validator";
 import {
   RotateCcw,
   CheckCircle2,
+  AlertCircle,
+  MinusCircle,
   Trophy,
   Sparkles,
   Key,
@@ -25,6 +27,15 @@ import {
   Zap,
 } from "lucide-react";
 
+export type ChallengeStatus = "unanswered" | "selected" | "correct" | "incorrect" | "skipped";
+
+export interface LevelState {
+  selectedOptionIds: string[];
+  status: ChallengeStatus;
+  feedbackMessage: string;
+  isChecked: boolean;
+}
+
 interface StackBuilderModuleProps {
   initialChallenges: AppChallenge[];
 }
@@ -38,15 +49,30 @@ export default function StackBuilderModule({
   // Game flow state: "intro" | "playing" | "result"
   const [gameState, setGameState] = useState<"intro" | "playing" | "result">("intro");
   const [currentLevelIndex, setCurrentLevelIndex] = useState(0);
-  const [selectedOptionIds, setSelectedOptionIds] = useState<string[]>([]);
-  const [validationResult, setValidationResult] = useState<AppValidationResult | null>(null);
-  const [feedbackMessage, setFeedbackMessage] = useState<string>("");
 
-  // Score tracking
-  const [totalScore, setTotalScore] = useState(0);
+  // Per-level state dictionary keyed strictly by challenge.id
+  const [levelStates, setLevelStates] = useState<Record<string, LevelState>>(() => {
+    const initial: Record<string, LevelState> = {};
+    initialChallenges.forEach((ch) => {
+      initial[ch.id] = {
+        selectedOptionIds: [],
+        status: "unanswered",
+        feedbackMessage: "",
+        isChecked: false,
+      };
+    });
+    return initial;
+  });
+
   const [highScore, setHighScore] = useState<number>(0);
 
   const activeChallenge = initialChallenges[currentLevelIndex] || initialChallenges[0];
+  const activeState: LevelState = levelStates[activeChallenge.id] || {
+    selectedOptionIds: [],
+    status: "unanswered",
+    feedbackMessage: "",
+    isChecked: false,
+  };
 
   // Read high score from localStorage safely
   useEffect(() => {
@@ -91,58 +117,110 @@ export default function StackBuilderModule({
     }
   };
 
-  // Toggle option selection
+  // Toggle option selection for active challenge
   const handleToggleOption = (optionId: string) => {
-    if (validationResult?.correct) return;
+    if (activeState.isChecked && activeState.status === "correct") return;
+
+    const currentSelected = activeState.selectedOptionIds;
+    let newSelected: string[] = [];
 
     if (activeChallenge.type === "single") {
-      setSelectedOptionIds([optionId]);
+      newSelected = [optionId];
     } else {
-      setSelectedOptionIds((prev) =>
-        prev.includes(optionId)
-          ? prev.filter((id) => id !== optionId)
-          : [...prev, optionId]
-      );
+      newSelected = currentSelected.includes(optionId)
+        ? currentSelected.filter((id) => id !== optionId)
+        : [...currentSelected, optionId];
     }
-    setValidationResult(null);
+
+    setLevelStates((prev) => ({
+      ...prev,
+      [activeChallenge.id]: {
+        selectedOptionIds: newSelected,
+        status: newSelected.length > 0 ? "selected" : "unanswered",
+        feedbackMessage: "",
+        isChecked: false,
+      },
+    }));
   };
 
-  // Check answer
+  // Check answer for active challenge
   const handleCheck = () => {
-    if (!activeChallenge || selectedOptionIds.length === 0) return;
-
-    const result = checkAppAnswer(activeChallenge, selectedOptionIds);
-    setValidationResult(result);
-
-    if (result.correct) {
-      setTotalScore((prev) => prev + 1);
-
-      // Pick cheerful correct phrase
-      const phrases = t.lab.game.correctFeedback;
-      const randomIdx = Math.floor(Math.random() * phrases.length);
-      setFeedbackMessage(phrases[randomIdx]);
-    } else {
-      // Pick friendly non-shaming phrase
-      const phrases = t.lab.game.incorrectFeedback;
-      const randomIdx = Math.floor(Math.random() * phrases.length);
-      setFeedbackMessage(phrases[randomIdx]);
+    if (activeState.selectedOptionIds.length === 0) {
+      setLevelStates((prev) => ({
+        ...prev,
+        [activeChallenge.id]: {
+          ...prev[activeChallenge.id],
+          feedbackMessage: t.lab.game.emptyPrompt,
+        },
+      }));
+      return;
     }
+
+    const result = checkAppAnswer(activeChallenge, activeState.selectedOptionIds);
+
+    let randomMsg = "";
+    if (result.correct) {
+      const phrases = t.lab.game.correctFeedback;
+      randomMsg = phrases[Math.floor(Math.random() * phrases.length)];
+    } else {
+      const phrases = t.lab.game.incorrectFeedback;
+      randomMsg = phrases[Math.floor(Math.random() * phrases.length)];
+    }
+
+    setLevelStates((prev) => ({
+      ...prev,
+      [activeChallenge.id]: {
+        ...prev[activeChallenge.id],
+        status: result.correct ? "correct" : "incorrect",
+        feedbackMessage: randomMsg,
+        isChecked: true,
+      },
+    }));
+  };
+
+  // Skip active challenge
+  const handleSkip = () => {
+    setLevelStates((prev) => ({
+      ...prev,
+      [activeChallenge.id]: {
+        selectedOptionIds: [],
+        status: "skipped",
+        feedbackMessage: t.lab.game.skippedFeedback,
+        isChecked: true,
+      },
+    }));
   };
 
   // Move to next level
   const handleNextLevel = () => {
+    // If not checked yet, treat current level as skipped
+    if (!activeState.isChecked) {
+      setLevelStates((prev) => ({
+        ...prev,
+        [activeChallenge.id]: {
+          selectedOptionIds: [],
+          status: "skipped",
+          feedbackMessage: t.lab.game.skippedFeedback,
+          isChecked: true,
+        },
+      }));
+    }
+
     if (currentLevelIndex < initialChallenges.length - 1) {
       setCurrentLevelIndex((prev) => prev + 1);
-      setSelectedOptionIds([]);
-      setValidationResult(null);
-      setFeedbackMessage("");
     } else {
-      // Finish game
-      const finalScore = totalScore + (validationResult?.correct ? 1 : 0);
+      // Calculate final score derived safely from levelStates
+      const finalScore = Object.values(levelStates).filter(
+        (s) => s.status === "correct"
+      ).length;
+
       if (finalScore > highScore) {
         setHighScore(finalScore);
         try {
-          localStorage.setItem("sinos_app_builder_highscore", finalScore.toString());
+          localStorage.setItem(
+            "sinos_app_builder_highscore",
+            finalScore.toString()
+          );
         } catch {
           // Ignore
         }
@@ -151,17 +229,26 @@ export default function StackBuilderModule({
     }
   };
 
-  // Restart game
+  // Restart game cleanly
   const handleRestart = () => {
+    const resetStates: Record<string, LevelState> = {};
+    initialChallenges.forEach((ch) => {
+      resetStates[ch.id] = {
+        selectedOptionIds: [],
+        status: "unanswered",
+        feedbackMessage: "",
+        isChecked: false,
+      };
+    });
+    setLevelStates(resetStates);
     setCurrentLevelIndex(0);
-    setSelectedOptionIds([]);
-    setValidationResult(null);
-    setFeedbackMessage("");
-    setTotalScore(0);
     setGameState("playing");
   };
 
-  const activeTitle = activeChallenge.locales?.[locale]?.title || activeChallenge.id;
+  const calculatedScore = Object.values(levelStates).filter(
+    (s) => s.status === "correct"
+  ).length;
+
   const activePrompt = activeChallenge.locales?.[locale]?.prompt || "";
   const activeIntro = activeChallenge.locales?.[locale]?.intro || "";
 
@@ -234,28 +321,39 @@ export default function StackBuilderModule({
             <div className="flex items-center gap-2 overflow-x-auto pb-1">
               {initialChallenges.map((ch, idx) => {
                 const isActive = idx === currentLevelIndex;
-                const isPassed = idx < currentLevelIndex;
+                const chState = levelStates[ch.id];
+                const chStatus = chState?.status || "unanswered";
+
+                let tabStyle =
+                  "bg-[#F0F0ED] text-[#666666] border border-[#E6E6E3] hover:text-[#171717]";
+                let tabIcon = null;
+
+                if (isActive) {
+                  tabStyle = "bg-[#171717] text-white font-bold shadow-xs";
+                } else if (chStatus === "correct") {
+                  tabStyle =
+                    "bg-[#E6F9F5] text-[#00695C] border border-[#B2F3E5] font-semibold";
+                  tabIcon = <CheckCircle2 className="w-3 h-3 text-[#00695C]" />;
+                } else if (chStatus === "incorrect") {
+                  tabStyle =
+                    "bg-rose-50 text-rose-700 border border-rose-200 font-semibold";
+                  tabIcon = <AlertCircle className="w-3 h-3 text-rose-600" />;
+                } else if (chStatus === "skipped") {
+                  tabStyle =
+                    "bg-[#F0F0ED] text-[#8A8A8A] border border-[#E6E6E3]";
+                  tabIcon = <MinusCircle className="w-3 h-3 text-[#8A8A8A]" />;
+                }
+
                 return (
                   <button
                     key={ch.id}
-                    onClick={() => {
-                      setCurrentLevelIndex(idx);
-                      setSelectedOptionIds([]);
-                      setValidationResult(null);
-                      setFeedbackMessage("");
-                    }}
-                    className={`px-3.5 py-1.5 rounded-xl text-xs font-mono-code whitespace-nowrap transition-all flex items-center gap-1.5 ${
-                      isActive
-                        ? "bg-[#171717] text-white font-bold shadow-xs"
-                        : isPassed
-                        ? "bg-[#E6F9F5] text-[#00695C] border border-[#B2F3E5] font-semibold"
-                        : "bg-[#F0F0ED] text-[#666666] border border-[#E6E6E3] hover:text-[#171717]"
-                    }`}
+                    onClick={() => setCurrentLevelIndex(idx)}
+                    className={`px-3.5 py-1.5 rounded-xl text-xs font-mono-code whitespace-nowrap transition-all flex items-center gap-1.5 ${tabStyle}`}
                   >
                     <span>
                       {t.lab.game.levelTag} 0{ch.order}
                     </span>
-                    {isPassed && <CheckCircle2 className="w-3 h-3 text-[#00695C]" />}
+                    {tabIcon}
                   </button>
                 );
               })}
@@ -279,8 +377,56 @@ export default function StackBuilderModule({
             {/* Option Cards Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {activeChallenge.options.map((opt) => {
-                const isSelected = selectedOptionIds.includes(opt.id);
-                const isCorrectState = validationResult?.correct && isSelected;
+                const isSelected = activeState.selectedOptionIds.includes(opt.id);
+                const isChecked = activeState.isChecked;
+                const status = activeState.status;
+                const isCorrectAnswer = activeChallenge.correctAnswers.includes(
+                  opt.id
+                );
+
+                let cardStyle =
+                  "bg-white border-[#E6E6E3] text-[#171717] hover:border-[#171717]";
+                let iconStyle = "bg-[#F0F0ED] border-[#E6E6E3]";
+                let indicatorIcon = null;
+
+                if (!isChecked) {
+                  // Before check: selected options use neutral dark border (NEVER GREEN)
+                  if (isSelected) {
+                    cardStyle =
+                      "bg-[#F7F7F5] border-[#171717] text-[#171717] font-bold shadow-xs";
+                    iconStyle = "bg-white border-[#171717]";
+                  }
+                } else {
+                  // After check
+                  if (status === "correct") {
+                    if (isSelected) {
+                      cardStyle =
+                        "bg-[#E6F9F5] border-[#00695C] text-[#00695C] font-bold ring-2 ring-[#00695C]";
+                      iconStyle = "bg-white border-[#00695C]";
+                      indicatorIcon = (
+                        <CheckCircle2 className="w-5 h-5 text-[#00695C] shrink-0" />
+                      );
+                    }
+                  } else if (status === "incorrect") {
+                    if (isSelected && !isCorrectAnswer) {
+                      // Selected wrong option -> Error Rose/Amber (NEVER GREEN)
+                      cardStyle =
+                        "bg-rose-50 border-rose-300 text-rose-900 font-bold ring-1 ring-rose-300";
+                      iconStyle = "bg-white border-rose-300";
+                      indicatorIcon = (
+                        <AlertCircle className="w-5 h-5 text-rose-600 shrink-0" />
+                      );
+                    } else if (isCorrectAnswer) {
+                      // Reveal correct answer subtly
+                      cardStyle =
+                        "bg-[#E6F9F5]/60 border-[#00695C]/40 text-[#00695C] font-medium";
+                      iconStyle = "bg-white border-[#00695C]";
+                      indicatorIcon = (
+                        <CheckCircle2 className="w-5 h-5 text-[#00695C]/60 shrink-0" />
+                      );
+                    }
+                  }
+                }
 
                 return (
                   <motion.button
@@ -288,21 +434,9 @@ export default function StackBuilderModule({
                     whileHover={shouldReduceMotion ? undefined : { y: -2 }}
                     whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
                     onClick={() => handleToggleOption(opt.id)}
-                    className={`p-5 rounded-2xl border text-left transition-all flex items-center gap-4 ${
-                      isCorrectState
-                        ? "bg-[#E6F9F5] border-[#00695C] ring-2 ring-[#00695C]"
-                        : isSelected
-                        ? "bg-[#E6F9F5] border-[#00695C] text-[#00695C] font-bold shadow-xs"
-                        : "bg-white border-[#E6E6E3] hover:border-[#00695C] text-[#171717]"
-                    }`}
+                    className={`p-5 rounded-2xl border text-left transition-all flex items-center gap-4 ${cardStyle}`}
                   >
-                    <div
-                      className={`p-3 rounded-xl border ${
-                        isSelected
-                          ? "bg-white border-[#00695C]"
-                          : "bg-[#F0F0ED] border-[#E6E6E3]"
-                      }`}
-                    >
+                    <div className={`p-3 rounded-xl border ${iconStyle}`}>
                       {getOptionIcon(opt.id)}
                     </div>
 
@@ -310,46 +444,68 @@ export default function StackBuilderModule({
                       {opt.locales?.[locale]?.label || opt.id}
                     </span>
 
-                    {isSelected && (
-                      <CheckCircle2 className="w-5 h-5 text-[#00695C] shrink-0" />
-                    )}
+                    {indicatorIcon}
                   </motion.button>
                 );
               })}
             </div>
 
-            {/* Action Bar */}
-            <div className="flex items-center justify-between gap-4 pt-2">
-              {validationResult ? (
-                <motion.div
-                  initial={{ opacity: 0, y: 4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className={`p-4 rounded-2xl border flex items-center justify-between gap-4 w-full ${
-                    validationResult.correct
-                      ? "bg-[#E6F9F5] border-[#B2F3E5] text-[#00695C]"
-                      : "bg-amber-50 border-amber-200 text-amber-800"
-                  }`}
-                >
-                  <span className="text-xs sm:text-sm font-bold">
-                    {feedbackMessage}
-                  </span>
+            {/* Feedback Alert Box */}
+            {activeState.feedbackMessage && (
+              <motion.div
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`p-4 rounded-2xl border flex items-center justify-between gap-4 w-full ${
+                  activeState.status === "correct"
+                    ? "bg-[#E6F9F5] border-[#B2F3E5] text-[#00695C]"
+                    : activeState.status === "incorrect"
+                    ? "bg-rose-50 border-rose-200 text-rose-800"
+                    : "bg-[#F7F7F5] border-[#E6E6E3] text-[#666666]"
+                }`}
+              >
+                <span className="text-xs sm:text-sm font-bold">
+                  {activeState.feedbackMessage}
+                </span>
 
+                {activeState.isChecked && (
                   <button
                     onClick={handleNextLevel}
                     className="flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#171717] text-white text-xs font-bold hover:bg-[#00695C] transition-colors shrink-0 shadow-xs"
                   >
                     <span>{t.lab.game.nextBtn}</span>
                   </button>
-                </motion.div>
-              ) : (
-                <button
-                  onClick={handleCheck}
-                  disabled={selectedOptionIds.length === 0}
-                  className="flex items-center gap-2 px-8 py-3 rounded-xl bg-[#171717] text-white font-bold text-xs hover:bg-[#00695C] transition-colors shadow-xs disabled:opacity-40 disabled:cursor-not-allowed ml-auto"
-                >
-                  <span>{t.lab.game.checkBtn}</span>
-                </button>
-              )}
+                )}
+              </motion.div>
+            )}
+
+            {/* Action Bar */}
+            <div className="flex items-center justify-between gap-4 pt-2">
+              <button
+                onClick={handleSkip}
+                disabled={activeState.isChecked}
+                className="px-4 py-2.5 rounded-xl text-xs font-semibold text-[#8A8A8A] hover:text-[#171717] hover:bg-[#F0F0ED] transition-all disabled:opacity-30 disabled:pointer-events-none"
+              >
+                <span>{t.lab.game.skipBtn}</span>
+              </button>
+
+              <div className="flex items-center gap-3">
+                {!activeState.isChecked ? (
+                  <button
+                    onClick={handleCheck}
+                    disabled={activeState.selectedOptionIds.length === 0}
+                    className="flex items-center gap-2 px-8 py-3 rounded-xl bg-[#171717] text-white font-bold text-xs hover:bg-[#00695C] transition-colors shadow-xs disabled:opacity-40 disabled:cursor-not-allowed"
+                  >
+                    <span>{t.lab.game.checkBtn}</span>
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleNextLevel}
+                    className="flex items-center gap-2 px-8 py-3 rounded-xl bg-[#171717] text-white font-bold text-xs hover:bg-[#00695C] transition-colors shadow-xs"
+                  >
+                    <span>{t.lab.game.nextBtn}</span>
+                  </button>
+                )}
+              </div>
             </div>
           </motion.div>
         )}
@@ -358,9 +514,13 @@ export default function StackBuilderModule({
         {gameState === "result" && (
           <motion.div
             key="result"
-            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.98 }}
+            initial={
+              shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.98 }
+            }
             animate={{ opacity: 1, scale: 1 }}
-            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.98 }}
+            exit={
+              shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.98 }
+            }
             transition={{ duration: 0.25 }}
             className="card-minimal p-8 sm:p-10 flex flex-col items-center text-center gap-6 border-l-4 border-l-[#00695C] bg-white shadow-lg my-auto"
           >
@@ -373,10 +533,10 @@ export default function StackBuilderModule({
                 {t.lab.game.youBuiltIt}
               </span>
               <h2 className="text-3xl font-extrabold text-[#171717]">
-                {totalScore} / {initialChallenges.length}
+                {calculatedScore} / {initialChallenges.length}
               </h2>
               <p className="text-xs sm:text-sm text-[#666666] leading-relaxed font-medium">
-                {totalScore === initialChallenges.length
+                {calculatedScore === initialChallenges.length
                   ? t.lab.game.fullScoreNote
                   : t.lab.game.partialScoreNote}
               </p>
