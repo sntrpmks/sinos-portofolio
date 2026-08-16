@@ -8,7 +8,6 @@ import { AppChallenge, AppValidationResult } from "@/types/lab";
 import { checkAppAnswer } from "@/features/lab/stack-builder/domain/architecture-validator";
 import {
   ArrowLeft,
-  ArrowRight,
   RotateCcw,
   CheckCircle2,
   Trophy,
@@ -216,10 +215,9 @@ export default function StackBuilderModule({
 
             <button
               onClick={() => setGameState("playing")}
-              className="flex items-center gap-2 px-8 py-3.5 rounded-2xl bg-[#171717] text-white font-bold text-sm hover:bg-[#00695C] transition-all shadow-md active:scale-98"
+              className="flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl bg-[#171717] text-white font-bold text-sm hover:bg-[#00695C] transition-all shadow-md active:scale-98"
             >
               <span>{t.lab.game.letsGo}</span>
-              <ArrowRight className="w-4 h-4" />
             </button>
           </motion.div>
         )}
@@ -340,10 +338,9 @@ export default function StackBuilderModule({
 
                   <button
                     onClick={handleNextLevel}
-                    className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#171717] text-white text-xs font-bold hover:bg-[#00695C] transition-colors shrink-0 shadow-xs"
+                    className="flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#171717] text-white text-xs font-bold hover:bg-[#00695C] transition-colors shrink-0 shadow-xs"
                   >
                     <span>{t.lab.game.nextBtn}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </motion.div>
               ) : (
