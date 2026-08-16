@@ -86,3 +86,27 @@ export interface DebugValidationResult {
   correct: boolean;
   score: number;
 }
+
+// Ship It Game Types
+export type ShipStage = "local" | "staging" | "production";
+
+export type ShipModeState = "idle" | "playing" | "gameOver" | "result";
+
+export interface ShipPlayer {
+  x: number;
+  y: number;
+  size: number;
+  velocity: number;
+  rotation: number;
+}
+
+export interface ShipObstacle {
+  id: string;
+  x: number;
+  topHeight: number;
+  bottomHeight: number;
+  gapSize: number;
+  width: number;
+  label: string;
+  scored: boolean;
+}

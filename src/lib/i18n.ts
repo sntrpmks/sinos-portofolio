@@ -150,6 +150,26 @@ export interface TranslationSchema {
       correctFeedback: readonly string[];
       incorrectFeedback: readonly string[];
     };
+    shipItTitle: string;
+    shipItDesc: string;
+    shipItGame: {
+      tagline: string;
+      introTitle: string;
+      introDesc: string;
+      instruction: string;
+      startBtn: string;
+      crashed: string;
+      scoreTag: string;
+      bestTag: string;
+      tryAgain: string;
+      backToLab: string;
+      exploreProjects: string;
+      localStage: string;
+      stagingStage: string;
+      productionStage: string;
+      youreLive: string;
+      almostNote: string;
+    };
   };
 }
 
@@ -333,6 +353,26 @@ export const translations: Record<Locale, TranslationSchema> = {
           "Hmm, close! Think about where the issue originates.",
         ],
       },
+      shipItTitle: "SHIP IT",
+      shipItDesc: "Can you keep it online?",
+      shipItGame: {
+        tagline: "Can you keep it online?",
+        introTitle: "Keep the deployment alive.",
+        introDesc: "Tap or press Space to boost your packet. Avoid bugs and errors on the way to production.",
+        instruction: "Tap, click, or press Space.",
+        startBtn: "Start Deployment",
+        crashed: "CRASHED.",
+        scoreTag: "Score",
+        bestTag: "Best",
+        tryAgain: "Try again",
+        backToLab: "Back to Lab",
+        exploreProjects: "Want to see real projects? Explore Projects",
+        localStage: "LOCAL",
+        stagingStage: "STAGING",
+        productionStage: "PRODUCTION",
+        youreLive: "YOU'RE LIVE.",
+        almostNote: "Dikit lagi ke-ship.",
+      },
     },
   },
 
@@ -514,6 +554,26 @@ export const translations: Record<Locale, TranslationSchema> = {
           "Hampir! Coba lihat lebih teliti.",
           "Belum pas. Coba pikir dari mana masalahnya berasal.",
         ],
+      },
+      shipItTitle: "SHIP IT",
+      shipItDesc: "Bisa bikin dia tetap online?",
+      shipItGame: {
+        tagline: "Bisa bikin dia tetap online?",
+        introTitle: "Jaga deployment tetap hidup.",
+        introDesc: "Tap atau tekan Space untuk boost paket. Hindari bug dan error menuju production.",
+        instruction: "Tap, klik, atau tekan Space.",
+        startBtn: "Mulai Deployment",
+        crashed: "CRASH.",
+        scoreTag: "Skor",
+        bestTag: "Terbaik",
+        tryAgain: "Coba lagi",
+        backToLab: "Kembali ke Lab",
+        exploreProjects: "Mau lihat project aslinya? Lihat Project",
+        localStage: "LOCAL",
+        stagingStage: "STAGING",
+        productionStage: "PRODUCTION",
+        youreLive: "SUDAH LIVE.",
+        almostNote: "Dikit lagi ke-ship.",
       },
     },
   },
