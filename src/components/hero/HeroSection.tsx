@@ -56,7 +56,7 @@ export function HeroSection() {
           </motion.p>
         </div>
 
-        {/* Clean Dual CTAs: View my work & Ask SIN.OS */}
+        {/* Clean Dual CTAs: View my work & Contact */}
         <motion.div
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
@@ -71,13 +71,12 @@ export function HeroSection() {
             <ArrowRight className="w-4 h-4" />
           </Link>
 
-          <button
-            onClick={() => setAiModalOpen(true)}
-            className="flex items-center gap-2 px-5 py-3.5 rounded-xl bg-[#E6F9F5] text-[#00695C] border border-[#B2F3E5] font-semibold text-sm hover:bg-[#A9F1DF] hover:text-[#171717] hover:border-[#A9F1DF] transition-all shadow-xs"
+          <Link
+            href="/contact"
+            className="flex items-center gap-2 px-5 py-3.5 rounded-xl bg-[#F0F0ED] border border-[#E6E6E3] text-[#171717] font-semibold text-sm hover:border-[#171717] transition-all shadow-xs"
           >
-            <Sparkles className="w-4 h-4" />
-            <span>{t.hero.ctaAi}</span>
-          </button>
+            <span>{t.nav.contact}</span>
+          </Link>
         </motion.div>
       </div>
     </section>

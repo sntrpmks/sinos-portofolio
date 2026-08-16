@@ -5,10 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { HeroSection } from "@/components/hero/HeroSection";
-import { MarqueeTicker } from "@/components/ui/MarqueeTicker";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 import { useViewMode } from "@/components/context/ViewModeContext";
-import { getLocalizedProject, getLocalizedTechItem, getLocalizedCertificate } from "@/lib/content-helpers";
+import { getLocalizedProject, getLocalizedTechItem } from "@/lib/content-helpers";
 import { Project, Experience, TechItem, Certificate } from "@/types/content";
 import { ArrowRight, Mail, Sparkles, UserCheck } from "lucide-react";
 
@@ -19,15 +18,12 @@ interface HomePageClientProps {
   certificates: Certificate[];
 }
 
-export function HomePageClient({ projects, skills, certificates }: HomePageClientProps) {
+export function HomePageClient({ projects, skills }: HomePageClientProps) {
   const { locale, setAiModalOpen, t } = useViewMode();
   const shouldReduceMotion = useReducedMotion();
 
   // Selected featured projects (Web Event & CashFlowKu)
   const selectedProjects = projects.slice(0, 2);
-
-  // Selected top credentials
-  const selectedCredentials = certificates.slice(0, 4);
 
   return (
     <div className="flex flex-col gap-16 pb-20">
@@ -36,7 +32,6 @@ export function HomePageClient({ projects, skills, certificates }: HomePageClien
 
       {/* Main Single Unified Flow Container */}
       <div className="px-4 sm:px-8 max-w-5xl mx-auto w-full flex flex-col gap-20">
-        
         {/* 02. SELECTED WORK */}
         <SectionReveal className="flex flex-col gap-10">
           <div className="flex items-end justify-between border-b border-[#E6E6E3] pb-4">
@@ -45,7 +40,8 @@ export function HomePageClient({ projects, skills, certificates }: HomePageClien
                 {t.selectedWork.tag}
               </span>
               <h2 className="text-3xl sm:text-5xl font-extrabold text-[#171717] tracking-tight leading-none mt-1">
-                {t.selectedWork.titleMain}<span className="text-[#00695C]">{t.selectedWork.titleAccent}</span>
+                {t.selectedWork.titleMain}
+                <span className="text-[#00695C]">{t.selectedWork.titleAccent}</span>
               </h2>
             </div>
             <Link
@@ -80,8 +76,12 @@ export function HomePageClient({ projects, skills, certificates }: HomePageClien
                       />
                     ) : (
                       <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-[#8A8A8A] p-4 text-center">
-                        <span className="text-xs font-mono-code font-bold text-[#171717]">{project.caseFileId}</span>
-                        <span className="text-base font-bold text-[#171717]">{project.title}</span>
+                        <span className="text-xs font-mono-code font-bold text-[#171717]">
+                          {project.caseFileId}
+                        </span>
+                        <span className="text-base font-bold text-[#171717]">
+                          {project.title}
+                        </span>
                       </div>
                     )}
                   </div>
@@ -90,8 +90,12 @@ export function HomePageClient({ projects, skills, certificates }: HomePageClien
                   <div className="w-full lg:w-1/2 flex flex-col justify-between gap-6">
                     <div className="flex flex-col gap-3">
                       <div className="flex items-center justify-between text-xs font-mono-code text-[#666666]">
-                        <span className="font-bold text-[#00695C] uppercase">{project.caseFileId}</span>
-                        <span>{project.year} • {project.role}</span>
+                        <span className="font-bold text-[#00695C] uppercase">
+                          {project.caseFileId}
+                        </span>
+                        <span>
+                          {project.year} • {project.role}
+                        </span>
                       </div>
 
                       <h3 className="text-2xl sm:text-3xl font-extrabold text-[#171717] group-hover:text-[#00695C] transition-colors leading-tight">
@@ -128,15 +132,57 @@ export function HomePageClient({ projects, skills, certificates }: HomePageClien
           </div>
         </SectionReveal>
 
-      </div>
+        {/* 03. CAPABILITIES */}
+        <SectionReveal className="flex flex-col gap-8">
+          <div className="flex items-end justify-between border-b border-[#E6E6E3] pb-4">
+            <div>
+              <span className="text-xs font-mono-code font-bold uppercase tracking-widest text-[#00695C]">
+                {t.capabilities.tag}
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-extrabold text-[#171717] tracking-tight leading-none mt-1">
+                {t.capabilities.titleMain}
+                <span className="text-[#00695C]">{t.capabilities.titleAccent}</span>
+              </h2>
+            </div>
+            <span className="text-xs font-mono-code text-[#8A8A8A] mb-1">
+              {t.capabilities.subhead}
+            </span>
+          </div>
 
-      {/* EDITORIAL MARQUEE TICKER */}
-      <MarqueeTicker />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {skills.map((rawSkill) => {
+              const skill = getLocalizedTechItem(rawSkill, locale);
+              return (
+                <motion.div
+                  key={skill.id}
+                  whileHover={shouldReduceMotion ? undefined : { y: -2 }}
+                  className="card-minimal p-5 flex flex-col justify-between gap-3 card-minimal-interactive"
+                >
+                  <div className="flex flex-col gap-1.5">
+                    <span className="text-[11px] font-mono-code font-bold text-[#00695C] uppercase">
+                      {skill.category === "AI & Integration" && locale === "id"
+                        ? "Integrasi AI"
+                        : skill.category}
+                    </span>
+                    <h3 className="text-base font-bold text-[#171717]">
+                      {skill.name}
+                    </h3>
+                    <p className="text-xs text-[#666666] leading-relaxed">
+                      {skill.description}
+                    </p>
+                  </div>
 
-      {/* Main Container Continued */}
-      <div className="px-4 sm:px-8 max-w-5xl mx-auto w-full flex flex-col gap-20">
+                  <div className="pt-2 border-t border-[#E6E6E3] text-[11px] font-mono-code text-[#8A8A8A]">
+                    {t.capabilities.verifiedIn} {skill.projectCount}{" "}
+                    {t.capabilities.projectsCount}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </SectionReveal>
 
-        {/* 03. ABOUT & EXPERIENCE */}
+        {/* 04. ABOUT & JOURNEY SUMMARY */}
         <SectionReveal className="flex flex-col gap-8">
           <div className="flex items-end justify-between border-b border-[#E6E6E3] pb-4">
             <div>
@@ -144,10 +190,14 @@ export function HomePageClient({ projects, skills, certificates }: HomePageClien
                 {t.about.tag}
               </span>
               <h2 className="text-3xl sm:text-5xl font-extrabold text-[#171717] tracking-tight leading-none mt-1">
-                {t.about.titleMain}<span className="text-[#00695C]">{t.about.titleAccent}</span>
+                {t.about.titleMain}
+                <span className="text-[#00695C]">{t.about.titleAccent}</span>
               </h2>
             </div>
-            <Link href="/about" className="text-xs font-semibold text-[#00695C] hover:underline mb-1">
+            <Link
+              href="/about"
+              className="text-xs font-semibold text-[#00695C] hover:underline mb-1"
+            >
               {t.about.readFullBio}
             </Link>
           </div>
@@ -187,92 +237,10 @@ export function HomePageClient({ projects, skills, certificates }: HomePageClien
             </div>
           </div>
         </SectionReveal>
-
-        {/* 04. CAPABILITIES */}
-        <SectionReveal className="flex flex-col gap-8">
-          <div className="flex items-end justify-between border-b border-[#E6E6E3] pb-4">
-            <div>
-              <span className="text-xs font-mono-code font-bold uppercase tracking-widest text-[#00695C]">
-                {t.capabilities.tag}
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-extrabold text-[#171717] tracking-tight leading-none mt-1">
-                {t.capabilities.titleMain}<span className="text-[#00695C]">{t.capabilities.titleAccent}</span>
-              </h2>
-            </div>
-            <span className="text-xs font-mono-code text-[#8A8A8A] mb-1">{t.capabilities.subhead}</span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {skills.map((rawSkill) => {
-              const skill = getLocalizedTechItem(rawSkill, locale);
-              return (
-                <motion.div
-                  key={skill.id}
-                  whileHover={shouldReduceMotion ? undefined : { y: -2 }}
-                  className="card-minimal p-5 flex flex-col justify-between gap-3 card-minimal-interactive"
-                >
-                  <div className="flex flex-col gap-1.5">
-                    <span className="text-[11px] font-mono-code font-bold text-[#00695C] uppercase">
-                      {skill.category === "AI & Integration" && locale === "id" ? "Integrasi AI" : skill.category}
-                    </span>
-                    <h3 className="text-base font-bold text-[#171717]">{skill.name}</h3>
-                    <p className="text-xs text-[#666666] leading-relaxed">{skill.description}</p>
-                  </div>
-
-                  <div className="pt-2 border-t border-[#E6E6E3] text-[11px] font-mono-code text-[#8A8A8A]">
-                    {t.capabilities.verifiedIn} {skill.projectCount} {t.capabilities.projectsCount}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </SectionReveal>
-
-        {/* 05. SELECTED MILESTONES */}
-        <SectionReveal className="flex flex-col gap-8">
-          <div className="flex items-end justify-between border-b border-[#E6E6E3] pb-4">
-            <div>
-              <span className="text-xs font-mono-code font-bold uppercase tracking-widest text-[#00695C]">
-                {t.milestones.tag}
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-extrabold text-[#171717] tracking-tight leading-none mt-1">
-                {t.milestones.titleMain}<span className="text-[#00695C]">{t.milestones.titleAccent}</span>
-              </h2>
-            </div>
-            <Link href="/journey" className="text-xs font-semibold text-[#00695C] hover:underline mb-1">
-              {t.milestones.viewAll} ({certificates.length}) →
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-            {selectedCredentials.map((rawCert) => {
-              const cert = getLocalizedCertificate(rawCert, locale);
-              return (
-                <motion.div
-                  key={cert.id}
-                  whileHover={shouldReduceMotion ? undefined : { y: -2 }}
-                  className="card-minimal p-5 flex flex-col justify-between gap-3 card-minimal-interactive"
-                >
-                  <div className="flex flex-col gap-2">
-                    <div className="flex items-center justify-between text-xs font-mono-code text-[#666666]">
-                      <span className="font-bold text-[#00695C] uppercase">{cert.issuer}</span>
-                      <span>{cert.issueDate}</span>
-                    </div>
-                    <h3 className="text-sm font-bold text-[#171717]">{cert.title}</h3>
-                    <p className="text-xs text-[#2A2A2A] leading-relaxed line-clamp-2">
-                      {cert.description}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </SectionReveal>
-
       </div>
 
-      {/* AI ASSISTANT UTILITY CARD */}
-      <SectionReveal className="px-4 sm:px-8 max-w-5xl mx-auto w-full mt-6">
+      {/* 05. ASK SIN.OS AI UTILITY CARD */}
+      <SectionReveal className="px-4 sm:px-8 max-w-5xl mx-auto w-full mt-4">
         <div className="card-minimal p-7 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border-l-4 border-l-[#00695C]">
           <div className="flex flex-col gap-1.5">
             <div className="flex items-center gap-2 text-[#00695C] font-mono-code text-xs font-bold">
@@ -302,7 +270,8 @@ export function HomePageClient({ projects, skills, certificates }: HomePageClien
               {t.contact.tag}
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#171717] tracking-tight leading-none">
-              {t.contact.titleMain}<span className="text-[#00695C]">{t.contact.titleAccent}</span>
+              {t.contact.titleMain}
+              <span className="text-[#00695C]">{t.contact.titleAccent}</span>
             </h2>
             <p className="text-sm text-[#666666] max-w-md leading-relaxed">
               {t.contact.description}
@@ -323,5 +292,3 @@ export function HomePageClient({ projects, skills, certificates }: HomePageClien
     </div>
   );
 }
-
-
