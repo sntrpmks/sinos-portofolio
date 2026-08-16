@@ -100,33 +100,29 @@ export interface TranslationSchema {
     comingSoonTag: string;
     playBtn: string;
     exploreLab: string;
-    stackBuilderTitle: string;
-    stackBuilderDesc: string;
+    buildAppTitle: string;
+    buildAppDesc: string;
     debugTitle: string;
     debugDesc: string;
     terminalTitle: string;
     terminalDesc: string;
     game: {
       backToLab: string;
-      challengeTag: string;
-      availableComponents: string;
-      yourArchitecture: string;
-      checkArchitecture: string;
-      reset: string;
-      timer: string;
-      score: string;
-      systemReady: string;
-      systemFailed: string;
-      nextChallenge: string;
+      tagline: string;
+      introTitle: string;
+      introDesc: string;
+      letsGo: string;
+      checkBtn: string;
+      nextBtn: string;
       playAgain: string;
       exploreProjects: string;
       highScore: string;
-      emptyArchitecture: string;
-      selectPrompt: string;
-      correctFeedback: string;
-      missingFeedback: string;
-      orderFeedback: string;
-      unnecessaryFeedback: string;
+      levelTag: string;
+      youBuiltIt: string;
+      fullScoreNote: string;
+      partialScoreNote: string;
+      correctFeedback: readonly string[];
+      incorrectFeedback: readonly string[];
     };
   };
 }
@@ -236,38 +232,45 @@ export const translations: Record<Locale, TranslationSchema> = {
       tag: "EXPERIMENTAL LAB",
       titleMain: "SIN.OS ",
       titleAccent: "Lab.",
-      subtitle: "Small interactive experiments and architecture puzzles built around how I think about systems.",
-      playableTag: "PLAYABLE MVP",
+      subtitle: "Small interactive mini-games and developer puzzles built around how I think about systems.",
+      playableTag: "MINI-GAME",
       comingSoonTag: "COMING SOON",
-      playBtn: "Launch Experiment →",
+      playBtn: "Play →",
       exploreLab: "Explore SIN.OS Lab",
-      stackBuilderTitle: "Stack Builder",
-      stackBuilderDesc: "An architecture-building puzzle. Select and order components to construct valid system topologies.",
+      buildAppTitle: "Build the App",
+      buildAppDesc: "Pick the right pieces and build a tiny app. Quick, casual, and easy to play.",
       debugTitle: "Debug SIN.OS",
-      debugDesc: "Diagnose silent bugs, race conditions, and memory bottlenecks under real system constraints.",
+      debugDesc: "Uh oh. Something broke. Diagnose quick bugs under real system constraints.",
       terminalTitle: "Terminal Mission",
-      terminalDesc: "Command-line objective challenges and script automation tasks.",
+      terminalDesc: "Something's offline. Command-line objective challenges and script automation tasks.",
       game: {
         backToLab: "← Back to Lab",
-        challengeTag: "CHALLENGE",
-        availableComponents: "AVAILABLE COMPONENTS",
-        yourArchitecture: "YOUR ARCHITECTURE TOPOLOGY",
-        checkArchitecture: "Validate Architecture →",
-        reset: "Reset Board",
-        timer: "Time",
-        score: "Score",
-        systemReady: "System ready.",
-        systemFailed: "Architecture check failed.",
-        nextChallenge: "Next Challenge →",
-        playAgain: "Play Again",
-        exploreProjects: "Want to see how I build real projects? Explore Projects →",
+        tagline: "Pick what you need. Build something cool.",
+        introTitle: "Let's build a tiny app.",
+        introDesc: "Pick the things you think it needs. Quick & easy.",
+        letsGo: "Let's go →",
+        checkBtn: "Check it",
+        nextBtn: "Next →",
+        playAgain: "Play again",
+        exploreProjects: "Want to see the real stuff? Explore Projects →",
         highScore: "Best Score",
-        emptyArchitecture: "Tap components below to place them into your system topology.",
-        selectPrompt: "Tap or click components to add them in order.",
-        correctFeedback: "Nice. The architecture checks out perfectly.",
-        missingFeedback: "Some key architectural layer is missing from the pipeline.",
-        orderFeedback: "Components are placed out of logical flow order.",
-        unnecessaryFeedback: "Contains unnecessary components for this specific challenge.",
+        levelTag: "LEVEL",
+        youBuiltIt: "YOU BUILT IT.",
+        fullScoreNote: "Clean run. You've got the basics down.",
+        partialScoreNote: "Pretty good. Want another shot?",
+        correctFeedback: [
+          "Nice! You nailed it.",
+          "Yep, that's it.",
+          "Easy. Clean choice.",
+          "You got it!",
+          "Boom. Perfect.",
+        ],
+        incorrectFeedback: [
+          "Not quite. Think about what the app actually needs.",
+          "Almost! Take another look.",
+          "Hmm, close! Try again.",
+          "Dikit lagi! Re-check your picks.",
+        ],
       },
     },
   },
@@ -376,38 +379,45 @@ export const translations: Record<Locale, TranslationSchema> = {
       tag: "LAB EKSPERIMEN",
       titleMain: "SIN.OS ",
       titleAccent: "Lab.",
-      subtitle: "Eksperimen interaktif dan teka-teki arsitektur yang dirancang berdasarkan logika pemrograman sistem.",
-      playableTag: "SIAP DIMAINKAN",
+      subtitle: "Mini-game interaktif santai yang dirancang di sekitar logika berpikir seorang Full Stack Developer.",
+      playableTag: "MINI-GAME",
       comingSoonTag: "SEGERA HADIR",
-      playBtn: "Mulai Eksperimen →",
+      playBtn: "Main →",
       exploreLab: "Jelajahi SIN.OS Lab",
-      stackBuilderTitle: "Stack Builder",
-      stackBuilderDesc: "Teka-teki penyusunan arsitektur web. Pilih dan urutkan komponen untuk membangun alur sistem yang valid.",
+      buildAppTitle: "Build the App",
+      buildAppDesc: "Pilih bagian yang pas dan bikin aplikasi kecil. Santai, cepat, dan gampang dimainkan.",
       debugTitle: "Debug SIN.OS",
-      debugDesc: "Diagnosa bug tersembunyi, kondisi race, dan kendala memori dalam batasan sistem nyata.",
+      debugDesc: "Waduh, ada yang rusak. Cari tahu bug tersembunyi secara cepat.",
       terminalTitle: "Terminal Mission",
-      terminalDesc: "Tantangan berbasis perintah command-line dan otomatisasi script.",
+      terminalDesc: "Ada yang offline. Tantangan berbasis perintah command-line dan script.",
       game: {
         backToLab: "← Kembali ke Lab",
-        challengeTag: "TANTANGAN",
-        availableComponents: "KOMPONEN TERSEDIA",
-        yourArchitecture: "TOPOLOGI ARSITEKTUR ANDA",
-        checkArchitecture: "Uji Arsitektur →",
-        reset: "Reset Board",
-        timer: "Waktu",
-        score: "Skor",
-        systemReady: "Sistem siap.",
-        systemFailed: "Uji arsitektur belum sesuai.",
-        nextChallenge: "Tantangan Berikutnya →",
-        playAgain: "Main Lagi",
-        exploreProjects: "Ingin melihat bagaimana saya membangun project nyata? Lihat Project →",
-        highScore: "Skor Tertinggi",
-        emptyArchitecture: "Tekan komponen di bawah untuk memasukkannya ke dalam alur topologi sistem.",
-        selectPrompt: "Tekan atau klik komponen untuk menyusun urutan alur sistem.",
-        correctFeedback: "Nice. Arsitekturnya sudah benar dan berfungsi presisi.",
-        missingFeedback: "Ada lapisan komponen penting yang belum dimasukkan ke alur.",
-        orderFeedback: "Urutan posisi komponen belum sesuai alur logika yang tepat.",
-        unnecessaryFeedback: "Terdapat komponen berlebih yang tidak diperlukan untuk tantangan ini.",
+        tagline: "Pilih yang dibutuhkan. Bikin sesuatu yang keren.",
+        introTitle: "Yuk, bikin aplikasi kecil.",
+        introDesc: "Pilih hal-hal yang menurutmu dibutuhkan. Cepat & gampang.",
+        letsGo: "Gas →",
+        checkBtn: "Cek",
+        nextBtn: "Lanjut →",
+        playAgain: "Main lagi",
+        exploreProjects: "Mau lihat project aslinya? Lihat Project →",
+        highScore: "Skor Terbaik",
+        levelTag: "LEVEL",
+        youBuiltIt: "BERHASIL DIBANGUN.",
+        fullScoreNote: "Clean banget! Dasarnya sudah dapet.",
+        partialScoreNote: "Udah lumayan! Mau coba lagi?",
+        correctFeedback: [
+          "Nice! Yap, benar.",
+          "Mantap! Pilihan yang pas.",
+          "Berhasil. Simple kan?",
+          "Yap! Tepat banget.",
+          "Clean! Gas terus.",
+        ],
+        incorrectFeedback: [
+          "Belum tepat. Coba pikir lagi, aplikasinya butuh apa?",
+          "Hampir! Coba lihat lagi jawabannya.",
+          "Dikit lagi. Coba cek lagi pilihanmu.",
+          "Belum pas. Coba lagi yuk!",
+        ],
       },
     },
   },

@@ -56,10 +56,10 @@ export default async function LabPage() {
 
             <div className="flex flex-col gap-1">
               <h2 className="text-xl font-bold text-[#171717] group-hover:text-[#00695C] transition-colors">
-                {t.lab.stackBuilderTitle}
+                {t.lab.buildAppTitle}
               </h2>
               <p className="text-xs text-[#666666] leading-relaxed">
-                {t.lab.stackBuilderDesc}
+                {t.lab.buildAppDesc}
               </p>
             </div>
           </div>

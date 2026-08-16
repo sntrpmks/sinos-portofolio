@@ -1,73 +1,49 @@
 import fs from "fs";
 import path from "path";
 import { Locale } from "@/lib/i18n";
-import {
-  StackComponent,
-  StackComponentSchema,
-  StackChallenge,
-  StackChallengeSchema,
-} from "@/types/lab";
+import { AppChallenge, AppChallengeSchema } from "@/types/lab";
 
 const experimentsDir = path.join(process.cwd(), "content", "experiments");
 
-export function getRawStackBuilderData() {
+export function getRawAppChallenges(): AppChallenge[] {
   const filePath = path.join(experimentsDir, "stack-builder.json");
   if (!fs.existsSync(filePath)) {
-    return { components: [], challenges: [] };
+    return [];
   }
 
   const rawData = fs.readFileSync(filePath, "utf-8");
   const json = JSON.parse(rawData);
 
-  const components: StackComponent[] = (json.components || []).map((c: unknown) =>
-    StackComponentSchema.parse(c)
+  const challenges: AppChallenge[] = (json.challenges || []).map((c: unknown) =>
+    AppChallengeSchema.parse(c)
   );
 
-  const challenges: StackChallenge[] = (json.challenges || []).map((c: unknown) =>
-    StackChallengeSchema.parse(c)
-  );
-
-  return { components, challenges };
+  return challenges;
 }
 
-export function getLocalizedStackComponent(
-  component: StackComponent,
-  locale: Locale = "en"
-) {
-  const loc = component.locales?.[locale] || component.locales?.en;
-  return {
-    ...component,
-    label: loc?.label || component.id,
-    description: loc?.description || "",
-  };
-}
-
-export function getLocalizedStackChallenge(
-  challenge: StackChallenge,
+export function getLocalizedAppChallenge(
+  challenge: AppChallenge,
   locale: Locale = "en"
 ) {
   const loc = challenge.locales?.[locale] || challenge.locales?.en;
+
+  const localizedOptions = challenge.options.map((opt) => ({
+    ...opt,
+    label: opt.locales?.[locale]?.label || opt.locales?.en?.label || opt.id,
+  }));
+
   return {
     ...challenge,
+    intro: loc?.intro || "",
     title: loc?.title || challenge.id,
-    description: loc?.description || "",
-    hint: loc?.hint || "",
+    prompt: loc?.prompt || "",
+    options: localizedOptions,
   };
 }
 
-export function getStackBuilderData(locale: Locale = "en") {
-  const { components, challenges } = getRawStackBuilderData();
-
-  const localizedComponents = components.map((c) =>
-    getLocalizedStackComponent(c, locale)
-  );
-
-  const localizedChallenges = challenges
-    .map((c) => getLocalizedStackChallenge(c, locale))
+export function getAppChallengesData(locale: Locale = "en") {
+  const raw = getRawAppChallenges();
+  return raw
+    .map((c) => getLocalizedAppChallenge(c, locale))
     .sort((a, b) => a.order - b.order);
-
-  return {
-    components: localizedComponents,
-    challenges: localizedChallenges,
-  };
 }

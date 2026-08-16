@@ -1,75 +1,42 @@
 import { z } from "zod";
 
-export const StackComponentTypeSchema = z.enum([
-  "frontend",
-  "api",
-  "backend",
-  "database",
-  "auth",
-  "cache",
-  "queue",
-]);
-
-export type StackComponentType = z.infer<typeof StackComponentTypeSchema>;
-
-export const LocalizedTextSchema = z.object({
-  en: z.string(),
+export const AppOptionSchema = z.object({
   id: z.string(),
-});
-
-export const StackComponentSchema = z.object({
-  id: z.string(),
-  type: StackComponentTypeSchema,
   locales: z.object({
     en: z.object({
       label: z.string(),
-      description: z.string(),
     }),
     id: z.object({
       label: z.string(),
-      description: z.string(),
     }),
   }),
 });
 
-export type StackComponent = z.infer<typeof StackComponentSchema>;
+export type AppOption = z.infer<typeof AppOptionSchema>;
 
-export const StackChallengeSchema = z.object({
+export const AppChallengeSchema = z.object({
   id: z.string(),
   order: z.number(),
-  maxTimeSeconds: z.number().default(45),
-  availableComponents: z.array(z.string()),
-  expectedArchitecture: z.array(z.string()),
-  optionalComponents: z.array(z.string()).optional(),
+  type: z.enum(["single", "multiple"]),
+  options: z.array(AppOptionSchema),
+  correctAnswers: z.array(z.string()),
   locales: z.object({
     en: z.object({
+      intro: z.string(),
       title: z.string(),
-      description: z.string(),
-      hint: z.string(),
+      prompt: z.string(),
     }),
     id: z.object({
+      intro: z.string(),
       title: z.string(),
-      description: z.string(),
-      hint: z.string(),
+      prompt: z.string(),
     }),
   }),
 });
 
-export type StackChallenge = z.infer<typeof StackChallengeSchema>;
+export type AppChallenge = z.infer<typeof AppChallengeSchema>;
 
-export type ValidationResultCode =
-  | "CORRECT_ARCHITECTURE"
-  | "EMPTY_STACK"
-  | "MISSING_COMPONENTS"
-  | "INVALID_ORDER"
-  | "UNNECESSARY_COMPONENTS";
-
-export interface ValidationResult {
+export interface AppValidationResult {
   correct: boolean;
   score: number;
-  mistakes: number;
-  resultCode: ValidationResultCode;
-  feedbackKey: string;
 }
-
-export type GameStatus = "idle" | "playing" | "checking" | "success" | "complete";
