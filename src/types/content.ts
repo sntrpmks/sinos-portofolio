@@ -200,6 +200,7 @@ export const CertificateSchema = z.object({
   category: z.string().optional(),
   description: z.string().optional(),
   image: z.string().optional(),
+  images: z.array(z.string()).optional(),
   locales: z
     .object({
       en: LocalizedCertificateContentSchema.optional(),
@@ -218,6 +219,7 @@ export interface Certificate {
   description: string;
   credentialUrl?: string;
   image?: string;
+  images?: string[];
   locales?: {
     en?: LocalizedCertificateContent;
     id?: LocalizedCertificateContent;

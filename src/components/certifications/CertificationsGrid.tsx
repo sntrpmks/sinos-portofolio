@@ -8,7 +8,7 @@ import { useViewMode } from "@/components/context/ViewModeContext";
 import { getLocalizedCertificate } from "@/lib/content-helpers";
 import { CertificateViewer } from "@/components/certifications/CertificateViewer";
 import { SectionReveal } from "@/components/ui/SectionReveal";
-import { Award, ExternalLink, Eye } from "lucide-react";
+import { Award, ExternalLink, Eye, Layers } from "lucide-react";
 
 interface CertificationsGridProps {
   certificates: Certificate[];
@@ -60,6 +60,7 @@ export function CertificationsGrid({ certificates }: CertificationsGridProps) {
       >
         {certificates.map((rawCert) => {
           const cert = getLocalizedCertificate(rawCert, locale);
+          const hasMultiplePages = Boolean(rawCert.images && rawCert.images.length > 1);
           return (
             <motion.div
               key={cert.id}
@@ -95,6 +96,14 @@ export function CertificationsGrid({ certificates }: CertificationsGridProps) {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover rounded-xl transition-transform duration-500 group-hover/img:scale-105"
                     />
+                    {hasMultiplePages && (
+                      <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-md bg-black/65 backdrop-blur-xs text-white text-[10px] font-mono-code font-bold flex items-center gap-1 z-10 border border-white/20">
+                        <Layers className="w-3 h-3 text-[#A9F1DF]" />
+                        <span>
+                          {rawCert.images?.length} {locale === "id" ? "Hal" : "Pages"}
+                        </span>
+                      </div>
+                    )}
                     <div className="absolute inset-0 bg-black/35 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center gap-1.5 text-white text-xs font-semibold backdrop-blur-[2px]">
                       <Eye className="w-4 h-4 text-[#A9F1DF]" />
                       <span>{t.milestones.previewScan}</span>

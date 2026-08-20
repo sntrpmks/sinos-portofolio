@@ -34,7 +34,7 @@ export function JourneyPageClient({ experiences, certificates }: JourneyPageClie
         </p>
       </SectionReveal>
 
-      {/* Verified Certifications Section */}
+      {/* Verified Certifications Section (Grid) */}
       <CertificationsGrid certificates={certificates} />
 
       {/* Experience Timeline Section */}

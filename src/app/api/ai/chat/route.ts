@@ -215,6 +215,17 @@ function getFallbackAnswer(query: string, locale: "en" | "id", projectSlug?: str
           tech.map((t) => `• **${t.name}** (${t.category}) — ${t.description}`).join("\n");
   }
 
+  if (
+    lower.includes("kiro") ||
+    lower.includes("spec-driven") ||
+    lower.includes("sdd") ||
+    lower.includes("milestone")
+  ) {
+    return locale === "id"
+      ? `Sinatria baru saja menyelesaikan sertifikasi **Spec-Driven Development dengan Kiro** dari **Dicoding × AWS** (20 Agustus 2026, ID: 1RXYD4L7MXVM).\n\n• **Fokus Pembelajaran**: Menerjemahkan requirement menjadi spesifikasi terstruktur, prompt engineering untuk SDD, dan mengiterasikan kode bersama AI sambil menjaga konsistensi arsitektur dan kualitas kode.\n• **Arah Karier**: Bagian dari evolusi dari Software Development → Spec-Driven Development → AI-Assisted Engineering menuju AI Systems Engineering.`
+      : `Sinatria recently completed the **Spec-Driven Development dengan Kiro** certification from **Dicoding × AWS** (20 August 2026, ID: 1RXYD4L7MXVM).\n\n• **Core Focus**: Translating requirements into structured specifications, prompt engineering for SDD, and iterating code with AI while maintaining architectural consistency and code quality.\n• **Career Trajectory**: Part of the progressive evolution from Software Development → Spec-Driven Development → AI-Assisted Engineering toward AI Systems Engineering.`;
+  }
+
   if (lower.includes("certif") || lower.includes("sertifikat") || lower.includes("kredensial")) {
     const certs = getCertificates();
     return locale === "id"

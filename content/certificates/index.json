@@ -1,5 +1,30 @@
 [
   {
+    "id": "cert-kiro",
+    "issueDate": "August 2026",
+    "credentialUrl": "https://www.dicoding.com/certificates/1RXYD4L7MXVM",
+    "image": "/media/certificates/kiro.jpg",
+    "images": [
+      "/media/certificates/kiro-page-1.jpg",
+      "/media/certificates/kiro-page-2.jpg",
+      "/media/certificates/kiro-page-3.jpg"
+    ],
+    "locales": {
+      "en": {
+        "title": "Spec-Driven Development dengan Kiro",
+        "issuer": "Dicoding × AWS",
+        "category": "Software Engineering · AI-Assisted Development",
+        "description": "Training in Spec-Driven Development to build applications with structured workflows from requirements and design to implementation using AI-assisted development."
+      },
+      "id": {
+        "title": "Spec-Driven Development dengan Kiro",
+        "issuer": "Dicoding × AWS",
+        "category": "Software Engineering · AI-Assisted Development",
+        "description": "Pembelajaran tentang Spec-Driven Development untuk membangun aplikasi dengan alur requirements, design, hingga implementasi secara terstruktur menggunakan AI-assisted development."
+      }
+    }
+  },
+  {
     "id": "cert-openai",
     "issueDate": "June 2026",
     "credentialUrl": "https://academy.openai.com/public/certificate/hn23qn4u9f",

@@ -157,9 +157,23 @@ ${experiences
     parts.push(queryMatchedProjectSection);
   }
 
+  // Career Milestone & Trajectory
+  const milestoneSection = `
+FEATURED CAREER MILESTONE:
+• Title: Spec-Driven Development dengan Kiro
+• Issuer: Dicoding Indonesia in collaboration with Amazon Web Services (AWS)
+• Issue Date: 20 August 2026 (Valid until 20 August 2029)
+• Credential ID: 1RXYD4L7MXVM
+• Verification Link: https://www.dicoding.com/certificates/1RXYD4L7MXVM
+• Duration: 10 Hours Total (Structured curriculum, hands-on tasks, and final exam)
+• Philosophy & Theme: "From Writing Code to Engineering Software" — treating AI as a disciplined collaborator within structured engineering workflows rather than just generating code.
+• Career Trajectory: Software Development -> Spec-Driven Development -> AI-Assisted Engineering (Active Milestone) -> Software Engineering -> AI Engineering -> AI Systems Engineering.
+  `.trim();
+
   parts.push(projectsCatalogSection);
   parts.push(techStackSection);
   parts.push(certsSection);
+  parts.push(milestoneSection);
   parts.push(experienceSection);
 
   if (about && about.bio) {
