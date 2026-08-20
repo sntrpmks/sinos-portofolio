@@ -12,16 +12,24 @@ import { Command, Sparkles, Menu, X, FileText, Search, ArrowUpRight } from "luci
 
 export function Navbar() {
   const pathname = usePathname();
-  const { setCommandPaletteOpen, setAiModalOpen, lightboxOpen, locale, t } = useViewMode();
+  const { setCommandPaletteOpen, setAiModalOpen, lightboxOpen, t } = useViewMode();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
+  // Optimized passive scroll listener with RAF throttling
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -32,7 +40,7 @@ export function Navbar() {
     }
   }, [lightboxOpen]);
 
-  // Lock background scroll when mobile menu is open
+  // Lock background scroll efficiently when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen && !lightboxOpen) {
       document.body.style.overflow = "hidden";
@@ -73,13 +81,13 @@ export function Navbar() {
               opacity: 0,
               y: -10,
               pointerEvents: "none" as const,
-              transition: { duration: shouldReduceMotion ? 0.05 : 0.18, ease: "easeOut" },
+              transition: { duration: shouldReduceMotion ? 0.05 : 0.15, ease: "easeOut" },
             }
           : {
               opacity: 1,
               y: 0,
               pointerEvents: "auto" as const,
-              transition: { duration: shouldReduceMotion ? 0.05 : 0.25, ease: "easeOut" },
+              transition: { duration: shouldReduceMotion ? 0.05 : 0.2, ease: "easeOut" },
             }
       }
       aria-hidden={lightboxOpen}
@@ -89,7 +97,7 @@ export function Navbar() {
     >
       <nav
         className={`pointer-events-auto glass-nav rounded-2xl px-4 sm:px-5 py-3 flex items-center justify-between transition-all duration-300 ${
-          scrolled ? "shadow-md bg-white/85 backdrop-blur-md" : "shadow-xs bg-white/70 backdrop-blur-sm"
+          scrolled ? "shadow-md bg-white/85" : "shadow-xs bg-white/70"
         }`}
       >
         {/* Brand Identity */}
@@ -170,57 +178,46 @@ export function Navbar() {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             tabIndex={lightboxOpen ? -1 : 0}
-            className="p-2 rounded-xl bg-white/90 border border-[#E6E6E3] text-[#171717] relative z-50 hover:bg-[#F0F0ED] transition-colors"
+            className="p-2 rounded-xl bg-white/90 border border-[#E6E6E3] text-[#171717] relative z-50 hover:bg-[#F0F0ED] transition-colors active:scale-95"
             aria-label="Toggle Navigation Menu"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-nav-menu"
           >
-            <AnimatePresence mode="wait">
-              {mobileMenuOpen ? (
-                <motion.div
-                  key="close"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <X className="w-5 h-5 text-[#171717]" />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="menu"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <Menu className="w-5 h-5 text-[#171717]" />
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {mobileMenuOpen ? (
+              <X className="w-5 h-5 text-[#171717] transition-transform duration-150 rotate-90" />
+            ) : (
+              <Menu className="w-5 h-5 text-[#171717] transition-transform duration-150" />
+            )}
           </button>
         </div>
       </nav>
 
-      {/* iOS / macOS Glass Mobile Menu Sheet */}
+      {/* Lightweight Glass Mobile Menu Sheet */}
       <AnimatePresence>
         {mobileMenuOpen && !lightboxOpen && (
           <>
-            {/* Soft Backdrop Dim */}
+            {/* Soft Semi-Transparent Dim Overlay (Single-layer without nested blur) */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: shouldReduceMotion ? 0.05 : 0.15 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/20 backdrop-blur-[2px] z-30 pointer-events-auto"
+              className="fixed inset-0 bg-black/30 z-30 pointer-events-auto"
             />
 
-            {/* Floating iOS Glass Panel */}
+            {/* Floating Glass Mobile Sheet */}
             <motion.div
-              initial={{ opacity: 0, y: -12, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -12, scale: 0.98 }}
-              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="pointer-events-auto relative mt-2.5 w-full glass-modal rounded-3xl p-5 flex flex-col gap-4 border border-[#E6E6E3] shadow-2xl z-40 bg-white/85 backdrop-blur-xl saturate-150"
+              id="mobile-nav-menu"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{
+                duration: shouldReduceMotion ? 0.05 : 0.18,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              style={{ willChange: "transform, opacity" }}
+              className="pointer-events-auto relative mt-2.5 w-full glass-mobile-menu rounded-3xl p-5 flex flex-col gap-4 z-40"
             >
               {/* Primary Nav Links */}
               <div className="flex flex-col gap-1">
