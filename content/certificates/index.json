@@ -1,9 +1,33 @@
 [
   {
+    "id": "cert-dicoding-ai",
+    "issueDate": "August 2026",
+    "credentialUrl": "https://www.dicoding.com/certificates/ERZR749WMZYV",
+    "image": "/media/certificates/dicoding-ai-page-1.jpg",
+    "images": [
+      "/media/certificates/dicoding-ai-page-1.jpg",
+      "/media/certificates/dicoding-ai-page-2.jpg"
+    ],
+    "locales": {
+      "en": {
+        "title": "Belajar Dasar AI",
+        "issuer": "Dicoding × Google Cloud",
+        "category": "Artificial Intelligence · Machine Learning",
+        "description": "Comprehensive foundation in Artificial Intelligence concepts, data preprocessing for AI, Machine Learning algorithms, and Deep Learning implementation by Dicoding Indonesia with Google Cloud Partner."
+      },
+      "id": {
+        "title": "Belajar Dasar AI",
+        "issuer": "Dicoding × Google Cloud",
+        "category": "Kecerdasan Buatan (AI) · Machine Learning",
+        "description": "Pembelajaran komprehensif dasar Kecerdasan Buatan (AI), pemanfaatan data untuk AI, konsep Machine Learning, dan implementasi Deep Learning oleh Dicoding Indonesia bersama Google Cloud Partner."
+      }
+    }
+  },
+  {
     "id": "cert-kiro",
     "issueDate": "August 2026",
     "credentialUrl": "https://www.dicoding.com/certificates/1RXYD4L7MXVM",
-    "image": "/media/certificates/kiro.jpg",
+    "image": "/media/certificates/kiro-page-1.jpg",
     "images": [
       "/media/certificates/kiro-page-1.jpg",
       "/media/certificates/kiro-page-2.jpg",
