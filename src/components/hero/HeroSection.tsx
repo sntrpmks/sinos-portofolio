@@ -3,20 +3,20 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { useViewMode } from "@/components/context/ViewModeContext";
 
 export function HeroSection() {
-  const { t } = useViewMode();
+  const { setAiModalOpen, t } = useViewMode();
 
   return (
-    <section className="relative pt-24 pb-20 px-4 sm:px-8 max-w-5xl mx-auto">
+    <section className="relative pt-32 pb-16 px-4 sm:px-8 max-w-5xl mx-auto">
       <div className="flex flex-col gap-6 max-w-3xl">
         {/* Identity Subhead */}
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.22, ease: "easeOut" }}
+          transition={{ duration: 0.3 }}
           className="flex items-center gap-2"
         >
           <span className="text-xs font-mono-code font-bold uppercase tracking-wider text-[#00695C]">
@@ -27,45 +27,40 @@ export function HeroSection() {
         </motion.div>
 
         {/* Large Editorial Title & Professional Headline */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.22, delay: 0.08, ease: "easeOut" }}
-          className="flex flex-col gap-3"
-        >
+        <div className="flex flex-col gap-3">
           <motion.h1
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.22, delay: 0.0, ease: "easeOut" }}
+            transition={{ duration: 0.35, delay: 0.08 }}
             className="heading-editorial font-extrabold text-[#171717] tracking-tight leading-[1.05]"
           >
             {t.hero.headlineTitle}
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.22, delay: 0.08, ease: "easeOut" }}
+            transition={{ duration: 0.35, delay: 0.16 }}
             className="text-xl sm:text-2xl font-semibold text-[#666666] tracking-tight"
           >
             {t.hero.headlineSub}
           </motion.p>
 
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.22, delay: 0.16, ease: "easeOut" }}
+            transition={{ duration: 0.35, delay: 0.22 }}
             className="text-base sm:text-lg text-[#2A2A2A] leading-relaxed max-w-2xl font-normal"
           >
             {t.hero.intro}
           </motion.p>
-        </motion.div>
+        </div>
 
         {/* Clean Dual CTAs: View my work & Contact */}
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.22, delay: 0.22, ease: "easeOut" }}
+          transition={{ duration: 0.35, delay: 0.28 }}
           className="flex flex-wrap items-center gap-3 pt-2"
         >
           <Link

@@ -10,9 +10,9 @@
     --text-medium: #666666;
     --text-muted: #8a8a8a;
     --border-line: #e6e6e3;
-    --color-accent: #00695c;
-    --color-accent-hover: #004d40;
-    --color-accent-active: #00332c;
+    --color-accent: #a9f1df;
+    --color-accent-hover: #82e8d3;
+    --color-accent-active: #5fe0c4;
     --color-accent-soft: #e6f9f5;
     --color-accent-border: #b2f3e5;
     --color-accent-dark: #00695c;
@@ -39,35 +39,37 @@
     font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
+    selection-background-color: rgba(169, 241, 223, 0.4);
+    selection-color: #171717;
   }
 }
 
-/* Minimalist Editorial Card */
+/* Minimalist Card Utility */
 .card-minimal {
-  background: var(--bg-card);
-  border: 1px solid var(--border-line);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e6e6e3;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
+  border-radius: 20px;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card-minimal-interactive:hover {
-  border-color: #171717;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  border-color: #d1d1ce;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
   transform: translateY(-2px);
 }
 
-/* Editorial Glass Material */
+/* Apple/macOS-Inspired Light Glass Material */
 .glass-nav {
-  background: rgba(247, 247, 245, 0.85);
+  background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(20px) saturate(140%);
   -webkit-backdrop-filter: blur(20px) saturate(140%);
   border: 1px solid rgba(23, 23, 23, 0.08);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
 }
 
 .glass-modal {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(24px) saturate(150%);
   -webkit-backdrop-filter: blur(24px) saturate(150%);
   border: 1px solid rgba(23, 23, 23, 0.1);
@@ -75,11 +77,19 @@
 }
 
 .glass-mobile-menu {
-  background: rgba(247, 247, 245, 0.96);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(23, 23, 23, 0.08);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 767px) {
+  .glass-mobile-menu {
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
 }
 
 /* Typography Utilities */
@@ -87,13 +97,14 @@
   font-family: var(--font-geist-mono), SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
+/* Large Editorial Display Heading Responsive Clamp */
 .heading-editorial {
   font-size: clamp(3rem, 10vw, 7.5rem);
   line-height: 1.05;
   letter-spacing: -0.04em;
 }
 
-/* Subtle Ambient Background */
+/* Subtle Ambient Background Light */
 .ambient-subtle {
   position: fixed;
   inset: 0;
@@ -107,17 +118,17 @@
   position: absolute;
   top: -10%;
   right: 15%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(0, 105, 92, 0.06) 0%, rgba(247, 247, 245, 0) 70%);
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(169, 241, 223, 0.12) 0%, rgba(247, 247, 245, 0) 70%);
   border-radius: 50%;
   filter: blur(90px);
 }
 
-/* Scrollbar */
+/* Scrollbar Customization */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -126,14 +137,14 @@
 
 ::-webkit-scrollbar-thumb {
   background: #d1d1ce;
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #a3a3a0;
 }
 
-/* Marquee Ticker */
+/* Marquee Ticker Animation */
 @keyframes marquee {
   0% {
     transform: translateX(0%);
@@ -144,11 +155,18 @@
 }
 
 .animate-marquee {
-  animation: marquee 35s linear infinite;
+  animation: marquee 30s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-marquee, *, ::before, ::after {
+  .animate-marquee {
+    animation: none !important;
+  }
+}
+
+/* Reduced Motion Compliance */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

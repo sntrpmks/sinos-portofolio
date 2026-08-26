@@ -64,11 +64,8 @@ export function ProjectGallery({ gallery, projectTitle }: ProjectGalleryProps) {
 
   // Reset image loading & error state when selectedIndex changes
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setImgError(false);
-      setImgLoading(true);
-    }, 0);
-    return () => clearTimeout(timer);
+    setImgError(false);
+    setImgLoading(true);
   }, [selectedIndex]);
 
   // Preload adjacent screenshots for instant switching

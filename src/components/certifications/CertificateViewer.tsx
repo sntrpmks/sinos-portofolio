@@ -49,13 +49,9 @@ export function CertificateViewer({
 
   // Reset state when certificate changes
   useEffect(() => {
-    // Use setTimeout to avoid cascading render warning
-    const timer = setTimeout(() => {
-      setCurrentIndex(0);
-      setImgError(false);
-      setImgLoading(true);
-    }, 0);
-    return () => clearTimeout(timer);
+    setCurrentIndex(0);
+    setImgError(false);
+    setImgLoading(true);
   }, [certificate]);
 
   // Lock scroll & notify context

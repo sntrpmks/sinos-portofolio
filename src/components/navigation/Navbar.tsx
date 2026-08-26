@@ -33,7 +33,7 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu on Escape key
+  // When lightbox opens, automatically close mobile menu
   useEffect(() => {
     if (lightboxOpen) {
       setMobileMenuOpen(false);
@@ -96,10 +96,8 @@ export function Navbar() {
       }`}
     >
       <nav
-        className={`pointer-events-auto rounded-2xl px-4 sm:px-5 py-3 flex items-center justify-between transition-all duration-300 ${
-          scrolled
-            ? "bg-[#F7F7F5]/90 backdrop-blur-md border border-[#171717]/10 shadow-md py-2.5"
-            : "bg-[#F7F7F5]/70 backdrop-blur-sm border border-transparent shadow-none"
+        className={`pointer-events-auto glass-nav rounded-2xl px-4 sm:px-5 py-3 flex items-center justify-between transition-all duration-300 ${
+          scrolled ? "shadow-md bg-white/85" : "shadow-xs bg-white/70"
         }`}
       >
         {/* Brand Identity */}
@@ -120,7 +118,7 @@ export function Navbar() {
                 tabIndex={lightboxOpen ? -1 : 0}
                 className={`px-4 py-1.5 rounded-lg text-xs font-medium transition-all ${
                   isActive
-                    ? "bg-[#171717] text-white font-bold shadow-xs"
+                    ? "bg-white text-[#171717] font-semibold shadow-xs"
                     : "text-[#666666] hover:text-[#171717] hover:bg-white/50"
                 }`}
               >
@@ -137,7 +135,7 @@ export function Navbar() {
           <button
             onClick={() => setAiModalOpen(true)}
             tabIndex={lightboxOpen ? -1 : 0}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#E6F9F5] text-[#00695C] border border-[#B2F3E5] text-xs font-semibold hover:bg-[#00695C] hover:text-white hover:border-[#00695C] transition-all shadow-xs"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#E6F9F5] text-[#00695C] border border-[#B2F3E5] text-xs font-semibold hover:bg-[#A9F1DF] hover:text-[#171717] hover:border-[#A9F1DF] transition-all shadow-xs"
           >
             <Sparkles className="w-3.5 h-3.5" />
             <span>{t.nav.askAi}</span>
@@ -194,10 +192,11 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu Sheet */}
+      {/* Lightweight Glass Mobile Menu Sheet */}
       <AnimatePresence>
         {mobileMenuOpen && !lightboxOpen && (
           <>
+            {/* Soft Semi-Transparent Dim Overlay (Single-layer without nested blur) */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -207,6 +206,7 @@ export function Navbar() {
               className="fixed inset-0 bg-black/30 z-30 pointer-events-auto"
             />
 
+            {/* Floating Glass Mobile Sheet */}
             <motion.div
               id="mobile-nav-menu"
               initial={{ opacity: 0, y: -10 }}
@@ -219,6 +219,7 @@ export function Navbar() {
               style={{ willChange: "transform, opacity" }}
               className="pointer-events-auto relative mt-2.5 w-full glass-mobile-menu rounded-3xl p-5 flex flex-col gap-4 z-40"
             >
+              {/* Primary Nav Links */}
               <div className="flex flex-col gap-1">
                 {navLinks.map((link) => {
                   const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
@@ -239,6 +240,7 @@ export function Navbar() {
                 })}
               </div>
 
+              {/* Utility Quick Actions Section */}
               <div className="pt-3 border-t border-[#E6E6E3] flex flex-col gap-2.5">
                 <button
                   onClick={() => {
@@ -262,7 +264,7 @@ export function Navbar() {
                       setAiModalOpen(true);
                       setMobileMenuOpen(false);
                     }}
-                    className="w-full flex items-center justify-center gap-2 px-3 py-3 rounded-2xl bg-[#E6F9F5] text-[#00695C] border border-[#B2F3E5] text-xs font-bold hover:bg-[#00695C] hover:text-white transition-all"
+                    className="w-full flex items-center justify-center gap-2 px-3 py-3 rounded-2xl bg-[#E6F9F5] text-[#00695C] border border-[#B2F3E5] text-xs font-bold hover:bg-[#A9F1DF] hover:text-[#171717] transition-all"
                   >
                     <Sparkles className="w-4 h-4 shrink-0" />
                     <span>{t.nav.askAi}</span>
@@ -270,6 +272,7 @@ export function Navbar() {
                 </div>
               </div>
 
+              {/* Bottom Social & Language Bar */}
               <div className="pt-3 border-t border-[#E6E6E3] flex items-center justify-between text-xs text-[#666666] font-medium">
                 <div className="flex items-center gap-3">
                   <a
@@ -310,4 +313,3 @@ export function Navbar() {
     </motion.header>
   );
 }
-
