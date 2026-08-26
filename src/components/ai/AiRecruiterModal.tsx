@@ -79,19 +79,19 @@ export function AiRecruiterModal() {
   }, []);
 
   // Send Chat Message via SSE Token Streaming
-  const handleSend = async (queryOverride?: string) => {
+  const handleSend = useCallback(async (queryOverride?: string) => {
     const textToSend = (queryOverride || inputMessage).trim();
     if (!textToSend || isGenerating) return;
 
     // Create User Message
     const userMessage: Message = {
-      id: `user-${Date.now()}`,
+      id: `user-${Math.random().toString(36).slice(2, 9)}`,
       role: "user",
       content: textToSend,
     };
 
     // Create Placeholder Assistant Message for Streaming
-    const assistantMessageId = `assistant-${Date.now()}`;
+    const assistantMessageId = `assistant-${Math.random().toString(36).slice(2, 9)}`;
     const assistantMessage: Message = {
       id: assistantMessageId,
       role: "assistant",
@@ -151,7 +151,6 @@ export function AiRecruiterModal() {
 
       const reader = response.body.getReader();
       const decoder = new TextDecoder("utf-8");
-      let accumulatedText = "";
       let buffer = "";
 
       while (true) {
@@ -174,17 +173,17 @@ export function AiRecruiterModal() {
           try {
             const parsed = JSON.parse(dataContent);
             if (parsed.text) {
-              accumulatedText += parsed.text;
+              const currentText = parsed.text;
               setMessages((prev) =>
                 prev.map((m) =>
-                  m.id === assistantMessageId ? { ...m, content: accumulatedText } : m
+                  m.id === assistantMessageId ? { ...m, content: currentText } : m
                 )
               );
             } else if (parsed.error) {
-              accumulatedText = parsed.error;
+              const currentError = parsed.error;
               setMessages((prev) =>
                 prev.map((m) =>
-                  m.id === assistantMessageId ? { ...m, content: accumulatedText } : m
+                  m.id === assistantMessageId ? { ...m, content: currentError } : m
                 )
               );
             }
@@ -224,7 +223,7 @@ export function AiRecruiterModal() {
       setIsGenerating(false);
       abortControllerRef.current = null;
     }
-  };
+  }, [messages, inputMessage, isGenerating, locale, pathname, projectSlug]);
 
   // Contextual Prompt Suggestions
   const getContextualSuggestions = () => {

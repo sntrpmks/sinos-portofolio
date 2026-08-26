@@ -38,8 +38,11 @@ export function CommandPalette() {
     if (commandPaletteOpen) {
       setTimeout(() => inputRef.current?.focus(), 50);
     } else {
-      setQuery("");
-      setSelectedIndex(0);
+      // Reset state when closed
+      setTimeout(() => {
+        setQuery("");
+        setSelectedIndex(0);
+      }, 0);
     }
   }, [commandPaletteOpen]);
 

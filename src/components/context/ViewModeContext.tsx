@@ -38,18 +38,14 @@ export function ViewModeProvider({ children }: { children: React.ReactNode }) {
 
   // Initialize locale from localStorage or document cookie
   useEffect(() => {
-    try {
-      const savedLocale = localStorage.getItem("sinos_locale") as Locale | null;
-      if (savedLocale === "en" || savedLocale === "id") {
-        setLocaleState(savedLocale);
-      } else {
-        const browserLang = navigator.language.toLowerCase();
-        if (browserLang.startsWith("id")) {
-          setLocaleState("id");
-        }
+    const savedLocale = localStorage.getItem("sinos_locale") as Locale | null;
+    if (savedLocale === "en" || savedLocale === "id") {
+      setLocaleState(savedLocale);
+    } else {
+      const browserLang = navigator.language.toLowerCase();
+      if (browserLang.startsWith("id")) {
+        setLocaleState("id");
       }
-    } catch {
-      // Fallback to default 'en'
     }
   }, []);
 
